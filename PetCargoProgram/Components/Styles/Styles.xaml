@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BaseStyles.xaml"/>
+        
+        <ResourceDictionary>
+            
+            <Style x:Key="Style_GroupBoxBallast" TargetType="GroupBox">
+                <Setter Property="MinWidth" Value="100"/>
+                <Setter Property="MinHeight" Value="80"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource ContentAreaBallastTank}" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="Style_GroupBoxCargo" TargetType="GroupBox">
+                <Setter Property="MinWidth" Value="100"/>
+                <Setter Property="MinHeight" Value="100"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource ContentAreaCargoTank}" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

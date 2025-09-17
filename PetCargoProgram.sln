@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCargoProgram", "PetCargoProgram\PetCargoProgram.csproj", "{F653588A-99D3-4B03-A55B-71E5B2141302}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{F441499E-3ABC-4957-A95C-66E6310CF3C5}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F653588A-99D3-4B03-A55B-71E5B2141302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F653588A-99D3-4B03-A55B-71E5B2141302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F653588A-99D3-4B03-A55B-71E5B2141302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F653588A-99D3-4B03-A55B-71E5B2141302}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
