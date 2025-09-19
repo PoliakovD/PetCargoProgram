@@ -14,4 +14,8 @@ public class Value_Table_OtherSounding
     {
         return volume + "\t" + sound;
     }
+    public override int GetHashCode()
+    {
+        return this.ToString().GetHashCode();
+    }
 }

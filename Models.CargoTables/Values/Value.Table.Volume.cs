@@ -22,4 +22,8 @@ public class Value_Table_Volume
         return Volume + "\t" + LCG + "\t" + TCG + "\t" + VCG +
                "\t" + IY;
     }
+    public override int GetHashCode()
+    {
+        return this.ToString().GetHashCode();
+    }
 }

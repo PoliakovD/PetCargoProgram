@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using Model.CargoTables;
 using PetCargoProgram.CargoTables.Values;
+
+// TODO Перенести в сервис сурвисную часть
 public class Table_OtherSounding : ICargoTable
 {
      public string Name { get; set; }

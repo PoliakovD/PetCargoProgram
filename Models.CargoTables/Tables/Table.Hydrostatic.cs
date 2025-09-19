@@ -4,6 +4,7 @@ using PetCargoProgram.CargoTables.Values;
 
 namespace PetCargoProgram.CargoTables.Tables;
 
+// TODO Перенести в сервис сурвисную часть
 public class Table_Hydrostatic : ICargoTable
 {
     public string Name { get; set; }

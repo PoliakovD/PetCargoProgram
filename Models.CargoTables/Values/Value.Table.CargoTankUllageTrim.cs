@@ -29,4 +29,8 @@ public class Value_Table_CargoTankUllageTrim
         return Ullage + "\t" + CargoVolumeTrim4 + "\t" + CargoVolumeTrim3 + "\t" + CargoVolumeTrim2 + "\t"
                + CargoVolumeTrim1 + "\t" + CargoVolumeTrim0 + "\t" + CargoVolumeTrim_1;
     }
+    public override int GetHashCode()
+    {
+        return this.ToString().GetHashCode();
+    }
 }

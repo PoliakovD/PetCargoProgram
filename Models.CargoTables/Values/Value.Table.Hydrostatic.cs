@@ -31,4 +31,8 @@ public class Value_Table_Hydrostatic
     {
         return displacement + "\t" + draft + "\t" + tpc + "\t" + metacentrKM + "\t" + FloatationCenterLCF + "\t" + MCTC + "\t" + LCB + "\t" + CM;
     }
+    public override int GetHashCode()
+    {
+        return this.ToString().GetHashCode();
+    }
 }

@@ -4,6 +4,8 @@ using PetCargoProgram.CargoTables.Values;
 
 namespace PetCargoProgram.CargoTables.Tables;
 
+// TODO Перенести в сервис сурвисную часть
+
 public class Table_BallSoundTrim : ICargoTable
 {
         public string Name { get; set; }
