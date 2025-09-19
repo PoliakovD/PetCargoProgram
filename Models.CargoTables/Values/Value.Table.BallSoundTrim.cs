@@ -1,6 +1,4 @@
-﻿using Model.CargoTables;
-
-namespace PetCargoProgram.Models.CargoTables.Values;
+﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
 public class Value_Table_BallSoundTrim
 {

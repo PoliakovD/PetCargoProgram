@@ -1,6 +1,4 @@
-﻿using System.Text;
-using Model.CargoTables;
-using PetCargoProgram.Models.CargoTables.Values;
+﻿using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.Models.CargoTables.Table;
 
