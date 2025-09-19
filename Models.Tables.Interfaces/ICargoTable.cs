@@ -2,6 +2,5 @@
 
 public interface ICargoTable
 {
-    public string Name { get; }
-    public List<ICargoTableValue> Table { get; }
+    public string Name { get; set; }
 }

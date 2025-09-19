@@ -1,10 +1,11 @@
-﻿using System.IO;
+﻿using PetCargoProgram.CargoTables.Values;
+using Model.CargoTables;
 using System.Text;
 
-namespace PetCargoProgram.CargoTables
+namespace PetCargoProgram.CargoTables.Tables;
+
+public class Table_CargoTankUllageTrim : ICargoTable
 {
-    public class Table_CargoTankUllageTrim
-    {
         public string Name { get; set; }
         public List<Value_Table_CargoTankUllageTrim> Table;
         public Table_CargoTankUllageTrim(string name, List<Value_Table_CargoTankUllageTrim> table)
@@ -12,34 +13,7 @@ namespace PetCargoProgram.CargoTables
             Name = name;
             Table = table;
         }
-        public class Value_Table_CargoTankUllageTrim
-        {
-            public double ullage { get; set; }
-            public double CargoVolumeTrim4 { get; set; }
-            public double CargoVolumeTrim3 { get; set; }
-            public double CargoVolumeTrim2 { get; set; }
-            public double CargoVolumeTrim1 { get; set; }
-            public double CargoVolumeTrim0 { get; set; }
-            public double CargoVolumeTrim_1 { get; set; }
 
-
-            public Value_Table_CargoTankUllageTrim(double ull, double Trim4, double Trim3, double Trim2, double Trim1, double Trim0, double Trim_1)
-            {
-                ullage = ull;
-                CargoVolumeTrim4 = Trim4;
-                CargoVolumeTrim3 = Trim3;
-                CargoVolumeTrim2 = Trim2;
-                CargoVolumeTrim1 = Trim1;
-                CargoVolumeTrim0 = Trim0;
-                CargoVolumeTrim_1 = Trim_1;
-
-            }
-            public override string ToString()
-            {
-                return ullage + "\t" + CargoVolumeTrim4 + "\t" + CargoVolumeTrim3 + "\t" + CargoVolumeTrim2 + "\t"
-                    + CargoVolumeTrim1 + "\t" + CargoVolumeTrim0 + "\t" + CargoVolumeTrim_1;
-            }
-        }
         static public void TempSaveAll()
         {
             string[] input = { "cot1P.txt", "cot1S.txt", "cot2P.txt", "cot2S.txt", "cot3P.txt", "cot3S.txt", "cot4P.txt",
@@ -51,7 +25,7 @@ namespace PetCargoProgram.CargoTables
             for (int i = 0; i < input.Length; ++i)
             {
                 Table_CargoTankUllageTrim.Save_to_file(input[i], output[i]);
-                List<Table_CargoTankUllageTrim.Value_Table_CargoTankUllageTrim> cot1 = Table_CargoTankUllageTrim.Read_from_file(output[i]);
+                List<Value_Table_CargoTankUllageTrim> cot1 = Table_CargoTankUllageTrim.Read_from_file(output[i]);
 
 
             }
@@ -83,7 +57,7 @@ namespace PetCargoProgram.CargoTables
                     foreach (var item in cot)
                     {
                         // запись данных в файл
-                        bw.Write(item.ullage);
+                        bw.Write(item.Ullage);
                         bw.Write(item.CargoVolumeTrim4);
                         bw.Write(item.CargoVolumeTrim3);
                         bw.Write(item.CargoVolumeTrim2);
@@ -135,5 +109,4 @@ namespace PetCargoProgram.CargoTables
             return result;
         }
 
-    }
 }

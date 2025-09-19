@@ -1,10 +1,10 @@
-﻿using System.IO;
-using System.Text;
+﻿using System.Text;
+using Model.CargoTables;
 using PetCargoProgram.CargoTables.Values;
 
 namespace PetCargoProgram.CargoTables.Tables;
 
-public class Table_BallSoundTrim
+public class Table_BallSoundTrim : ICargoTable
 {
         public string Name { get; set; }
         public List<Value_Table_BallSoundTrim> Table;
@@ -99,7 +99,7 @@ public class Table_BallSoundTrim
 
             for (int i = 0; i < input.Length; ++i)
             {
-                Table_CargoTankUllageTrim.Save_to_file(input[i], output[i]);
+                Table_BallSoundTrim.Save_to_file(input[i], output[i]);
                 var  ResultTable = Table_BallSoundTrim.Read_from_file(output[i]);
 
             }

@@ -2,7 +2,7 @@
 
 namespace PetCargoProgram.CargoTables.Values;
 
-public class Value_Table_BallSoundTrim : ICargoTableValue
+public class Value_Table_BallSoundTrim
 {
     public double VolumeTrim5 {get; set; }
     public double VolumeTrim4{get;set;}
