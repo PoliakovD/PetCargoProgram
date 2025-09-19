@@ -12,4 +12,8 @@
       <Folder Include="CargoTables\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CargoTables.DataAccess\CargoTables.DataAccess.csproj" />
+    </ItemGroup>
+
 </Project>

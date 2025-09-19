@@ -1,11 +1,10 @@
-﻿using System.Text;
-using Model.CargoTables;
-using PetCargoProgram.CargoTables.Values;
+﻿using PetCargoProgram.Models.CargoTables.Values;
 
-namespace PetCargoProgram.CargoTables.Tables;
+namespace PetCargoProgram.Models.CargoTables.Table;
 
 
-public class Table_Hydrostatic : ICargoTable
+
+public class Table_Hydrostatic
 {
     public string Name { get; set; }
     public List<Value_Table_Hydrostatic> Table { get; set; }

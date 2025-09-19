@@ -1,8 +1,7 @@
-﻿using System.Text;
-using PetCargoProgram.CargoTables.Tables;
-using PetCargoProgram.CargoTables.Values;
+﻿using PetCargoProgram.Models.CargoTables.Values;
+using PetCargoProgram.Models.CargoTables.Table;
 
-namespace PetCargoProgram.DataAccess;
+namespace PetCargoProgram.Models.CargoTables.Tables;
 
 public class Tables_CargoTankUllageTrim
 {

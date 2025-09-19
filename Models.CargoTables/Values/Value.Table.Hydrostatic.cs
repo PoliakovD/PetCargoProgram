@@ -1,4 +1,4 @@
-﻿namespace PetCargoProgram.CargoTables.Values;
+﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
 public class Value_Table_Hydrostatic
 {

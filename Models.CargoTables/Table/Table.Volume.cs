@@ -1,9 +1,10 @@
-﻿using System.Text;
-using Model.CargoTables;
-using PetCargoProgram.CargoTables.Values;
+﻿using PetCargoProgram.Models.CargoTables.Values;
+
+namespace PetCargoProgram.Models.CargoTables.Table;
 
 
-public class Table_Volume:ICargoTable
+
+public class Table_Volume
 {
      public string Name { get; set; }
         public List<Value_Table_Volume> Table{ get; set; }

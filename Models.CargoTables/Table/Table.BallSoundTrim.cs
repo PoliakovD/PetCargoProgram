@@ -1,12 +1,12 @@
 ﻿using System.Text;
 using Model.CargoTables;
-using PetCargoProgram.CargoTables.Values;
+using PetCargoProgram.Models.CargoTables.Values;
 
-namespace PetCargoProgram.CargoTables.Tables;
+namespace PetCargoProgram.Models.CargoTables.Table;
 
 
 
-public class Table_BallSoundTrim : ICargoTable
+public class Table_BallSoundTrim
 {
     public string Name { get; set; }
     public List<Value_Table_BallSoundTrim> Table { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using PetCargoProgram.DataAccess;
 
 namespace PetCargoProgram
 {
@@ -7,18 +8,18 @@ namespace PetCargoProgram
     /// </summary>
     public partial class MainWindow : Window
     {
-        CargoTables.CargoTables? Tables { get; set; }
+        AllTables? Tables { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            Tables = CargoTables.CargoTables.Load();
+            Tables.BinaryLoad();
             //Tables = new CargoTables.CargoTables();
             //Tables.Save();
             Load_LoadingCondition();
         }
         private void Load_LoadingCondition()
         {
-            var Table = Tables.Tables_Hydrostatic[0];
+            var Table = Tables.TablesHydrostatic[0];
             DataGrid_LoadingCondion.ItemsSource = Table.Table;
         }
     }

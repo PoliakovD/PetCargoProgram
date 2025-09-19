@@ -1,11 +1,10 @@
-﻿using PetCargoProgram.CargoTables.Values;
-using Model.CargoTables;
-using System.Text;
+﻿using PetCargoProgram.Models.CargoTables.Values;
 
-namespace PetCargoProgram.CargoTables.Tables;
+namespace PetCargoProgram.Models.CargoTables.Table;
 
 
-public class Table_CargoTankUllageTrim : ICargoTable
+
+public class Table_CargoTankUllageTrim
 {
         public string Name { get; set; }
         public List<Value_Table_CargoTankUllageTrim> Table{ get; set; }
