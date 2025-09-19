@@ -9,7 +9,7 @@ namespace PetCargoProgram.CargoTables.Tables;
 public class Table_BallSoundTrim : ICargoTable
 {
         public string Name { get; set; }
-        public List<Value_Table_BallSoundTrim> Table;
+        public List<Value_Table_BallSoundTrim> Table { get; set; }
 
         public Table_BallSoundTrim(string name, List<Value_Table_BallSoundTrim> table)
         {
@@ -63,35 +63,35 @@ public class Table_BallSoundTrim : ICargoTable
                 }
             }
         }
-        static public List<Value_Table_BallSoundTrim> Read_from_file(string Path)
-        {
-            List<Value_Table_BallSoundTrim> cot1 = new List<Value_Table_BallSoundTrim> { };
-
-            using (FileStream fs = new FileStream(Path,
-            FileMode.Open))
-            {
-                using (BinaryReader br =
-                new BinaryReader(fs,
-                Encoding.Unicode))
-                {
-                    int count = br.ReadInt32();
-                    for (int i = 0; i < count; ++i)
-                    {
-                        cot1.Add(new Value_Table_BallSoundTrim
-                        {
-                            VolumeTrim5 = br.ReadDouble(),
-                            VolumeTrim4 = br.ReadDouble(),
-                            VolumeTrim3 = br.ReadDouble(),
-                            VolumeTrim2 = br.ReadDouble(),
-                            VolumeTrim1 = br.ReadDouble(),
-                            VolumeTrim0 = br.ReadDouble(),
-                            Sound = br.ReadDouble()
-                        });
-                    }
-                }
-            }
-            return cot1;
-        }
+        // static public List<Value_Table_BallSoundTrim> Read_from_file(string Path)
+        // {
+        //     List<Value_Table_BallSoundTrim> cot1 = new List<Value_Table_BallSoundTrim> { };
+        //
+        //     using (FileStream fs = new FileStream(Path,
+        //     FileMode.Open))
+        //     {
+        //         using (BinaryReader br =
+        //         new BinaryReader(fs,
+        //         Encoding.Unicode))
+        //         {
+        //             int count = br.ReadInt32();
+        //             for (int i = 0; i < count; ++i)
+        //             {
+        //                 cot1.Add(new Value_Table_BallSoundTrim
+        //                 {
+        //                     VolumeTrim5 = br.ReadDouble(),
+        //                     VolumeTrim4 = br.ReadDouble(),
+        //                     VolumeTrim3 = br.ReadDouble(),
+        //                     VolumeTrim2 = br.ReadDouble(),
+        //                     VolumeTrim1 = br.ReadDouble(),
+        //                     VolumeTrim0 = br.ReadDouble(),
+        //                     Sound = br.ReadDouble()
+        //                 });
+        //             }
+        //         }
+        //     }
+        //     return cot1;
+        // }
         static public void savealltemp()
         {
             string[] input = { "FPT.txt","BWT1P.txt", "BWT1S.txt", "BWT2P.txt", "BWT2S.txt", "BWT3P.txt", "BWT3S.txt"
