@@ -2,11 +2,7 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using static PetCargoProgram.CargoTables.Table_BallastTankSoundingTrim;
-using static PetCargoProgram.CargoTables.Table_CargoTankUllageTrim;
-using static PetCargoProgram.CargoTables.Table_Hydrostatic;
-using static PetCargoProgram.CargoTables.Table_OtherSounding;
-using static PetCargoProgram.CargoTables.Table_Volume;
+
 
 namespace PetCargoProgram.CargoTables
 {
