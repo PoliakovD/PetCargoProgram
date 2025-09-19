@@ -4,8 +4,7 @@ using PetCargoProgram.CargoTables.Values;
 
 namespace Services.CargoTables;
 
-public class Tables_CargoTankUllageTrim
+public class Tables_BallSoundTrim
 {
-
-        private List<Table_CargoTankUllageTrim> _tables = [];
+    private List<Table_BallSoundTrim> _tables = [];
 }
