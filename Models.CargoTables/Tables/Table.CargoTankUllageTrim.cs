@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PetCargoProgram.CargoTables.Tables;
 
-// TODO Перенести в сервис сурвисную часть
+
 public class Table_CargoTankUllageTrim : ICargoTable
 {
         public string Name { get; set; }
