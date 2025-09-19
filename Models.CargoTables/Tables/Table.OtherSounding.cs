@@ -1,31 +1,14 @@
-﻿using System.IO;
-using System.Text;
-
-namespace PetCargoProgram.CargoTables
+﻿using System.Text;
+using Model.CargoTables;
+using PetCargoProgram.CargoTables.Values;
+public class Table_OtherSounding : ICargoTable
 {
-    public class Table_OtherSounding
-    {
-        public string Name { get; set; }
+     public string Name { get; set; }
         public List<Value_Table_OtherSounding> Table;
         public Table_OtherSounding(string name, List<Value_Table_OtherSounding> table)
         {
             Name = name;
             Table = table;
-        }
-        public class Value_Table_OtherSounding
-        {
-            public double volume { get; set; }
-            public double sound { get; set; }
-            public Value_Table_OtherSounding(double Volume, double Sound)
-            {
-                volume = Volume;
-                sound = Sound;
-
-            }
-            public override string ToString()
-            {
-                return volume + "\t" + sound;
-            }
         }
         static public void Save_to_file(string initialPath, string finalPath)
         {
@@ -87,7 +70,7 @@ namespace PetCargoProgram.CargoTables
             for (int i = 0; i < input.Length; ++i)
             {
                 Table_OtherSounding.Save_to_file(input[i], output[i]);
-                List<Table_OtherSounding.Value_Table_OtherSounding> cot1 = Table_OtherSounding.Read_from_file(output[i]);
+                List<Value_Table_OtherSounding> cot1 = Table_OtherSounding.Read_from_file(output[i]);
 
             }
         }
@@ -105,5 +88,4 @@ namespace PetCargoProgram.CargoTables
 
             return result;
         }
-    }
 }

@@ -1,49 +1,17 @@
-﻿using System.IO;
-using System.Text;
+﻿using System.Text;
+using Model.CargoTables;
+using PetCargoProgram.CargoTables.Values;
 
-namespace PetCargoProgram.CargoTables
+namespace PetCargoProgram.CargoTables.Tables;
+
+public class Table_Hydrostatic : ICargoTable
 {
-    public class Table_Hydrostatic
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
         public List<Value_Table_Hydrostatic> Table;
         public Table_Hydrostatic(string name, List<Value_Table_Hydrostatic> table)
         {
             Name = name;
             Table = table;
-        }
-        public class Value_Table_Hydrostatic
-        {
-            //DISPLACEMENT MT in SW
-            public double displacement { get; set; }
-            public double draft { get; set; }
-            public double tpc { get; set; }
-            //METACENTRE (KM)
-            public double metacentrKM { get; set; }
-            //CENTRE OF FLOTATION (LCF) Xf from L/2
-            public double FloatationCenterLCF { get; set; }
-            //MOMENT TO CHANGE TRIM 1 cm (MCTC) midship
-            public double MCTC { get; set; }
-            // LCB from L/2
-            public double LCB { get; set; }
-
-            public double CM { get; set; }
-            public Value_Table_Hydrostatic(double disp, double draf, double TPC, double KM, double LCF, double mctc, double lCB, double cM)
-            {
-                displacement = disp;
-                draft = draf;
-                tpc = TPC;
-                metacentrKM = KM;
-                FloatationCenterLCF = LCF;
-                MCTC = mctc;
-                LCB = lCB;
-                CM = cM;
-            }
-            public override string ToString()
-            {
-                return displacement + "\t" + draft + "\t" + tpc + "\t" + metacentrKM + "\t" + FloatationCenterLCF + "\t" + MCTC + "\t" + LCB + "\t" + CM;
-            }
-
         }
         static public void Save_to_file(string initialPath, string finalPath)
         {
@@ -120,7 +88,7 @@ namespace PetCargoProgram.CargoTables
             for (int i = 0; i < input.Length; ++i)
             {
                 Table_Hydrostatic.Save_to_file(input[i], output[i]);
-                List<Table_Hydrostatic.Value_Table_Hydrostatic> cot1 = Table_Hydrostatic.Read_from_file(output[i]);
+                List<Value_Table_Hydrostatic> cot1 = Table_Hydrostatic.Read_from_file(output[i]);
 
             }
 
@@ -140,6 +108,4 @@ namespace PetCargoProgram.CargoTables
 
             return result;
         }
-
-    }
 }
