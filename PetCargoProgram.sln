@@ -8,6 +8,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{F44149
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{60CDEC2B-CD57-4D4D-9CD4-FA0736DD7DFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6C432C33-72A6-4732-BC50-3C796FA86148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.Tables.Interfaces", "Models.Tables.Interfaces\Models.Tables.Interfaces.csproj", "{9AC2E7EF-B5E8-4B08-AA23-E8AA15E27B48}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CargoTables", "CargoTables", "{2D028337-214F-40AE-92D6-3F65F996A31E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.CargoTables", "Models.CargoTables\Models.CargoTables.csproj", "{893E9536-A567-49EF-8908-A5A46BF53F29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +28,18 @@ Global
 		{F653588A-99D3-4B03-A55B-71E5B2141302}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F653588A-99D3-4B03-A55B-71E5B2141302}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F653588A-99D3-4B03-A55B-71E5B2141302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AC2E7EF-B5E8-4B08-AA23-E8AA15E27B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC2E7EF-B5E8-4B08-AA23-E8AA15E27B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC2E7EF-B5E8-4B08-AA23-E8AA15E27B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC2E7EF-B5E8-4B08-AA23-E8AA15E27B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893E9536-A567-49EF-8908-A5A46BF53F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893E9536-A567-49EF-8908-A5A46BF53F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893E9536-A567-49EF-8908-A5A46BF53F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893E9536-A567-49EF-8908-A5A46BF53F29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D028337-214F-40AE-92D6-3F65F996A31E} = {60CDEC2B-CD57-4D4D-9CD4-FA0736DD7DFA}
+		{893E9536-A567-49EF-8908-A5A46BF53F29} = {2D028337-214F-40AE-92D6-3F65F996A31E}
+		{9AC2E7EF-B5E8-4B08-AA23-E8AA15E27B48} = {2D028337-214F-40AE-92D6-3F65F996A31E}
 	EndGlobalSection
 EndGlobal
