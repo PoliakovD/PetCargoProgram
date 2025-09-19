@@ -8,11 +8,16 @@ namespace Services.CargoTables;
 
 public class AllTables
 {
-    public List<Table_BallSoundTrim> TablesBallSoundTrim { get; set; }= [];
-    public List<Table_CargoTankUllageTrim> TablesCargoTankUllage { get; set; } = [];
-    public List<Table_Hydrostatic> TablesHydrostatic{ get; set; }= [];
-    public List<Table_OtherSounding> TablesOtherSounding{ get; set; }= [];
-    public List<Table_Volume> TablesVolume{ get; set; }= [];
+    // public List<Table_BallSoundTrim> TablesBallSoundTrim { get; set; }= [];
+    public Tables_BallSoundTrim TablesBallSoundTrim { get; set; }
+    // public List<Table_CargoTankUllageTrim> TablesCargoTankUllage { get; set; } = [];
+    public Tables_CargoTankUllageTrim TablesCargoTankUllage { get; set; }
+    // public List<Table_Hydrostatic> TablesHydrostatic{ get; set; }= [];
+    public Tables_Hydrostatic TablesHydrostatic { get; set; }
+    // public List<Table_OtherSounding> TablesOtherSounding{ get; set; }= [];
+    public Tables_OtherSounding TablesOtherSounding { get; set; }
+    // public List<Table_Volume> TablesVolume{ get; set; }= [];
+    public Tables_Volume TablesVolume { get; set; }
 
     public AllTables()
     {
@@ -23,11 +28,11 @@ public class AllTables
         //Tables_Volume = Table_Volume.ReadAllTables();
 
 
-        TablesBallSoundTrim = new List<Table_BallSoundTrim> { };
-        TablesCargoTankUllage = new List<Table_CargoTankUllageTrim> { };
-        TablesHydrostatic = new List<Table_Hydrostatic> { };
-        TablesOtherSounding = new List<Table_OtherSounding> { };
-        TablesVolume = new List<Table_Volume> { };
+        TablesBallSoundTrim = new Tables_BallSoundTrim { };
+        TablesCargoTankUllage = new Tables_CargoTankUllageTrim { };
+        TablesHydrostatic = new Tables_Hydrostatic { };
+        TablesOtherSounding = new Tables_OtherSounding { };
+        TablesVolume = new Tables_Volume { };
 
 
     }
@@ -42,95 +47,11 @@ public class AllTables
                 new BinaryWriter(fs,
                 Encoding.Unicode))
                 {
-                    // записываем  Tables_BallastTanksSounding
-                    bw.Write(this.TablesBallSoundTrim.Count);// кол-во таблиц
-                    foreach (var table_BTST in this.TablesBallSoundTrim)
-                    {
-                        bw.Write(table_BTST.Name); // имя таблицы
-                        bw.Write(table_BTST.Table.Count); // кол-во записей в таблице
-                        foreach (var value_BTST in table_BTST.Table)
-                        {
-                            // запись данных в файл
-                            bw.Write(value_BTST.VolumeTrim5);
-                            bw.Write(value_BTST.VolumeTrim4);
-                            bw.Write(value_BTST.VolumeTrim3);
-                            bw.Write(value_BTST.VolumeTrim2);
-                            bw.Write(value_BTST.VolumeTrim1);
-                            bw.Write(value_BTST.VolumeTrim0);
-                            bw.Write(value_BTST.Sound);
-                        }
-                    }
-
-                    // записываем  Tables_CargoTanksUllage
-                    bw.Write(this.TablesCargoTankUllage.Count);// кол-во таблиц
-                    foreach (var table_CTU in this.TablesCargoTankUllage)
-                    {
-                        bw.Write(table_CTU.Name); // имя таблицы
-                        bw.Write(table_CTU.Table.Count); // кол-во записей в таблице
-                        foreach (var value_CTU in table_CTU.Table)
-                        {
-                            // запись данных в файл
-                            bw.Write(value_CTU.Ullage);
-                            bw.Write(value_CTU.CargoVolumeTrim4);
-                            bw.Write(value_CTU.CargoVolumeTrim3);
-                            bw.Write(value_CTU.CargoVolumeTrim2);
-                            bw.Write(value_CTU.CargoVolumeTrim1);
-                            bw.Write(value_CTU.CargoVolumeTrim0);
-                            bw.Write(value_CTU.CargoVolumeTrim_1);
-                        }
-                    }
-
-                    // записываем  Tables_Hydrostatic
-                    bw.Write(this.TablesHydrostatic.Count);// кол-во таблиц
-                    foreach (var table_Hydro in this.TablesHydrostatic)
-                    {
-                        bw.Write(table_Hydro.Name); // имя таблицы
-                        bw.Write(table_Hydro.Table.Count); // кол-во записей в таблице
-                        foreach (var value_Hydro in table_Hydro.Table)
-                        {
-                            // запись данных в файл
-                            bw.Write(value_Hydro.displacement);
-                            bw.Write(value_Hydro.draft);
-                            bw.Write(value_Hydro.tpc);
-                            bw.Write(value_Hydro.metacentrKM);
-                            bw.Write(value_Hydro.FloatationCenterLCF);
-                            bw.Write(value_Hydro.MCTC);
-                            bw.Write(value_Hydro.LCB);
-                            bw.Write(value_Hydro.CM);
-                        }
-                    }
-
-                    // записываем  Tables_OtherSounding
-                    bw.Write(this.TablesOtherSounding.Count);// кол-во таблиц
-                    foreach (var table_OS in this.TablesOtherSounding)
-                    {
-                        bw.Write(table_OS.Name); // имя таблицы
-                        bw.Write(table_OS.Table.Count); // кол-во записей в таблице
-                        foreach (var value_OS in table_OS.Table)
-                        {
-                            // запись данных в файл
-                            bw.Write(value_OS.volume);
-                            bw.Write(value_OS.sound);
-                        }
-                    }
-
-                    // записываем  Tables_Volume
-                    bw.Write(this.TablesVolume.Count);// кол-во таблиц
-                    foreach (var table_Vol in this.TablesVolume)
-                    {
-                        bw.Write(table_Vol.Name); // имя таблицы
-                        bw.Write(table_Vol.Table.Count); // кол-во записей в таблице
-                        foreach (var value_Vol in table_Vol.Table)
-                        {
-                            // запись данных в файл
-                            bw.Write(value_Vol.Volume);
-                            bw.Write(value_Vol.LCG);
-                            bw.Write(value_Vol.TCG);
-                            bw.Write(value_Vol.VCG);
-                            bw.Write(value_Vol.IY);
-                        }
-                    }
-
+                    TablesBallSoundTrim.WriteTables(fs, bw);
+                    TablesCargoTankUllage.WriteTables(fs, bw);
+                    TablesHydrostatic.WriteTables(fs, bw);
+                    TablesOtherSounding.WriteTables(fs, bw);
+                    TablesVolume.WriteTables(fs, bw);
                 }
             }
         }
