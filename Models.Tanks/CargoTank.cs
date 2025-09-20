@@ -16,5 +16,15 @@ public class CargoTank : ILoadingConditionItem
     public double LCG { get; set; }
     public double VCG { get; set; }
     public double TCG { get; set; }
+
+    public double TempCelsius{ get; set; }
+    public double TempFaringates{ get; set; }
+    public double API { get; set; }
+    public double VolumeCorrectionFactorBBLS { get; set; }
+    public double VolumeCorrectionFactor { get; set; }
+
+    public double ObservedVolume{ get; set; }
+    public double GrossVolume{ get; set; }
+
     // TODO Добавить свойства для грузового танка (вес груза в вакууме, обьем в баррелях и тд)
 }

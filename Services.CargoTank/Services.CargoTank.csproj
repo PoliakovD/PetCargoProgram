@@ -6,9 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\DataAccess.CargoTables\DataAccess.CargoTables.csproj" />
-      <ProjectReference Include="..\Models.CargoTables\Models.CargoTables.csproj" />
-    </ItemGroup>
-
 </Project>
