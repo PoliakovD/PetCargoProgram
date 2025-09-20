@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CargoTables.DataAccess\CargoTables.DataAccess.csproj" />
+      <ProjectReference Include="..\DataAccess.CargoTables\DataAccess.CargoTables.csproj" />
     </ItemGroup>
 
 </Project>

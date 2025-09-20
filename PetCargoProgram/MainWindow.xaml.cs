@@ -8,7 +8,7 @@ namespace PetCargoProgram
     /// </summary>
     public partial class MainWindow : Window
     {
-        AllTables? Tables { get; set; }
+        WriterAllTables? Tables { get; set; }
         public MainWindow()
         {
             InitializeComponent();

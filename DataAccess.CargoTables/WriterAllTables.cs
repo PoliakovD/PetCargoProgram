@@ -6,7 +6,7 @@ using PetCargoProgram.CargoTables.Values;
 
 namespace PetCargoProgram.DataAccess;
 
-public class AllTables
+public static class WriterAllTables
 {
     // public List<Table_BallSoundTrim> TablesBallSoundTrim { get; set; }= [];
     public Tables_BallSoundTrim TablesBallSoundTrim { get; set; }
@@ -19,7 +19,7 @@ public class AllTables
     // public List<Table_Volume> TablesVolume{ get; set; }= [];
     public Tables_Volume TablesVolume { get; set; }
 
-    public AllTables()
+    public WriterAllTables()
     {
         //Tables_BallastTanksSounding = Table_BallastTankSoundingTrim.ReadAllTables();
         //Tables_CargoTanksUllage = Table_CargoTankUllageTrim.ReadAllTables();
@@ -73,7 +73,7 @@ public class AllTables
             }
         }
         // Выгрузка в файл json
-        public static void UnLoadToJson(AllTables cargoTables, string path = "CargoTables.json")
+        public static void UnLoadToJson(WriterAllTables cargoTables, string path = "CargoTables.json")
         {
             var options = new JsonSerializerOptions
             {
@@ -83,7 +83,7 @@ public class AllTables
                 MaxDepth = 2000000
             };
 
-            var json = JsonSerializer.Serialize<AllTables>(cargoTables, options);
+            var json = JsonSerializer.Serialize<WriterAllTables>(cargoTables, options);
             File.WriteAllText(path, json);
         }
         // Загрузка из json
