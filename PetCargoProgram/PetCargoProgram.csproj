@@ -14,6 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DataAccess.CargoTables\DataAccess.CargoTables.csproj" />
+      <ProjectReference Include="..\Services.CargoTables\Services.CargoTables.csproj" />
     </ItemGroup>
 
 </Project>

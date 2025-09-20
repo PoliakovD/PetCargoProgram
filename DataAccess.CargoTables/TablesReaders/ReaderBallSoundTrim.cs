@@ -9,7 +9,10 @@ public static class ReaderBallSoundTrim
 {
     public static FileStream Read(FileStream fs, BinaryReader br,  ref AllCargoTables allCargoTables)
     {
-        allCargoTables.TablesBallSoundTrim.Tables.Clear(); // Очищаем список
+        if( allCargoTables.TablesBallSoundTrim.Tables is not null)
+            allCargoTables.TablesBallSoundTrim.Tables.Clear(); // Очищаем список
+
+
          // считываем кол-во Tables_BallastTanksSounding
          int count_tablesBTST = br.ReadInt32();
 

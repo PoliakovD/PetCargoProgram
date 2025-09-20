@@ -1,4 +1,6 @@
-﻿namespace Services.CargoTables;
+﻿using PetCargoProgram.Models.CargoTables.Tables;
+
+namespace Services.CargoTables;
 
 public class Services_CargoTables
 {

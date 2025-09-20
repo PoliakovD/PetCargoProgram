@@ -5,7 +5,7 @@ using PetCargoProgram.DataAccess.CargoTables.TablesReaders;
 
 namespace PetCargoProgram.DataAccess;
 
-public static class BinaryService
+public static class BinaryCTService
 {
     public static void Save(AllCargoTables allCargoTables, string path = "CargoTables.bin")
     {
@@ -25,7 +25,7 @@ public static class BinaryService
             }
         }
     }
-    public static void BinaryLoad(ref AllCargoTables allCargoTables, string path = "CargoTables.bin")
+    public static void Load(ref AllCargoTables allCargoTables, string path = "CargoTables.bin")
     {
         if (File.Exists(path))
         {
