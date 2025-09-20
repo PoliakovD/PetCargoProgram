@@ -17,4 +17,10 @@
       <ProjectReference Include="..\Services.CargoTables\Services.CargoTables.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="CargoTables.bin">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
