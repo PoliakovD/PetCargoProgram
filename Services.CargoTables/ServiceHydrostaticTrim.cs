@@ -23,8 +23,8 @@ public partial class ServiceHydrostaticTrim
         var closest = GetClosestTables(trim);
 
         // Получаем ближайшие значения
-        var closestFirstValues = GetClosestTableValues(displacement,closest[0]);
-        var closestSecondValues = GetClosestTableValues(displacement,closest[1]);
+        var closestFirstValues = GetClosestTableValues(displacement,closest.Values.First());
+        var closestSecondValues = GetClosestTableValues(displacement,closest.Values.Last());
 
         // Вычисляем интерполированное значения для первого значения
         var interKoef = (displacement - closestFirstValues.First().Displacement)

@@ -29,8 +29,8 @@ public partial class ServiceHydrostaticTrim
         var searchedIndexes = indexedTrims.OrderBy(n => Math.Abs((double)n - trim)).Take(2).ToList();
         return new Dictionary<int,Table_Hydrostatic>
         {
-            {searchedIndexes[0],Tables[searchedIndexes[0]]},
-            {searchedIndexes[1],Tables[searchedIndexes[1]]}
+            {searchedIndexes[0],Tables[searchedIndexes[0]+1]},
+            {searchedIndexes[1],Tables[searchedIndexes[1]+1]}
         };
     }
 
