@@ -1,4 +1,6 @@
-﻿using PetCargoProgram.Models.CargoTables.Table;
+﻿using System;
+using System.Collections.Generic;
+using PetCargoProgram.Models.CargoTables.Table;
 using PetCargoProgram.Models.CargoTables.Tables;
 using static PetCargoProgram.Services.CargoTables.ServiceFindAndCalcHelper;
 using System.Linq;
