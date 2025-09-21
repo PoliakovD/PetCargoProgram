@@ -41,4 +41,46 @@ ullage = 5.5;
 Volume = tableService.GetVolumeWithTrim(Name, ullage, trim);
 Console.WriteLine("Volume: " + Volume+ "");
 
+// test values 5 Экстраполяция вверх
+Name = "COT 1P";
+trim = 4.5;
+ullage = 5.5;
+
+Volume = tableService.GetVolumeWithTrim(Name, ullage, trim);
+Console.WriteLine("Экстраполяция вверх Volume: " + Volume+ "//6342.35 - ОК");//6342.35 - ОК
+
+// test values 6 Экстраполяция вниз
+Name = "COT 1P";
+trim = -1.5;
+ullage = 5.5;
+
+Volume = tableService.GetVolumeWithTrim(Name, ullage, trim);
+Console.WriteLine("Экстраполяция вниз Volume: " + Volume+ "//6306.15 - ОК");//6306.15 - ОК
+
+try
+{
+// test values  поимка исключений
+    Name = "COT 1S";
+    ullage = 20.33;
+    trim = 7.5;
+    Volume = tableService.GetVolumeWithTrim(Name, ullage, trim);
+    Console.WriteLine("Максималная пустота Volume: " + Volume+ "");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+try
+{
+// test values  поимка исключений
+    trim = -3.5;
+    Volume = tableService.GetVolumeWithTrim(Name, ullage, trim);
+
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+
 Console.ReadKey();
