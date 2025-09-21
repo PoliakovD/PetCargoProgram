@@ -5,7 +5,7 @@ using PetCargoProgram.DataAccess.CargoTables.TablesWriters;
 using PetCargoProgram.DataAccess.CargoTables.TablesReaders;
 
 namespace PetCargoProgram.DataAccess;
-
+//TODO Добавить Json Сериализацию и Десериализацию
 public static class BinaryCTService
 {
     public static void Save(AllCargoTables allCargoTables, string path = "CargoTables.bin")

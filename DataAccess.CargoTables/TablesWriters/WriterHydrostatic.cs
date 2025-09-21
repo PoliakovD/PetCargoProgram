@@ -16,10 +16,10 @@ public static class WriterHydrostatic
             foreach (var value_Hydro in table_Hydro.Table)
             {
                 // запись данных в файл
-                bw.Write(value_Hydro.displacement);
-                bw.Write(value_Hydro.draft);
-                bw.Write(value_Hydro.tpc);
-                bw.Write(value_Hydro.metacentrKM);
+                bw.Write(value_Hydro.Displacement);
+                bw.Write(value_Hydro.Draft);
+                bw.Write(value_Hydro.TPC);
+                bw.Write(value_Hydro.MetacentrKM);
                 bw.Write(value_Hydro.FloatationCenterLCF);
                 bw.Write(value_Hydro.MCTC);
                 bw.Write(value_Hydro.LCB);

@@ -15,4 +15,11 @@ public class Table_Hydrostatic
         Name = name;
         Table = table;
     }
+
+    public Table_Hydrostatic(Table_Hydrostatic table)
+    {
+        this.Name = table.Name;;
+        this.Table = table.Table;
+
+    }
 }

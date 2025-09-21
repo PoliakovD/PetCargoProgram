@@ -3,11 +3,11 @@
 public class Value_Table_Hydrostatic
 {
     //DISPLACEMENT MT in SW
-    public double displacement { get; set; }
-    public double draft { get; set; }
-    public double tpc { get; set; }
+    public double Displacement { get; set; }
+    public double Draft { get; set; }
+    public double TPC { get; set; }
     //METACENTRE (KM)
-    public double metacentrKM { get; set; }
+    public double MetacentrKM { get; set; }
     //CENTRE OF FLOTATION (LCF) Xf from L/2
     public double FloatationCenterLCF { get; set; }
     //MOMENT TO CHANGE TRIM 1 cm (MCTC) midship
@@ -16,12 +16,12 @@ public class Value_Table_Hydrostatic
     public double LCB { get; set; }
 
     public double CM { get; set; }
-    public Value_Table_Hydrostatic(double disp, double draf, double TPC, double KM, double LCF, double mctc, double lCB, double cM)
+    public Value_Table_Hydrostatic(double disp, double draft, double tpc, double KM, double LCF, double mctc, double lCB, double cM)
     {
-        displacement = disp;
-        draft = draf;
-        tpc = TPC;
-        metacentrKM = KM;
+        Displacement = disp;
+        Draft = draft;
+        TPC = tpc;
+        MetacentrKM = KM;
         FloatationCenterLCF = LCF;
         MCTC = mctc;
         LCB = lCB;
@@ -29,7 +29,7 @@ public class Value_Table_Hydrostatic
     }
     public override string ToString()
     {
-        return displacement + "\t" + draft + "\t" + tpc + "\t" + metacentrKM + "\t" + FloatationCenterLCF + "\t" + MCTC + "\t" + LCB + "\t" + CM;
+        return Displacement + "\t" + Draft + "\t" + TPC + "\t" + MetacentrKM + "\t" + FloatationCenterLCF + "\t" + MCTC + "\t" + LCB + "\t" + CM;
     }
     public override int GetHashCode()
     {
