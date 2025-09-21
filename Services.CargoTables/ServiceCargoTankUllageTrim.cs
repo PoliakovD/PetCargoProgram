@@ -1,6 +1,8 @@
 ﻿using PetCargoProgram.Models.CargoTables.Table;
 using PetCargoProgram.Models.CargoTables.Tables;
+using static PetCargoProgram.Services.CargoTables.ServiceFindAndCalcHelper;
 using System.Linq;
+
 
 namespace PetCargoProgram.Services.CargoTables;
 
@@ -13,24 +15,27 @@ public class ServiceCargoTankUllageTrim
         Tables= cargoTankUllageTrim.Tables;
     }
 
-    public double GetVolumeWithTrim(string Name, double Ullage, double Trim)
+    public double GetVolumeWithTrim(string name, double ullage, double trim)
     {
-        if(Ullage<0.0) throw new Exception("Пустота не может быть меньше нуля");
-        if (Trim>8.0) throw new Exception("Trim не может быть больше 8");
-        if(Trim<-4.0) throw new Exception("Trim не может быть меньше -4");
-        // Выбераем таблицу для нужного танка
-        var table = Tables.FirstOrDefault(x => x.Name == Name);
+        // Выбираем таблицу для нужного танка
+        var table = Tables.FirstOrDefault(x => x.Name == name);
 
-        if (table == null) throw new Exception($"Не найдена таблица для танка {Name}");
+        // Проверка на наличие таблицы
+        if (table == null) throw new Exception($"Не найдена таблица для танка {name}");
+
+        //Проверка входных значений
+        if(ullage<0.0) throw new Exception("Пустота не может быть меньше нуля");
+        if (trim>8.0) throw new Exception("Trim не может быть больше 8");
+        if(trim<-4.0) throw new Exception("Trim не может быть меньше -4");
 
         // Проверяем ullage
         var maxUllage = table.Table.MaxBy(x => x.Ullage).Ullage+double.Epsilon;
-        if(Ullage > maxUllage)
-            throw new Exception($"Пустота {Ullage} больше максимальной {maxUllage}");
+        if(ullage > maxUllage)
+            throw new Exception($"Пустота {ullage} больше максимальной {maxUllage}");
 
         // Находим два значения в таблице, ближайшие к ullage
         var closest = table.Table
-            .OrderBy(n => Math.Abs(n.Ullage - Ullage))
+            .OrderBy(n => Math.Abs(n.Ullage - ullage))
             .Take(2);
 
         var closestFirst = closest.First();
@@ -40,7 +45,7 @@ public class ServiceCargoTankUllageTrim
         var koef = 0.0;
         var ullageFirst = closestFirst.Ullage;
         var ullageLast = closestLast.Ullage;
-        if (ullageFirst != Ullage) koef = (ullageLast-ullageFirst)/(Ullage-ullageFirst);
+        if (ullageFirst != ullage) koef = (ullageLast-ullageFirst)/(ullage-ullageFirst);
 
         //Расчет объема по дифференту
         Dictionary<int, double> trimsVolumes = [];
@@ -66,7 +71,7 @@ public class ServiceCargoTankUllageTrim
 
         // получаем значение по trim
         var result =GetValueInDictionary(trimsVolumes,
-            Trim);
+            trim);
 
         // код ниже оказалося не обязательным
 
@@ -79,23 +84,7 @@ public class ServiceCargoTankUllageTrim
         return result;
     }
 
-    private static double GetInterpolatedValue(
-        double calcValue1, double calcValue2,
-        double currentValue,
-        double SearchValue1, double SearchValue2)
-    {
-        double koef = (calcValue1 - currentValue) / (calcValue2 - calcValue1);
-        return koef * (SearchValue2 - SearchValue1) + SearchValue1;
-    }
-    private static double GetInterpolatedValueByKoef(double koef,
-        double SearchValue1, double SearchValue2)
-    =>koef * (SearchValue2 - SearchValue1) + SearchValue1;
-    private static double GetUpExtrapoladedValueByKoef(double koef,
-        double SearchValue1, double SearchValue2)
-        =>koef * (SearchValue1 - SearchValue2) + SearchValue1;
-    private static double GetDownExtrapoladedValueByKoef(double koef,
-        double SearchValue1, double SearchValue2)
-        => SearchValue1 - koef * (SearchValue1 - SearchValue2);
+
 
     private static double GetValueInDictionary(Dictionary<int,double> dictionary, double SearchValue)
     {
@@ -119,7 +108,7 @@ public class ServiceCargoTankUllageTrim
                 return GetUpExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
             }
             else
-            // Экстраполируем вниз
+                // Экстраполируем вниз
             {
                 return GetUpExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
             }
