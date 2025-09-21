@@ -101,17 +101,10 @@ public class ServiceCargoTankUllageTrim
         }
         else
         {
+            // Экстраполируем
             var extraKoef = (SearchValue - closest.First().Key) / (closest.First().Key - closest.Last().Key);
-            // Экстраполируем вверх
-            if (SearchValue > 4)
-            {
-                return GetUpExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
-            }
-            else
-                // Экстраполируем вниз
-            {
-                return GetUpExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
-            }
+            return GetExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
+
         }
     }
 }

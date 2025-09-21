@@ -1,4 +1,6 @@
-﻿namespace PetCargoProgram.Models.LoadingCondition;
+﻿using System.Collections.Generic;
+
+namespace PetCargoProgram.Models.LoadingCondition;
 
 public class LoadingConditionTable
 {
