@@ -23,4 +23,5 @@ Console.WriteLine("TCG: " + TCG);
 Console.WriteLine("VCG: " + VCG);
 Console.WriteLine("IY: " + IY);
 Console.WriteLine("Volume: " + Volume);
+Console.WriteLine("Searched to FullValue: "+tableService.GetValue(Name, Volume));
 Console.ReadKey();

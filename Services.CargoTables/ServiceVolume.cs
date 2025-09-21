@@ -16,6 +16,15 @@ public class ServiceVolume
         Tables= volume.Tables;
     }
 
+    public Value_Table_Volume GetValue(string name, double volume)
+    {
+        // Получаем ближайшие значения
+        var closest = GetClosestTableValues(name,volume);
+        var interKoef = (volume - closest.First().Volume)
+                        / (closest.Last().Volume - closest.First().Volume);
+        return GetInterpolatedFullValue(closest[0],closest[1],interKoef,volume);
+    }
+
     public double GetLCG(string name, double volume)
     {
 
@@ -67,5 +76,16 @@ public class ServiceVolume
 
         // Находим два значения в таблице, ближайшие к volume
         return table.Table.OrderBy(n => Math.Abs(n.Volume - volume)).Take(2).ToList();
+    }
+
+    private Value_Table_Volume GetInterpolatedFullValue(Value_Table_Volume valueFirst, Value_Table_Volume valueSecond,
+        double interKoef, double volume)
+    {
+        return new Value_Table_Volume
+        (volume,
+            GetInterpolatedValueByKoef(interKoef, valueFirst.LCG, valueSecond.LCG),
+            GetInterpolatedValueByKoef(interKoef, valueFirst.TCG, valueSecond.TCG),
+            GetInterpolatedValueByKoef(interKoef, valueFirst.VCG, valueSecond.VCG),
+            GetInterpolatedValueByKoef(interKoef, valueFirst.IY, valueSecond.IY));
     }
 }
