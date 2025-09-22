@@ -7,7 +7,10 @@ public class Service_LoadingCondition
 {
     private List<ILoadingConditionItem> _table=[];
 
-    public Service_LoadingCondition();
+    public Service_LoadingCondition()
+    {
+        //TODO Make it work
+    }
     public void Add(ILoadingConditionItem item) => _table.Add(item);
 
 }
