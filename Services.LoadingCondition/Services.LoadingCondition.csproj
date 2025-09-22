@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Models.LoadingCondition\Models.LoadingCondition.csproj" />
+    </ItemGroup>
+
 </Project>
