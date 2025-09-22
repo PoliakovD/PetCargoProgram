@@ -2,5 +2,5 @@
 
 public class CargoTanks
 {
-
+    //TODO Доделать сервис танк
 }

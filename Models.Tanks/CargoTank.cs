@@ -1,9 +1,10 @@
-﻿using PetCargoProgram.Models.LoadingCondition;
+﻿using System;
+using PetCargoProgram.Models.LoadingCondition;
 
 namespace PetCargoProgram.Models.Tanks;
 
 
-public class CargoTank : ILoadingConditionItem
+public partial class CargoTank : ILoadingConditionItem, IEquatable<CargoTank>
 {
     public string Name { get; set; }
     public double MaxVolume { get; set; }
