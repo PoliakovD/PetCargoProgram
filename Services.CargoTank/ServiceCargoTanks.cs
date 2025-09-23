@@ -18,6 +18,7 @@ public class ServiceCargoTanks
         _cargoTanks.GetValueOrDefault(name);
     public bool Delete(string name) =>
         _cargoTanks.Remove(name);
+    public IEnumerable<PetCargoProgram.Models.Tanks.CargoTank> GetAll() => _cargoTanks.Values;
     public bool Update(PetCargoProgram.Models.Tanks.CargoTank сargoTank)
     {
         var _сargoTank = GetByName(сargoTank.Name);

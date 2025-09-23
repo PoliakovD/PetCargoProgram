@@ -78,7 +78,5 @@ public partial class ServiceHydrostaticTrim
                 GetExtrapoladedValueByKoef(koef, valueFirst.LCB, valueSecond.LCB),
                 GetExtrapoladedValueByKoef(koef, valueFirst.CM, valueSecond.CM));
         }
-
-
     }
 }

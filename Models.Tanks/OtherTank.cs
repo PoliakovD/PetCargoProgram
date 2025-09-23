@@ -17,6 +17,7 @@ public class OtherTank : ILoadingConditionItem
     private double _vcg;
     private double _tcg;
     private double _iy;
+    private double _maxUllage;
 
     // TODO Добавить свойства для грузового танка (вес груза в вакууме, обьем в баррелях и тд)
     public string Name
@@ -29,6 +30,12 @@ public class OtherTank : ILoadingConditionItem
     {
         get => _maxVolume;
         init => _maxVolume = value;
+    }
+
+    public double MaxUllage
+    {
+        get => _maxUllage;
+        init => _maxUllage = value;
     }
 
     public double Sound

@@ -4,20 +4,23 @@ using PetCargoProgram.Models.CargoTables.Table;
 using PetCargoProgram.Models.CargoTables.Tables;
 using static PetCargoProgram.Services.CargoTables.ServiceFindAndCalcHelper;
 using System.Linq;
+using PetCargoProgram.Models.CargoTables.Values;
 
 
 namespace PetCargoProgram.Services.CargoTables;
 
 public class ServiceCargoTankUllageTrim
 {
+    // TODO Добавить метод GetUllage by volume and trim
     private List<Table_CargoTankUllageTrim> Tables { get; set; }
 
     public ServiceCargoTankUllageTrim(Tables_CargoTankUllageTrim cargoTankUllageTrim)
     {
         Tables= cargoTankUllageTrim.Tables;
     }
-
-    public double GetVolumeWithTrim(string name, double ullage, double trim)
+    public double GetMaxUllage(string name)
+        => Tables.FirstOrDefault(x => x.Name == name).Table.Last().Ullage;
+    public double GetVolumeWithTrim(string name, double ullage, double trim=0.0)
     {
         // Выбираем таблицу для нужного танка
         var table = Tables.FirstOrDefault(x => x.Name == name);
@@ -31,7 +34,7 @@ public class ServiceCargoTankUllageTrim
         if(trim<-4.0) throw new Exception("Trim не может быть меньше -4");
 
         // Проверяем ullage
-        var maxUllage = table.Table.MaxBy(x => x.Ullage).Ullage+double.Epsilon;
+        var maxUllage = GetMaxUllage(name)+double.Epsilon;
         if(ullage > maxUllage)
             throw new Exception($"Пустота {ullage} больше максимальной {maxUllage}");
 
@@ -47,7 +50,7 @@ public class ServiceCargoTankUllageTrim
         var koef = 0.0;
         var ullageFirst = closestFirst.Ullage;
         var ullageLast = closestLast.Ullage;
-        if (ullageFirst != ullage) koef = (ullageLast-ullageFirst)/(ullage-ullageFirst);
+        if (ullageFirst != ullage) koef = (ullage-ullageFirst)/(ullageLast-ullageFirst);
 
         //Расчет объема по дифференту
         Dictionary<int, double> trimsVolumes = [];
@@ -86,8 +89,327 @@ public class ServiceCargoTankUllageTrim
         return result;
     }
 
+    //  public double GetUllageWithTrim(string name, double volume, double trim=0.0)
+    // {
+    //     // Выбираем таблицу для нужного танка
+    //     var table = Tables.FirstOrDefault(x => x.Name == name);
+    //
+    //     // Проверка на наличие таблицы
+    //     if (table == null) throw new Exception($"Не найдена таблица для танка {name}");
+    //
+    //     //Проверка входных значений
+    //     if(volume<0.0) throw new Exception("Обьем не может быть меньше нуля");
+    //     if (trim>8.0) throw new Exception("Trim не может быть больше 8");
+    //     if(trim<-4.0) throw new Exception("Trim не может быть меньше -4");
+    //
+    //     // Проверяем volume
+    //     var maxVolume = table.Table[0].CargoVolumeTrim0 + double.Epsilon;
+    //     if(volume > maxVolume)
+    //         throw new Exception($"Объем {volume} больше максимального {maxVolume}");
+    //
+    //     // ищем ближайшие значения
+    //     return GetValueWithVolume(volume, trim, table).Ullage;
+    // }
 
+    public double GetUllageWithTrim(string name, double volume, double trim=0.0)
+    {
+        // Выбираем таблицу для нужного танка
+        var table = Tables.FirstOrDefault(x => x.Name == name);
 
+        // Проверка на наличие таблицы
+        if (table == null) throw new Exception($"Не найдена таблица для танка {name}");
+
+        //Проверка входных значений
+        if(volume<0.0) throw new Exception("Обьем не может быть меньше нуля");
+        if (trim>8.0) throw new Exception("Trim не может быть больше 8");
+        if(trim<-4.0) throw new Exception("Trim не может быть меньше -4");
+
+        // Проверяем volume
+        var maxVolume = table.Table[0].CargoVolumeTrim0 + double.Epsilon;
+        if(volume > maxVolume)
+            throw new Exception($"Объем {volume} больше максимального {maxVolume}");
+
+        // ищем ближайшие значения для диферентов
+        int[] indexedTrims = new int[]{-1,0,1,2,3,4};
+        var closestTrims = indexedTrims.OrderBy(n => Math.Abs((double)n - trim)).Take(2).ToList();
+
+        // в ближайших дифферентах идем по столбцам и находим ближайшее значения обьемов
+        var firstVolume = new Dictionary<double, double>();
+        var secondVolume = new Dictionary<double, double>();
+
+        switch (closestTrims[0])
+        {
+            case -1:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim_1 - volume)).Take(2);
+                firstVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim_1);
+                firstVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim_1);
+                break;
+            }
+            case 0:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim0 - volume)).Take(2);
+                firstVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim0);
+                firstVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim0);
+                break;
+            }
+            case 1:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim1 - volume)).Take(2);
+                firstVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim1);
+                firstVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim1);
+                break;
+            }
+            case 2:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim2 - volume)).Take(2);
+                firstVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim2);
+                firstVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim2);
+                break;
+            }
+            case 3:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim3 - volume)).Take(2);
+                firstVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim3);
+                firstVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim3);
+                break;
+            }
+            case 4:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim4 - volume)).Take(2);
+                firstVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim4);
+                firstVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim4);
+                break;
+            }
+        }
+
+        switch (closestTrims[1])
+        {
+            case -1:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim_1 - volume)).Take(2);
+                secondVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim_1);
+                secondVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim_1);
+                break;
+            }
+            case 0:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim0 - volume)).Take(2);
+                secondVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim0);
+                secondVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim0);
+                break;
+            }
+            case 1:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim1 - volume)).Take(2);
+                secondVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim1);
+                secondVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim1);
+                break;
+            }
+            case 2:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim2 - volume)).Take(2);
+                secondVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim2);
+                secondVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim2);
+                break;
+            }
+            case 3:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim3 - volume)).Take(2);
+                secondVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim3);
+                secondVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim3);
+                break;
+            }
+            case 4:
+            {
+                var searchedValue = table.Table.OrderBy(n =>
+                    Math.Abs(n.CargoVolumeTrim4 - volume)).Take(2);
+                secondVolume.Add(searchedValue.First().Ullage, searchedValue.First().CargoVolumeTrim4);
+                secondVolume.Add(searchedValue.Last().Ullage, searchedValue.Last().CargoVolumeTrim4);
+                break;
+            }
+        }
+
+        // интерполируем значения по обьему и получаем два ullages
+        // которые потом интреполируем/экстраполируем по дифференту
+
+        //подготовка для первых расчетов:
+        var firstUllageForCalc = firstVolume.Keys.First();
+        var secondUllageForCalc = firstVolume.Keys.Last();
+
+        var firstVolumeForCalc = firstVolume.Values.First();
+        var secondVolumeForCalc = firstVolume.Values.Last();
+
+        var firstUllage = GetInterpolatedValue(firstVolumeForCalc, secondVolumeForCalc, volume,
+            firstUllageForCalc, secondUllageForCalc);
+
+        //подготовка для вторых расчетов:
+        firstUllageForCalc = secondVolume.Keys.First();
+        secondUllageForCalc = secondVolume.Keys.Last();
+
+        firstVolumeForCalc = secondVolume.Values.First();
+        secondVolumeForCalc = secondVolume.Values.Last();
+
+        var secondUllage = GetInterpolatedValue(firstVolumeForCalc, secondVolumeForCalc, volume,
+            firstUllageForCalc, secondUllageForCalc);
+
+        if (trim >= -1 && trim <= 4)
+        {
+            // интерполируем
+            var interKoef = (trim - closestTrims[0]) / (closestTrims[1] - closestTrims[0]);
+            return GetInterpolatedValueByKoef(interKoef,firstUllage,secondUllage);
+        }
+        else
+        {
+            // экстраполируем
+            var extraKoef = (trim - closestTrims[0]) / (closestTrims[0] - closestTrims[1]);
+            return GetExtrapoladedValueByKoef(extraKoef,firstUllage,secondUllage);
+        }
+    }
+    // private Value_Table_CargoTankUllageTrim GetValueWithVolume(
+    //     double volume, double trim, Table_CargoTankUllageTrim table)
+    // {
+    //     int[] indexedTrims = new int[]{-1,0,1,2,3,4};
+    //     var closestTrims = indexedTrims.OrderBy(n => Math.Abs((double)n - trim)).Take(2).ToList();
+    //
+    //     IEnumerable<Value_Table_CargoTankUllageTrim> firstTwoValues = null;
+    //     IEnumerable<Value_Table_CargoTankUllageTrim> secondTwoValues = null;
+    //     double koefFirst = 0.0;
+    //     double koefSecond = 0.0;
+    //
+    //     switch (closestTrims[0])
+    //     {
+    //         case -1:
+    //         {
+    //             firstTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim_1 - volume)).Take(2);
+    //             var volumeTrimFirst = firstTwoValues.First().CargoVolumeTrim_1;
+    //             var volumeTrimSecond = firstTwoValues.Last().CargoVolumeTrim_1;
+    //             koefFirst = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 0:
+    //         {
+    //             firstTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim0 - volume)).Take(2);
+    //             var volumeTrimFirst = firstTwoValues.First().CargoVolumeTrim0;
+    //             var volumeTrimSecond = firstTwoValues.Last().CargoVolumeTrim0;
+    //             koefFirst = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 1:
+    //         {
+    //             firstTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim1 - volume)).Take(2);
+    //             var volumeTrimFirst = firstTwoValues.First().CargoVolumeTrim1;
+    //             var volumeTrimSecond = firstTwoValues.Last().CargoVolumeTrim1;
+    //             koefFirst = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 2:
+    //         {
+    //             firstTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim2 - volume)).Take(2);
+    //             var volumeTrimFirst = firstTwoValues.First().CargoVolumeTrim2;
+    //             var volumeTrimSecond = firstTwoValues.Last().CargoVolumeTrim2;
+    //             koefFirst = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 3:
+    //         {
+    //             firstTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim3 - volume)).Take(2);
+    //             var volumeTrimFirst = firstTwoValues.First().CargoVolumeTrim3;
+    //             var volumeTrimSecond = firstTwoValues.Last().CargoVolumeTrim3;
+    //             koefFirst = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 4:
+    //         {
+    //             firstTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim4 - volume)).Take(2);
+    //             var volumeTrimFirst = firstTwoValues.First().CargoVolumeTrim4;
+    //             var volumeTrimSecond = firstTwoValues.Last().CargoVolumeTrim4;
+    //             koefFirst = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //     }
+    //     switch (closestTrims[1])
+    //     {
+    //         case -1:
+    //         {
+    //             secondTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim_1 - volume)).Take(2);
+    //             var volumeTrimFirst = secondTwoValues.First().CargoVolumeTrim_1;
+    //             var volumeTrimSecond = secondTwoValues.Last().CargoVolumeTrim_1;
+    //             koefSecond = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 0:
+    //         {
+    //             secondTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim0 - volume)).Take(2);
+    //             var volumeTrimFirst = secondTwoValues.First().CargoVolumeTrim0;
+    //             var volumeTrimSecond = secondTwoValues.Last().CargoVolumeTrim0;
+    //             koefSecond = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 1:
+    //         {
+    //             secondTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim1 - volume)).Take(2);
+    //             var volumeTrimFirst = secondTwoValues.First().CargoVolumeTrim1;
+    //             var volumeTrimSecond = secondTwoValues.Last().CargoVolumeTrim1;
+    //             koefSecond = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 2:
+    //         {
+    //             secondTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim2 - volume)).Take(2);
+    //             var volumeTrimFirst = secondTwoValues.First().CargoVolumeTrim2;
+    //             var volumeTrimSecond = secondTwoValues.Last().CargoVolumeTrim2;
+    //             koefSecond = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 3:
+    //         {
+    //             secondTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim3 - volume)).Take(2);
+    //             var volumeTrimFirst = secondTwoValues.First().CargoVolumeTrim3;
+    //             var volumeTrimSecond = secondTwoValues.Last().CargoVolumeTrim3;
+    //             koefSecond = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //         case 4:
+    //         {
+    //             secondTwoValues = table.Table
+    //                 .OrderBy(n => Math.Abs(n.CargoVolumeTrim4 - volume)).Take(2);
+    //             var volumeTrimFirst = secondTwoValues.First().CargoVolumeTrim4;
+    //             var volumeTrimSecond = secondTwoValues.Last().CargoVolumeTrim4;
+    //             koefSecond = (volume - volumeTrimFirst) / (volumeTrimSecond - volumeTrimFirst);
+    //             break;
+    //         }
+    //     }
+    //
+    //     var firstValue = GetInterpolatedFullValue(firstTwoValues.First(), firstTwoValues.Last(),koefFirst);
+    //     var secondValue = GetInterpolatedFullValue(secondTwoValues.First(), secondTwoValues.Last(),koefSecond);
+    //
+    //     var koefTrim = (trim - closestTrims[0]) / (closestTrims[1] - closestTrims[0]);
+    //
+    //     return GetInterpolatedFullValue(firstValue,secondValue,koefTrim);
+    // }
     private static double GetValueInDictionary(Dictionary<int,double> dictionary, double SearchValue)
     {
         // Min - всегда -1
@@ -106,7 +428,21 @@ public class ServiceCargoTankUllageTrim
             // Экстраполируем
             var extraKoef = (SearchValue - closest.First().Key) / (closest.First().Key - closest.Last().Key);
             return GetExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
-
         }
     }
+
+    private Value_Table_CargoTankUllageTrim GetInterpolatedFullValue(Value_Table_CargoTankUllageTrim valueFirst,
+        Value_Table_CargoTankUllageTrim valueSecond, double koef)
+    {
+        return new Value_Table_CargoTankUllageTrim
+        (
+            GetInterpolatedValueByKoef(koef, valueFirst.Ullage, valueSecond.Ullage),
+            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim4, valueSecond.CargoVolumeTrim4),
+            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim3, valueSecond.CargoVolumeTrim3),
+            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim2, valueSecond.CargoVolumeTrim2),
+            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim1, valueSecond.CargoVolumeTrim1),
+            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim0, valueSecond.CargoVolumeTrim0),
+            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim_1, valueSecond.CargoVolumeTrim_1));
+    }
+
 }

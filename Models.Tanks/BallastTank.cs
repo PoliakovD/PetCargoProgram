@@ -17,6 +17,7 @@ public class BallastTank : ILoadingConditionItem
     private double _vcg;
     private double _tcg;
     private double _iy;
+    private double _maxUllage;
 
     // TODO Добавить свойства для балластного танка
     // TODO +возможно добавить функционал для учета седиментов
@@ -30,6 +31,12 @@ public class BallastTank : ILoadingConditionItem
     {
         get => _maxVolume;
         init => _maxVolume = value;
+    }
+
+    public double MaxUllage
+    {
+        get => _maxUllage;
+        init => _maxUllage = value;
     }
 
     public double Sound
