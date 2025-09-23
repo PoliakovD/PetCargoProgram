@@ -34,11 +34,11 @@ public static class JsonService
         try
         {
             var json = File.ReadAllText(path);
-            var teachers =  JsonSerializer.Deserialize<IEnumerable<CargoTank>>(json);
+            var cargoTanks =  JsonSerializer.Deserialize<IEnumerable<CargoTank>>(json);
 
-            if (teachers is null) throw new LoadFromJsonException(path);
+            if (cargoTanks is null) throw new LoadFromJsonException(path);
 
-            return teachers;
+            return cargoTanks;
         }
         catch (Exception e)
         {

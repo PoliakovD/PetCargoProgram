@@ -2,15 +2,16 @@
 
 public interface ILoadingConditionItem
 {
-    string Name { get; set; }
-    double MaxVolume { get; set; }
-    double Level { get; set; }
-    double Ullage { get; set; }
-    double Volume { get; set; }
-    double VolumePercent { get; set; }
-    double Density { get; set; }
-    double Weight { get; set; }
-    double LCG { get; set; }
-    double VCG { get; set; }
-    double TCG { get; set; }
+    public string Name { get; init; }
+    public double MaxVolume { get; init; }
+    public double Sound { get; set; }
+    public double Ullage { get; set; }
+    public double Volume { get; set; }
+    public double VolumePercent { get; set; }
+    public double Density { get; set; }
+    public double Weight { get; set; }
+    public double LCG { get; set; }
+    public double VCG { get; set; }
+    public double TCG { get; set; }
+    public double IY { get; set; }
 }

@@ -5,7 +5,7 @@ using PetCargoProgram.Models.LoadingCondition;
 
 namespace PetCargoProgram.Models.Tanks;
 
-public partial class CargoTank : ILoadingConditionItem, IEquatable<CargoTank>
+public partial class CargoTank
 {
     public override string ToString()
     {

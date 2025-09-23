@@ -1,9 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using PetCargoProgram.Models.LoadingCondition;
 
 namespace PetCargoProgram.Models.Tanks;
 
-public partial class CargoTank : ILoadingConditionItem, IEquatable<CargoTank>
+public partial class CargoTank
 {
     public bool Equals(CargoTank? other)
     {
@@ -11,7 +12,7 @@ public partial class CargoTank : ILoadingConditionItem, IEquatable<CargoTank>
         if (ReferenceEquals(this, other)) return true;
         return Name == other.Name
                && MaxVolume.Equals(other.MaxVolume)
-               && Level.Equals(other.Level)
+               && Sound.Equals(other.Sound)
                && Ullage.Equals(other.Ullage)
                && Volume.Equals(other.Volume)
                && VolumePercent.Equals(other.VolumePercent)
@@ -42,7 +43,7 @@ public partial class CargoTank : ILoadingConditionItem, IEquatable<CargoTank>
         var hashCode = new HashCode();
         hashCode.Add(Name);
         hashCode.Add(MaxVolume);
-        hashCode.Add(Level);
+        hashCode.Add(Sound);
         hashCode.Add(Ullage);
         hashCode.Add(Volume);
         hashCode.Add(VolumePercent);

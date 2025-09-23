@@ -6,7 +6,7 @@ namespace PetCargoProgram.Services.CargoTables;
 
 public class Services_CargoTables
 {
-    private  AllCargoTables _allCargoTables;
+    private  AllCargoTables _allTables;
 
     public Services_CargoTables()
     {
@@ -14,13 +14,13 @@ public class Services_CargoTables
     }
     private void Init()
     {
-        _allCargoTables = new AllCargoTables();
-        BinaryCTService.Load(ref _allCargoTables);
+        _allTables = new AllCargoTables();
+        BinaryCTService.Load(ref _allTables);
     }
-    public Tables_BallSoundTrim GetBallSoundTrimTables() => _allCargoTables.TablesBallSoundTrim;
-    public Tables_CargoTankUllageTrim GetCargoTankUllageTables() => _allCargoTables.TablesCargoTankUllage;
-    public Tables_Hydrostatic GetHydrostaticTables() => _allCargoTables.TablesHydrostatic;
-    public Tables_OtherSounding GetOtherSoundingTables() => _allCargoTables.TablesOtherSounding;
-    public Tables_Volume GetVolumeables() => _allCargoTables.TablesVolume;
+    public Tables_BallSoundTrim GetBallSoundTrimTables() => _allTables.TablesBallSoundTrim;
+    public Tables_CargoTankUllageTrim GetCargoTankUllageTables() => _allTables.TablesCargoTankUllage;
+    public Tables_Hydrostatic GetHydrostaticTables() => _allTables.TablesHydrostatic;
+    public Tables_OtherSounding GetOtherSoundingTables() => _allTables.TablesOtherSounding;
+    public Tables_Volume GetVolumeTables() => _allTables.TablesVolume;
 }
 
