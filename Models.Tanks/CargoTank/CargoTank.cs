@@ -7,12 +7,12 @@ using PetCargoProgram.ViewModels.Base;
 namespace PetCargoProgram.Models.Tanks;
 
 
-public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatable<CargoTank>
+public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, IEquatable<CargoTank>
 {
     //TODO написать методы для расчета показаний в грузовом танке, узнать у преподавателя про интерфейс InotifiedProperty
 
     // From ILoadingConditionItem
-    private string _name;
+    private string _itemName;
     private double _maxVolume;
     private double _maxUllage;
     private double _sound;
@@ -27,7 +27,7 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
     private double _iy;
 
     //Cargo Tables инициализируемая статическим методом, до создания любого экземпляра класса
-    private static AllCargoTables _CTables;
+    private static AllCargoTables _CTables = null;
     private static ServiceVolume _sVolume;
     private static ServiceCargoTankUllageTrim _UllageTrim;
 
@@ -40,9 +40,26 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
 
     public CargoTank(string name)
     {
-        Name = name;
+        ItemName = name;
         MaxVolume = _sVolume.GetMaxVolume(name);
         MaxUllage = _UllageTrim.GetMaxUllage(name);
+        _density = 1.0;
+    }
+    public CargoTank()
+    {
+        _itemName = "";
+        _maxVolume = 0;
+        _maxUllage = 0;
+        _sound = 0;
+        _ullage = 0;
+        _volume = 2000;
+        _volumePercent = 0;
+        _density = 1.0;
+        _weight = 0;
+        _lcg = 0;
+        _vcg = 0;
+        _tcg = 0;
+        _iy = 0;
     }
 
 
@@ -57,21 +74,28 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
     public double GrossVolume{ get; set; }
 
 
-    public string Name
+    public string ItemName
     {
-        get => _name;
-        init => SetField(ref _name, value);
+        get => _itemName;
+        set
+        {
+            SetField(ref _itemName, value);
+
+            MaxVolume = _sVolume.GetMaxVolume(_itemName);
+            MaxUllage = _UllageTrim.GetMaxUllage(_itemName);
+            _density = 1.0;
+        }
     }
 
     public double MaxVolume
     {
         get => _maxVolume;
-        init => SetField(ref _maxVolume, value);
+        set => SetField(ref _maxVolume, value);
     }
     public double MaxUllage
     {
         get => _maxUllage;
-        init => SetField(ref _maxUllage, value);
+        set => SetField(ref _maxUllage, value);
     }
 
     public double Sound
@@ -88,8 +112,12 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
             if(value<0.0||value>_maxUllage)
                 throw new ArgumentOutOfRangeException($"Ullage is out of range 0.0-{_maxUllage}");
             SetField(ref _ullage, value);
-            SetField(ref _sound, _maxUllage-value);
-            Volume = _UllageTrim.GetVolumeWithTrim(_name,_ullage);
+
+
+            _sound=_maxUllage-value;
+            OnPropertyChanged(nameof(Sound));
+
+            Volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
         }
     }
 
@@ -101,9 +129,18 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
             if(value<0.0 || value>_maxVolume)
                 throw new ArgumentOutOfRangeException($"Volume is out of range 0.0-{_maxVolume}");
             SetField(ref _volume, value);
-            var tableValue = _sVolume.GetValue(_name, _volume);
+
+            var tableValue = _sVolume.GetValue(_itemName, _volume);
             DistributeVolumeTableValue(tableValue);
-            SetField(ref _volumePercent, _sVolume.GetPercentsVolume(_name, _volume));
+
+            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            OnPropertyChanged(nameof(VolumePercent));
+
+            _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
+            OnPropertyChanged(nameof(Ullage));
+
+            _sound=_maxUllage-_ullage;
+            OnPropertyChanged(nameof(Sound));
         }
     }
 
@@ -114,9 +151,19 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
         {
             if (value<0.0||value>100.0) throw new ArgumentOutOfRangeException("VolumePercent is out of range 0.0-100.0");
             SetField(ref _volumePercent, value);
-            SetField(ref _volume, _maxVolume*value/100.0);
-            var tableValue = _sVolume.GetValue(_name, _volume);
+
+
+            _volume=_maxVolume*value;
+            OnPropertyChanged(nameof(Volume));
+
+            var tableValue = _sVolume.GetValue(_itemName, _volume);
             DistributeVolumeTableValue(tableValue);
+
+            _weight=Volume * Density;
+            OnPropertyChanged(nameof(Weight));
+
+            _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
+            OnPropertyChanged(nameof(Ullage));
         }
     }
 
@@ -126,7 +173,9 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
         set
         {
             SetField(ref _density, value);
-            SetField(ref _weight, Volume * Density);
+
+            _weight=Volume * Density;
+            OnPropertyChanged(nameof(Weight));
         }
     }
 
@@ -135,10 +184,15 @@ public partial class CargoTank : ViewModelBase, ILoadingConditionItem, IEquatabl
         get => _weight;
         set
         {
-            var volume=value/Density;
+            var volume=value*Density;
             if (volume < 0||volume>_maxVolume)
                 throw new ArgumentOutOfRangeException($"Weight is out of range 0.0-{_maxVolume/Density}");
-            var tableValue = _sVolume.GetValue(_name, volume);
+            SetField(ref _density, value);
+
+            _volume=volume;
+            OnPropertyChanged(nameof(Volume));
+
+            var tableValue = _sVolume.GetValue(_itemName, volume);
             DistributeVolumeTableValue(tableValue);
         }
     }

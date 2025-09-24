@@ -6,7 +6,7 @@
 
 
     <!--<c:SelectTextOnFocus Active="False" x:Key="SelectTextOnFocus"/>-->
-    
+
 
     <local:Converter_PercentsToDouble x:Key="Converter_PercentsToDouble"/>
 
@@ -71,9 +71,9 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="Rectangle_ButtonValve" 
+                <Setter TargetName="Rectangle_ButtonValve"
                         Property="StrokeThickness" Value="2"/>
-                <Setter TargetName="Rectangle_ButtonValve" 
+                <Setter TargetName="Rectangle_ButtonValve"
                         Property="RenderTransform">
                     <Setter.Value>
                         <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
@@ -84,6 +84,7 @@
     </ControlTemplate>
     <!--Шаблон для полей ввода/вывода-->
     <ControlTemplate x:Key="Template_IOTextBoxValues" TargetType="{x:Type TextBoxBase}">
+
         <Border Name="Border"
                 CornerRadius="2"
                 Padding="2"
@@ -189,5 +190,5 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Right"/>
     </Style>
-    
+
 </ResourceDictionary>

@@ -2,13 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="clr-namespace:PetCargoProgram.Components"
-        xmlns:ct="clr-namespace:PetCargoProgram.Models.CargoTables"
-        Title="MainWindow" Height="800" Width="1600">
+        xmlns:mainWindow="clr-namespace:PetCargoProgram.ViewModels.MainWindow;assembly=ViewModel.MainWindow"
+        Title="MainWindow" Height="800" Width="1600"
+        >
+
     <Window.Resources>
         <ResourceDictionary Source="Components/Styles/Styles.xaml"/>
-
-
     </Window.Resources>
+
+    <Window.DataContext>
+        <mainWindow:ViewModelMainWindow/>
+    </Window.DataContext>
 
     <Grid>
         <TabControl>
@@ -34,7 +38,10 @@
                         <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
-                    <c:BallastTank Grid.Column="0" Grid.Row="1" BallastTankName ="APT"/>
+                    <c:BallastTank BallastTankName ="APT">
+                        <Grid.Column>0</Grid.Column>
+                        <Grid.Row>1</Grid.Row>
+                    </c:BallastTank>
                     <c:BallastTank Grid.Column="2" Grid.Row="0" BallastTankName ="BWT 6P"/>
                     <c:BallastTank Grid.Column="3" Grid.Row="0" BallastTankName ="BWT 5P"/>
                     <c:BallastTank Grid.Column="4" Grid.Row="0" BallastTankName ="BWT 4P"/>
@@ -49,20 +56,141 @@
                     <c:BallastTank Grid.Column="6" Grid.Row="3" BallastTankName ="BWT 2S"/>
                     <c:BallastTank Grid.Column="7" Grid.Row="3" BallastTankName ="BWT 1S"/>
 
-                    <c:CargoTank Grid.Column="7" Grid.Row="1" CargoTankName ="COT 1P"/>
-                    <c:CargoTank Grid.Column="6" Grid.Row="1" CargoTankName ="COT 2P"/>
-                    <c:CargoTank Grid.Column="5" Grid.Row="1" CargoTankName ="COT 3P"/>
-                    <c:CargoTank Grid.Column="4" Grid.Row="1" CargoTankName ="COT 4P"/>
-                    <c:CargoTank Grid.Column="3" Grid.Row="1" CargoTankName ="COT 5P"/>
-                    <c:CargoTank Grid.Column="2" Grid.Row="1" CargoTankName ="COT 6P"/>
-                    <c:CargoTank Grid.Column="1" Grid.Row="1" CargoTankName ="SLOP P"/>
-                    <c:CargoTank Grid.Column="7" Grid.Row="2" CargoTankName ="COT 1S"/>
-                    <c:CargoTank Grid.Column="6" Grid.Row="2" CargoTankName ="COT 2S"/>
-                    <c:CargoTank Grid.Column="5" Grid.Row="2" CargoTankName ="COT 3S"/>
-                    <c:CargoTank Grid.Column="4" Grid.Row="2" CargoTankName ="COT 4S"/>
-                    <c:CargoTank Grid.Column="3" Grid.Row="2" CargoTankName ="COT 5S"/>
-                    <c:CargoTank Grid.Column="2" Grid.Row="2" CargoTankName ="COT 6S"/>
-                    <c:CargoTank Grid.Column="1" Grid.Row="2" CargoTankName ="SLOP S"/>
+                    <c:ViewCargoTank x:Name="COT1P" CargoTankName ="COT 1P"
+                                     Grid.Column="7"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[COT 1P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT2P" CargoTankName ="COT 2P"
+                                     Grid.Column="6"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[COT 2P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT3P" CargoTankName ="COT 3P"
+                                     Grid.Column="5"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[COT 3P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT4P" CargoTankName ="COT 4P"
+                                     Grid.Column="4"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[COT 4P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT5P" CargoTankName ="COT 5P"
+                                     Grid.Column="3"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[COT 5P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <c:ViewCargoTank x:Name="COT6P" CargoTankName ="COT 6P"
+                                     Grid.Column="2"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[COT 6P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="SLOPP" CargoTankName ="SLOP P"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     DataContext="{Binding Path=CargoTanks[SLOP P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT1S" CargoTankName ="COT 1S"
+                                     Grid.Column="7"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[COT 1S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT2S" CargoTankName ="COT 2S"
+                                     Grid.Column="6"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[COT 2S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <c:ViewCargoTank x:Name="COT3S" CargoTankName ="COT 3S"
+                                     Grid.Column="5"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[COT 3S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT4S" CargoTankName ="COT 4S"
+                                     Grid.Column="4"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[COT 4S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <c:ViewCargoTank x:Name="COT5S" CargoTankName ="COT 5S"
+                                     Grid.Column="3"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[COT 5S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <c:ViewCargoTank x:Name="COT6S" CargoTankName ="COT 6S"
+                                     Grid.Column="2"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[COT 6S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <c:ViewCargoTank x:Name="SLOPS" CargoTankName ="SLOP S"
+                                     Grid.Column="1"
+                                     Grid.Row="2"
+                                     DataContext="{Binding Path=CargoTanks[SLOP S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Temperature="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Vertical">
                         <GroupBox Header="ASTM Tables 21,51">

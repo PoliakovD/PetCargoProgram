@@ -11,7 +11,7 @@ namespace PetCargoProgram.Services.CargoTank;
 public class ServiceCargoTanks
 {
     // private ServiceVolume _serviceVolume;
-    private Dictionary<string, PetCargoProgram.Models.Tanks.CargoTank> _cargoTanks = [];
+    private Dictionary<string, CargoTank> _cargoTanks = [];
     public bool Add(PetCargoProgram.Models.Tanks.CargoTank cargoTank) =>
         _cargoTanks.TryAdd(cargoTank.Name, cargoTank);
     public PetCargoProgram.Models.Tanks.CargoTank? GetByName(string name) =>

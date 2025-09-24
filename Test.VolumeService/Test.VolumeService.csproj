@@ -10,7 +10,6 @@
     <ItemGroup>
       <ProjectReference Include="..\DataAccess.CargoTables\DataAccess.CargoTables.csproj" />
       <ProjectReference Include="..\Services.CargoTables\Services.CargoTables.csproj" />
-      <ProjectReference Include="..\Services.CargoTank\Services.CargoTank.csproj" />
     </ItemGroup>
 
 </Project>

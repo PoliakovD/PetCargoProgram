@@ -6,11 +6,12 @@ namespace PetCargoProgram.Models.Tanks;
 
 public partial class CargoTank
 {
+
     public bool Equals(CargoTank? other)
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
-        return Name == other.Name
+        return ItemName == other.ItemName
                && MaxVolume.Equals(other.MaxVolume)
                && Sound.Equals(other.Sound)
                && Ullage.Equals(other.Ullage)
@@ -41,7 +42,7 @@ public partial class CargoTank
     public override int GetHashCode()
     {
         var hashCode = new HashCode();
-        hashCode.Add(Name);
+        hashCode.Add(ItemName);
         hashCode.Add(MaxVolume);
         hashCode.Add(Sound);
         hashCode.Add(Ullage);

@@ -10,7 +10,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Models.Tanks\Models.Tanks.csproj" />
       <ProjectReference Include="..\Services.CargoTables\Services.CargoTables.csproj" />
-      <ProjectReference Include="..\Services.CargoTank\Services.CargoTank.csproj" />
     </ItemGroup>
 
 </Project>

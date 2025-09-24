@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace PetCargoProgram.ViewModels.Base;
 
-public abstract class ViewModelBase : INotifyPropertyChanged
+public abstract class NotifyPropertyChanged : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 

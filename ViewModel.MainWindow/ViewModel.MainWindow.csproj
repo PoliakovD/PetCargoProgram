@@ -7,10 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Models.CargoTables\Models.CargoTables.csproj" />
-      <ProjectReference Include="..\Models.LoadingCondition\Models.LoadingCondition.csproj" />
-      <ProjectReference Include="..\Services.CargoTables\Services.CargoTables.csproj" />
+      <ProjectReference Include="..\DataAccess.CargoTanks\DataAccess.CargoTanks.csproj" />
       <ProjectReference Include="..\ViewModels.Base\ViewModels.Base.csproj" />
+      <ProjectReference Include="..\ViewModels.Tanks\ViewModels.Tanks.csproj" />
     </ItemGroup>
 
 </Project>

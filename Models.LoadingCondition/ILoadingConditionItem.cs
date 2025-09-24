@@ -2,9 +2,9 @@
 
 public interface ILoadingConditionItem
 {
-    public string Name { get; init; }
-    public double MaxVolume { get; init; }
-    public double MaxUllage{ get; init; }
+    public string ItemName { get; set; }
+    public double MaxVolume { get; set; }
+    public double MaxUllage{ get; set; }
     public double Sound { get; set; }
     public double Ullage { get; set; }
     public double Volume { get; set; }

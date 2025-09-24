@@ -18,7 +18,7 @@ public class ServiceVolume
     public double GetMaxVolume(string name)
         =>Tables.FirstOrDefault(x=>x.Name==name).Table.Last().Volume;
 
-    public double GetPercentsVolume(string name, double volume) => 100.0 * volume / GetMaxVolume(name);
+    public double GetPercentsVolume(string name, double volume) => volume / GetMaxVolume(name);
     public Value_Table_Volume GetValue(string name, double volume)
     {
         // Получаем ближайшие значения

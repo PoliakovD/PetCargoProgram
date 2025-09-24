@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Models.Tanks\Models.Tanks.csproj" />
-      <ProjectReference Include="..\ViewModels.Base\ViewModels.Base.csproj" />
     </ItemGroup>
 
 </Project>
