@@ -8,7 +8,7 @@ using PetCargoProgram.Services.CargoTables;
 AllCargoTables _cargoTables = new AllCargoTables();
 BinaryCTService.Load(ref _cargoTables);
 
-CargoTank.InitCargoTables(_cargoTables);
+CargoTank.InitTables(_cargoTables);
 
 string Name = "COT 1P";
 CargoTank COT1P = new CargoTank(Name);

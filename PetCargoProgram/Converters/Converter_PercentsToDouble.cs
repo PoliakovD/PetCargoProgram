@@ -17,7 +17,7 @@ namespace PetCargoProgram.Converters
         {
             try
             {
-                double? result = value is null ? null : System.Convert.ToDouble(value.ToString().Replace('%', '\0').Replace('.', ',')) / 100.0;
+                double? result = value is null ? null : System.Convert.ToDouble(value.ToString().Replace('%', '\0').Replace(',', '.')) / 100.0;
                 return result;
             }
 

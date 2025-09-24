@@ -62,8 +62,9 @@
                          Name ="Input_Output_Ullage"
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
-                         Text="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                         StringFormat=\{0:f3\}}"/>
+                         Text="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
+                         StringFormat=\{0:f3\}}"
+                         KeyDown="Event_LoseFocusOnEnter"/>
 
 
                 <Label  Grid.Column="2" Grid.Row="2"
@@ -76,7 +77,8 @@
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Temperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                         StringFormat=\{0:f1\}}"/>
+                         StringFormat=\{0:f1\}}"
+                         KeyDown="Event_LoseFocusOnEnter"/>
 
 
                 <Label  Grid.Column="2" Grid.Row="3"
@@ -86,11 +88,12 @@
                 <TextBox Grid.Column="3" Grid.Row="3"
                          Name ="Input_Output_Percents"
                          Template="{StaticResource Template_IOTextBoxValues}"
-                         Style="{StaticResource Style_TextBoxValues}">
+                         Style="{StaticResource Style_TextBoxValues}"
+                         KeyDown="Event_LoseFocusOnEnter">
                     <TextBox.Text>
                         <Binding
                                  Path="Percents"
-                                 UpdateSourceTrigger="PropertyChanged"
+                                 UpdateSourceTrigger="LostFocus"
                                  Mode="TwoWay"
                                  Converter="{StaticResource Converter_PercentsToDouble}"
                                  StringFormat="p2"/>
@@ -115,8 +118,9 @@
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Volume,
-                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                         StringFormat=\{0:f2\}}"/>
+                         Mode=TwoWay, UpdateSourceTrigger=LostFocus,
+                         StringFormat=\{0:f2\}}"
+                         KeyDown="Event_LoseFocusOnEnter"/>
 
 
                 <Label  Grid.Column="2" Grid.Row="5"
@@ -128,8 +132,9 @@
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Weight,
-                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                         StringFormat=\{0:f2\}}"/>
+                         Mode=TwoWay, UpdateSourceTrigger=LostFocus,
+                         StringFormat=\{0:f2\}}"
+                         KeyDown="Event_LoseFocusOnEnter"/>
             </Grid>
         </GroupBox>
     </Grid>
