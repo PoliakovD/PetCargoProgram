@@ -151,7 +151,7 @@
         <Setter Property="Orientation" Value="Vertical"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Minimum" Value="0"/>
-        <Setter Property="Maximum" Value="1"/>
+        <Setter Property="Maximum" Value="0.98"/>
         <Setter Property="TickFrequency" Value="0.0001"/>
         <Setter Property="SmallChange" Value="0.0001"/>
         <Setter Property="LargeChange" Value="0.001"/>

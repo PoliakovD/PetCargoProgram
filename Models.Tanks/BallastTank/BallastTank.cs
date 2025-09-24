@@ -1,9 +1,12 @@
-﻿using PetCargoProgram.Models.LoadingCondition;
+﻿using PetCargoProgram.Models.CargoTables;
+using PetCargoProgram.Models.LoadingCondition;
+using PetCargoProgram.Services.CargoTables;
+using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.Models.Tanks;
 
 
-public class BallastTank : ILoadingConditionItem
+public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
 {
     private string _name;
     private double _maxVolume;
@@ -18,6 +21,18 @@ public class BallastTank : ILoadingConditionItem
     private double _tcg;
     private double _iy;
     private double _maxUllage;
+
+    // Tables инициализируется статическим методом, до создания любого экземпляра класса
+    private static AllCargoTables _CTables = null;
+    private static ServiceVolume _sVolume;
+    private static ServiceBallastSoundTrim _soundTrim;
+
+    public static void InitTables(AllCargoTables cargoTables)
+    {
+        _CTables = cargoTables;
+        _sVolume=new ServiceVolume(_CTables.TablesVolume);
+        _soundTrim = new ServiceBallastSoundTrim(_CTables.TablesBallSoundTrim);
+    }
 
     // TODO Добавить свойства для балластного танка
     // TODO +возможно добавить функционал для учета седиментов
