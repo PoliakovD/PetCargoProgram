@@ -26,12 +26,12 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     private double _tcg;
     private double _iy;
 
-    //Cargo Tables инициализируемая статическим методом, до создания любого экземпляра класса
+    // Tables инициализируется статическим методом, до создания любого экземпляра класса
     private static AllCargoTables _CTables = null;
     private static ServiceVolume _sVolume;
     private static ServiceCargoTankUllageTrim _UllageTrim;
 
-    public static void InitCargoTables(AllCargoTables cargoTables)
+    public static void InitTables(AllCargoTables cargoTables)
     {
         _CTables = cargoTables;
         _sVolume=new ServiceVolume(_CTables.TablesVolume);
@@ -184,16 +184,25 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         get => _weight;
         set
         {
-            var volume=value*Density;
+            var volume=value/Density;
             if (volume < 0||volume>_maxVolume)
-                throw new ArgumentOutOfRangeException($"Weight is out of range 0.0-{_maxVolume/Density}");
-            SetField(ref _density, value);
+                throw new ArgumentOutOfRangeException($"Weight is out of range 0.0-{_maxVolume*Density}");
+            SetField(ref _weight, value);
 
             _volume=volume;
             OnPropertyChanged(nameof(Volume));
 
             var tableValue = _sVolume.GetValue(_itemName, volume);
             DistributeVolumeTableValue(tableValue);
+
+            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            OnPropertyChanged(nameof(VolumePercent));
+
+            _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
+            OnPropertyChanged(nameof(Ullage));
+
+            _sound=_maxUllage-_ullage;
+            OnPropertyChanged(nameof(Sound));
         }
     }
 
