@@ -11,7 +11,6 @@ namespace PetCargoProgram.Services.CargoTables;
 
 public class ServiceCargoTankUllageTrim
 {
-    // TODO Добавить метод GetUllage by volume and trim
     private List<Table_CargoTankUllageTrim> Tables { get; set; }
 
     public ServiceCargoTankUllageTrim(Tables_CargoTankUllageTrim cargoTankUllageTrim)
@@ -78,38 +77,8 @@ public class ServiceCargoTankUllageTrim
         var result =GetValueInDictionary(trimsVolumes,
             trim);
 
-        // код ниже оказалося не обязательным
-
-        //Проверяем значение на границы от 0 до максVolume
-        // var MaxVolume = table.Table[0].CargoVolumeTrim0; // тут всегда хранится максимальное значение
-        //
-        // if (result < 0.0) result = 0.0;
-        // if (result > MaxVolume) result = MaxVolume;
-
         return result;
     }
-
-    //  public double GetUllageWithTrim(string name, double volume, double trim=0.0)
-    // {
-    //     // Выбираем таблицу для нужного танка
-    //     var table = Tables.FirstOrDefault(x => x.Name == name);
-    //
-    //     // Проверка на наличие таблицы
-    //     if (table == null) throw new Exception($"Не найдена таблица для танка {name}");
-    //
-    //     //Проверка входных значений
-    //     if(volume<0.0) throw new Exception("Обьем не может быть меньше нуля");
-    //     if (trim>8.0) throw new Exception("Trim не может быть больше 8");
-    //     if(trim<-4.0) throw new Exception("Trim не может быть меньше -4");
-    //
-    //     // Проверяем volume
-    //     var maxVolume = table.Table[0].CargoVolumeTrim0 + double.Epsilon;
-    //     if(volume > maxVolume)
-    //         throw new Exception($"Объем {volume} больше максимального {maxVolume}");
-    //
-    //     // ищем ближайшие значения
-    //     return GetValueWithVolume(volume, trim, table).Ullage;
-    // }
 
     public double GetUllageWithTrim(string name, double volume, double trim=0.0)
     {
@@ -278,39 +247,18 @@ public class ServiceCargoTankUllageTrim
         }
     }
 
-    private static double GetValueInDictionary(Dictionary<int,double> dictionary, double SearchValue)
-    {
-        // Min - всегда -1
-        // Max - всегда +4
-
-        // находим два ближайших значения
-        var closest = dictionary.OrderBy(x => Math.Abs(x.Key - SearchValue)).Take(2);
-        if (SearchValue >= -1 && SearchValue <= 4)
-        {
-            //Интерполируем
-            var interKoef = (closest.First().Key-SearchValue)/(closest.First().Key - closest.Last().Key);
-            return GetInterpolatedValueByKoef(interKoef,closest.First().Value,closest.Last().Value);
-        }
-        else
-        {
-            // Экстраполируем
-            var extraKoef = (SearchValue - closest.First().Key) / (closest.First().Key - closest.Last().Key);
-            return GetExtrapoladedValueByKoef(extraKoef,closest.First().Value,closest.Last().Value);
-        }
-    }
-
-    private Value_Table_CargoTankUllageTrim GetInterpolatedFullValue(Value_Table_CargoTankUllageTrim valueFirst,
-        Value_Table_CargoTankUllageTrim valueSecond, double koef)
-    {
-        return new Value_Table_CargoTankUllageTrim
-        (
-            GetInterpolatedValueByKoef(koef, valueFirst.Ullage, valueSecond.Ullage),
-            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim4, valueSecond.CargoVolumeTrim4),
-            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim3, valueSecond.CargoVolumeTrim3),
-            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim2, valueSecond.CargoVolumeTrim2),
-            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim1, valueSecond.CargoVolumeTrim1),
-            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim0, valueSecond.CargoVolumeTrim0),
-            GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim_1, valueSecond.CargoVolumeTrim_1));
-    }
+    // private Value_Table_CargoTankUllageTrim GetInterpolatedFullValue(Value_Table_CargoTankUllageTrim valueFirst,
+    //     Value_Table_CargoTankUllageTrim valueSecond, double koef)
+    // {
+    //     return new Value_Table_CargoTankUllageTrim
+    //     (
+    //         GetInterpolatedValueByKoef(koef, valueFirst.Ullage, valueSecond.Ullage),
+    //         GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim4, valueSecond.CargoVolumeTrim4),
+    //         GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim3, valueSecond.CargoVolumeTrim3),
+    //         GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim2, valueSecond.CargoVolumeTrim2),
+    //         GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim1, valueSecond.CargoVolumeTrim1),
+    //         GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim0, valueSecond.CargoVolumeTrim0),
+    //         GetInterpolatedValueByKoef(koef, valueFirst.CargoVolumeTrim_1, valueSecond.CargoVolumeTrim_1));
+    // }
 
 }
