@@ -1,10 +1,8 @@
-﻿
-using PetCargoProgram.Models.CargoTables.Values;
+﻿using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.Models.Tanks;
 
-public partial class CargoTank
-
+public partial class BallastTank
 {
     private void DistributeVolumeTableValue(Value_Table_Volume tableValue)
     {
@@ -19,6 +17,4 @@ public partial class CargoTank
         OnPropertyChanged(nameof(IY));
         OnPropertyChanged(nameof(Weight));
     }
-
-
 }
