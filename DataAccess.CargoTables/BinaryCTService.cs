@@ -26,7 +26,7 @@ public static class BinaryCTService
             }
         }
     }
-    public static void Load(ref AllCargoTables allCargoTables, string path = "CargoTables.bin")
+    public static void LoadByRef(ref AllCargoTables allCargoTables, string path = "CargoTables.bin")
     {
         if (File.Exists(path))
         {
@@ -42,5 +42,26 @@ public static class BinaryCTService
                 }
             }
         }
+    }
+
+    public static AllCargoTables? Load( string path = "CargoTables.bin")
+    {
+        if (File.Exists(path))
+        {
+            var resultAllTables = new AllCargoTables();
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                using (BinaryReader br = new BinaryReader(fs, Encoding.Unicode))
+                {
+                    ReaderBallSoundTrim.Read(fs,br, ref resultAllTables);
+                    ReaderCargoTankUllageTrim.Read(fs,br, ref resultAllTables);
+                    ReaderHydrostatic.Read(fs,br, ref resultAllTables);
+                    ReaderOtherSounding.Read(fs,br, ref resultAllTables);
+                    ReaderVolume.Read(fs,br, ref resultAllTables);
+                }
+            }
+            return resultAllTables;
+        }
+        return null;
     }
 }

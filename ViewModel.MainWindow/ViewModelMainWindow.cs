@@ -40,10 +40,6 @@ public class ViewModelMainWindow : ViewModelBase
     }
     private void Init()
     {
-        _cargoTables = new AllCargoTables();
-        BinaryCTService.Load(ref _cargoTables);
-        CargoTank.InitTables(_cargoTables);
-
         foreach (var tankName in _cargoTanksNames)
         {
             CargoTanks.Add(tankName,new CargoTank(tankName));

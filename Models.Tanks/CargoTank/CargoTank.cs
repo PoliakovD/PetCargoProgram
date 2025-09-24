@@ -26,17 +26,9 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     private double _tcg;
     private double _iy;
 
-    // Tables инициализируется статическим методом, до создания любого экземпляра класса
-    private static AllCargoTables _CTables = null;
-    private static ServiceVolume _sVolume;
-    private static ServiceCargoTankUllageTrim _UllageTrim;
-
-    public static void InitTables(AllCargoTables cargoTables)
-    {
-        _CTables = cargoTables;
-        _sVolume=new ServiceVolume(_CTables.TablesVolume);
-        _UllageTrim = new ServiceCargoTankUllageTrim(_CTables.TablesCargoTankUllage);
-    }
+    // Tables инициализируется статическим классом, до создания любого экземпляра класса
+    private static ServiceVolume _sVolume = CargoTablesProvider.Volume;
+    private static ServiceCargoTankUllageTrim _UllageTrim =CargoTablesProvider.ServiceCargoTankUllageTrim;
 
     public CargoTank(string name)
     {
@@ -53,7 +45,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         _sound = 0;
         _ullage = 0;
         _volume = 2000;
-        _volumePercent = 0;
+        _volumePercent = 50;
         _density = 1.0;
         _weight = 0;
         _lcg = 0;

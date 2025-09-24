@@ -4,10 +4,9 @@ using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Services.CargoTables;
 
-AllCargoTables _cargoTables = new AllCargoTables();
-BinaryCTService.Load(ref _cargoTables);
 
-var tableService = new ServiceVolume(_cargoTables.TablesVolume);
+
+var tableService = CargoTablesProvider.Volume;
 
 string Name = "COT 1P";
 double Volume = 2000.0;

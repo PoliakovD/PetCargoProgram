@@ -23,16 +23,8 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
     private double _maxUllage;
 
     // Tables инициализируется статическим методом, до создания любого экземпляра класса
-    private static AllCargoTables _CTables = null;
-    private static ServiceVolume _sVolume;
-    private static ServiceBallastSoundTrim _soundTrim;
-
-    public static void InitTables(AllCargoTables cargoTables)
-    {
-        _CTables = cargoTables;
-        _sVolume=new ServiceVolume(_CTables.TablesVolume);
-        _soundTrim = new ServiceBallastSoundTrim(_CTables.TablesBallSoundTrim);
-    }
+    private static ServiceVolume SVolume =CargoTablesProvider.Volume;
+    private static ServiceBallastSoundTrim SSoundTrim=CargoTablesProvider.BallastSoundTrim;
 
     // TODO Добавить свойства для балластного танка
     // TODO +возможно добавить функционал для учета седиментов

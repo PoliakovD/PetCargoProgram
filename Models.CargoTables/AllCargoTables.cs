@@ -12,6 +12,7 @@ public class AllCargoTables
 
     public AllCargoTables()
     {
+
         TablesBallSoundTrim = new Tables_BallSoundTrim();
         TablesCargoTankUllage = new Tables_CargoTankUllageTrim();
         TablesHydrostatic = new Tables_Hydrostatic();

@@ -4,11 +4,10 @@ using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Services.CargoTables;
 
-AllCargoTables _cargoTables = new AllCargoTables();
-BinaryCTService.Load(ref _cargoTables);
 
-var tableService = new ServiceHydrostatic(_cargoTables.TablesHydrostatic);
-var tableServiceTrim = new ServiceHydrostaticTrim(_cargoTables.TablesHydrostatic);
+
+var tableService = CargoTablesProvider.Hydrostatic;
+var tableServiceTrim =CargoTablesProvider.HydrostaticTrim;
 
 // гидростатистическая таблица на ровный киль (trim 0)
 

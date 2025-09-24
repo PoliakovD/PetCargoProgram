@@ -4,23 +4,13 @@ using PetCargoProgram.Models.CargoTables.Tables;
 
 namespace PetCargoProgram.Services.CargoTables;
 
-public class Services_CargoTables
+public static class CargoTablesProvider
 {
-    private  AllCargoTables _allTables;
-
-    public Services_CargoTables()
-    {
-        Init();
-    }
-    private void Init()
-    {
-        _allTables = new AllCargoTables();
-        BinaryCTService.Load(ref _allTables);
-    }
-    public Tables_BallSoundTrim GetBallSoundTrimTables() => _allTables.TablesBallSoundTrim;
-    public Tables_CargoTankUllageTrim GetCargoTankUllageTables() => _allTables.TablesCargoTankUllage;
-    public Tables_Hydrostatic GetHydrostaticTables() => _allTables.TablesHydrostatic;
-    public Tables_OtherSounding GetOtherSoundingTables() => _allTables.TablesOtherSounding;
-    public Tables_Volume GetVolumeTables() => _allTables.TablesVolume;
+    private static AllCargoTables AllTables = BinaryCTService.Load();
+    public static ServiceHydrostatic Hydrostatic = new ServiceHydrostatic(AllTables.TablesHydrostatic);
+    public static ServiceHydrostaticTrim HydrostaticTrim = new ServiceHydrostaticTrim(AllTables.TablesHydrostatic);
+    public static ServiceVolume Volume= new ServiceVolume(AllTables.TablesVolume);
+    public static ServiceBallastSoundTrim BallastSoundTrim= new ServiceBallastSoundTrim(AllTables.TablesBallSoundTrim);
+    public static ServiceCargoTankUllageTrim ServiceCargoTankUllageTrim= new ServiceCargoTankUllageTrim(AllTables.TablesCargoTankUllage);
 }
 

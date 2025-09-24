@@ -5,16 +5,11 @@ using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Services.CargoTables;
 
-AllCargoTables _cargoTables = new AllCargoTables();
-BinaryCTService.Load(ref _cargoTables);
-
 
 // test values
 string Name = "COT 1P";
 double trim = 3.2;
 double ullage = 5.5;
-
-var tableService = new ServiceCargoTankUllageTrim(_cargoTables.TablesCargoTankUllage);
 double Volume = 0.0;
 
 //
@@ -111,13 +106,13 @@ Name = "COT 1P";
 trim = 3.5;
 ullage = 2.543;
 
-Volume = tableService.GetVolumeWithTrim(Name, ullage, trim);
+Volume = CargoTablesProvider.ServiceCargoTankUllageTrim.GetVolumeWithTrim(Name, ullage, trim);
 Console.WriteLine("Test: 11\nTrim = 3.5\nUllage = 2.543\nVolume: " + Volume);
 
 
 // test values 12
 Name = "COT 1P";
-ullage = tableService.GetUllageWithTrim(Name, Volume, trim);
+ullage = CargoTablesProvider.ServiceCargoTankUllageTrim.GetUllageWithTrim(Name, Volume, trim);
 Console.WriteLine("Test: 12 \nTrim = 3.5\nUllage: " + ullage+ "// 2.543 - OK"); // 5.5 - OK
 
 
