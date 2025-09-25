@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DataAccess.CargoTanks\DataAccess.CargoTanks.csproj" />
+      <ProjectReference Include="..\Services.LoadingCondition\Services.LoadingCondition.csproj" />
       <ProjectReference Include="..\ViewModels.Base\ViewModels.Base.csproj" />
       <ProjectReference Include="..\ViewModels.Tanks\ViewModels.Tanks.csproj" />
     </ItemGroup>

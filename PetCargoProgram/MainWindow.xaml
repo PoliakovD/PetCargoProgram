@@ -364,8 +364,18 @@
             </TabItem>
             <TabItem Header="Loading Condition">
 
-                <DataGrid Name="DataGrid_LoadingCondion">
-
+                <DataGrid Name="DataGrid_LoadingCondion"
+                          ItemsSource="{Binding Path=LoadingCondition.Table}"
+                          AutoGenerateColumns="True">
+                    <!-- <DataGrid.Columns> -->
+                    <!--     <DataGridTextColumn Header="Фамилия" -->
+                    <!--                         Binding="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
+                    <!--     <DataGridTextColumn Header="Имя" -->
+                    <!--                         Binding="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
+                    <!--     <DataGridTemplateColumn Header="Дата рождения" -->
+                    <!--                             CellTemplate="{StaticResource ResourceKey=Template_DateOfBirth_View}" -->
+                    <!--                             CellEditingTemplate="{StaticResource ResourceKey=Template_DateOfBirth_Edit}"/> -->
+                    <!-- </DataGrid.Columns> -->
                 </DataGrid>
             </TabItem>
         </TabControl>

@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Models.LoadingCondition\Models.LoadingCondition.csproj" />
+      <ProjectReference Include="..\Models.ShipCondition\Models.ShipCondition.csproj" />
+      <ProjectReference Include="..\Models.Tanks\Models.Tanks.csproj" />
     </ItemGroup>
 
 </Project>

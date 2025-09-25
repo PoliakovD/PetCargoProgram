@@ -3,11 +3,12 @@ using System.Collections.ObjectModel;
 using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.Tanks;
+using PetCargoProgram.Services.LoadingCondition;
 using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.ViewModels.MainWindow;
 
-public class ViewModelMainWindow : ViewModelBase
+public partial class ViewModelMainWindow : ViewModelBase
 {
 
     private static string[] _cargoTanksNames =
@@ -39,6 +40,7 @@ public class ViewModelMainWindow : ViewModelBase
             CargoTanks.Add(tankName,new CargoTank(tankName));
         }
 
+        InitLoadingCondition();
     }
 
     private void FillObservableCollections<T>(IEnumerable<T> items, ObservableCollection<T> collection)

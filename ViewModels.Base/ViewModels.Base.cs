@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -20,4 +21,5 @@ public abstract class NotifyPropertyChanged : INotifyPropertyChanged
         OnPropertyChanged(propertyName);
         return true;
     }
+
 }

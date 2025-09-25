@@ -2,6 +2,8 @@
 using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.Tanks;
+using PetCargoProgram.Services.CargoTables;
+using PetCargoProgram.Services.LoadingCondition;
 
 namespace PetCargoProgram
 {
@@ -11,6 +13,7 @@ namespace PetCargoProgram
     public partial class MainWindow : Window
     {
         // private AllCargoTables? _cargoTables;
+
         public MainWindow()
         {
             // _cargoTables = new AllCargoTables();
@@ -18,17 +21,17 @@ namespace PetCargoProgram
             // CargoTank.InitCargoTables(_cargoTables);
 
             InitializeComponent();
+            // _loadingCondition = new ServiceLoadingCondition();
 
             // InitViewCargoTanks();
-            // Load_LoadingCondition();
+            // LoadLoadingCondition();
         }
-        // private void Load_LoadingCondition()
+        // private void LoadLoadingCondition()
         // {
-        //     var Table = _cargoTables.TablesHydrostatic.Tables[0];
-        //     DataGrid_LoadingCondion.ItemsSource = Table.Table;
+        //     DataGrid_LoadingCondion.ItemsSource = CargoTablesProvider.AllTables.TablesHydrostatic.Tables;
         // }
-
-        // private void InitViewCargoTanks()
+        //
+        // // private void InitViewCargoTanks()
         // {
         //     COT1P.Component.Name = COT1P.CargoTankName;
         //     COT2P.Component.Name = COT2P.CargoTankName;

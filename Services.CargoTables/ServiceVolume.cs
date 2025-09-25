@@ -76,6 +76,7 @@ public class ServiceVolume
         var maxVolume = table.Table.MaxBy(x => x.Volume).Volume + double.Epsilon;
         if (volume > maxVolume)
             throw new Exception($"Объем {volume} больше, чем наибольший объем {maxVolume} для танка {name}");
+        // TODO - Проверка на выход за границы и обработка
 
         // Находим два значения в таблице, ближайшие к volume
         return table.Table.OrderBy(n => Math.Abs(n.Volume - volume)).Take(2).ToList();
