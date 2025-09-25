@@ -2,34 +2,25 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using PetCargoProgram.Models.Tanks;
 
 namespace PetCargoProgram.Components
 {
     /// <summary>
-    /// Логика взаимодействия для CargoTank.xaml
+    /// Логика взаимодействия для BallastTank.xaml
     /// </summary>
-    public partial class ViewCargoTank : UserControl
+    public partial class ViewBallastTank : UserControl
     {
-        // Ullage
-        public static readonly DependencyProperty UllageProperty =
-            DependencyProperty.Register(nameof(Ullage), typeof(double), typeof(ViewCargoTank));
-        public double Ullage
+       // Sound
+        public static readonly DependencyProperty SoundProperty =
+            DependencyProperty.Register(nameof(Sound), typeof(double), typeof(ViewBallastTank));
+        public double Sound
         {
-            get => (double)GetValue(UllageProperty);
-            set => SetValue(UllageProperty, value);
-        }
-        // Temperature
-        public static readonly DependencyProperty TemperatureTankProperty =
-            DependencyProperty.Register(nameof(TemperatureTank), typeof(double), typeof(ViewCargoTank));
-        public double TemperatureTank
-        {
-            get => (double)GetValue(TemperatureTankProperty);
-            set => SetValue(TemperatureTankProperty, value);
+            get => (double)GetValue(SoundProperty);
+            set => SetValue(SoundProperty, value);
         }
         // Percents
         public static readonly DependencyProperty PercentsProperty =
-            DependencyProperty.Register(nameof(Percents), typeof(double), typeof(ViewCargoTank));
+            DependencyProperty.Register(nameof(Percents), typeof(double), typeof(ViewBallastTank));
         public double Percents
         {
             get => (double)GetValue(PercentsProperty);
@@ -37,7 +28,7 @@ namespace PetCargoProgram.Components
         }
         // Volume
         public static readonly DependencyProperty VolumeProperty =
-            DependencyProperty.Register(nameof(Volume), typeof(double), typeof(ViewCargoTank));
+            DependencyProperty.Register(nameof(Volume), typeof(double), typeof(ViewBallastTank));
         public double Volume
         {
             get => (double)GetValue(VolumeProperty);
@@ -45,23 +36,23 @@ namespace PetCargoProgram.Components
         }
         // Weight
         public static readonly DependencyProperty WeightProperty =
-            DependencyProperty.Register(nameof(Weight), typeof(double), typeof(ViewCargoTank));
+            DependencyProperty.Register(nameof(Weight), typeof(double), typeof(ViewBallastTank));
         public double Weight
         {
             get => (double)GetValue(WeightProperty);
             set => SetValue(WeightProperty, value);
         }
-        // CargoTankName
-        public static readonly DependencyProperty CargoTankNameProperty =
-            DependencyProperty.Register(nameof(CargoTankName), typeof(string), typeof(ViewCargoTank));
-        public string CargoTankName
+        // BallastTankName
+        public static readonly DependencyProperty BallastTankNameProperty =
+            DependencyProperty.Register(nameof(BallastTankName), typeof(string), typeof(ViewBallastTank));
+        public string BallastTankName
         {
-            get => (string)GetValue(CargoTankNameProperty);
-            set => SetValue(CargoTankNameProperty, value);
+            get => (string)GetValue(BallastTankNameProperty);
+            set => SetValue(BallastTankNameProperty, value);
         }
         // StatusValve
         public static readonly DependencyProperty StatusValveProperty =
-            DependencyProperty.Register(nameof(StatusValve), typeof(bool), typeof(ViewCargoTank));
+            DependencyProperty.Register(nameof(StatusValve), typeof(bool), typeof(ViewBallastTank));
         private bool _statusValve = true;
 
         public bool StatusValve
@@ -75,34 +66,31 @@ namespace PetCargoProgram.Components
                     Output_ValveStatus.Content = "opened";
                     Input_ValveButtonStatus.Background = Brushes.LightGreen;
                     IO_SliderVolume.IsEnabled = true;
-                    Input_Output_Ullage.IsEnabled = true;
-                    Input_Output_Temperature.IsEnabled = true;
+                    Input_Output_Sound.IsEnabled = true;
                     Input_Output_Volume.IsEnabled = true;
                     Input_Output_Weight.IsEnabled = true;
-                    Input_Output_Percents.IsEnabled = true;
                 }
                 else
                 {
                     Output_ValveStatus.Content = "closed";
                     Input_ValveButtonStatus.Background = Brushes.LightCoral;
                     IO_SliderVolume.IsEnabled = false;
-                    Input_Output_Ullage.IsEnabled = false;
-                    Input_Output_Temperature.IsEnabled = false;
+                    Input_Output_Sound.IsEnabled = false;
                     Input_Output_Volume.IsEnabled = false;
                     Input_Output_Weight.IsEnabled = false;
-                    Input_Output_Percents.IsEnabled = false;
                 }
             }
         }
-        public ViewCargoTank()
+        public ViewBallastTank()
         {
             InitializeComponent();
             Loaded += (_, _) =>
             {
                 StatusValve = true;
-                // CargoTank = new CargoTank((string)CargoTankName);
             };
+
         }
+
 
         private void Event_ButtonValveClick(object sender, System.Windows.RoutedEventArgs e)
         {

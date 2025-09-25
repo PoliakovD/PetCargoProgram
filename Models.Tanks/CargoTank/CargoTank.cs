@@ -93,7 +93,18 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     public double Sound
     {
         get => _sound;
-        set => SetField(ref _sound, value);
+        set
+        {
+            if(value<0.0||value>_maxUllage)
+                throw new ArgumentOutOfRangeException($"Sound is out of range 0.0-{_maxUllage}");
+            SetField(ref _sound, value);
+
+            _ullage = _maxUllage-_sound;
+            OnPropertyChanged(nameof(Ullage));
+
+            Volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
+
+        }
     }
 
     public double Ullage
@@ -101,15 +112,24 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         get => _ullage;
         set
         {
-            if(value<0.0||value>_maxUllage)
-                throw new ArgumentOutOfRangeException($"Ullage is out of range 0.0-{_maxUllage}");
+            if (value<0.0) value = 0.0;
+            if(value>_maxUllage)  value = _maxUllage;
+                // throw new ArgumentOutOfRangeException($"Ullage is out of range 0.0-{_maxUllage}");
             SetField(ref _ullage, value);
 
 
             _sound=_maxUllage-value;
             OnPropertyChanged(nameof(Sound));
 
-            Volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
+            _volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
+            OnPropertyChanged(nameof(Volume));
+
+            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            OnPropertyChanged(nameof(VolumePercent));
+
+            var tableValue = _sVolume.GetValue(_itemName, _volume);
+            DistributeVolumeTableValue(tableValue);
+
         }
     }
 
@@ -118,8 +138,9 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         get => _volume;
         set
         {
-            if(value<0.0 || value>_maxVolume)
-                throw new ArgumentOutOfRangeException($"Volume is out of range 0.0-{_maxVolume}");
+            if (value < 0.0) value = 0.0;
+            if(value > _maxVolume) value = _maxVolume;
+                // throw new ArgumentOutOfRangeException($"Volume is out of range 0.0-{_maxVolume}");
             SetField(ref _volume, value);
 
             var tableValue = _sVolume.GetValue(_itemName, _volume);
@@ -141,7 +162,8 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         get => _volumePercent;
         set
         {
-            if (value<0.0||value>100.0) throw new ArgumentOutOfRangeException("VolumePercent is out of range 0.0-100.0");
+            if (value < 0.0) value = 0.0;
+            if (value > 1.0) value = 1.0;
             SetField(ref _volumePercent, value);
 
 
@@ -177,8 +199,11 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         set
         {
             var volume=value/Density;
-            if (volume < 0||volume>_maxVolume)
-                throw new ArgumentOutOfRangeException($"Weight is out of range 0.0-{_maxVolume*Density}");
+
+            if(volume<0) value = 0;
+            if(volume>_maxVolume) value=MaxVolume*Density;
+
+                // throw new ArgumentOutOfRangeException($"Weight is out of range 0.0-{_maxVolume*Density}");
             SetField(ref _weight, value);
 
             _volume=volume;
@@ -220,9 +245,5 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         get => _iy;
         set => SetField(ref _iy, value);
     }
-
-
-
-
 }
 

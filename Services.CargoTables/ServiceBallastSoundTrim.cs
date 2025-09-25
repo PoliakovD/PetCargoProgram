@@ -76,7 +76,6 @@ public class ServiceBallastSoundTrim
         // получаем значение по trim
         var result =GetValueInDictionary(trimsVolumes,
             trim,0,5);
-
         return result;
     }
 
@@ -105,6 +104,8 @@ public class ServiceBallastSoundTrim
         // в ближайших дифферентах идем по столбцам и находим ближайшее значения обьемов
         var firstVolume = new Dictionary<double, double>();
         var secondVolume = new Dictionary<double, double>();
+
+        var maxSound = GetMaxSound(name);
 
         switch (closestTrims[0])
         {
@@ -222,6 +223,8 @@ public class ServiceBallastSoundTrim
 
         var firstUllage = GetInterpolatedValue(firstVolumeForCalc, secondVolumeForCalc, volume,
             firstSoundForCalc, secondSoundForCalc);
+        if(firstUllage < 0.0) firstUllage=0.0;
+        if(firstUllage > maxSound) firstUllage=maxSound;
 
         //подготовка для вторых расчетов:
         firstSoundForCalc = secondVolume.Keys.First();
@@ -232,18 +235,34 @@ public class ServiceBallastSoundTrim
 
         var secondUllage = GetInterpolatedValue(firstVolumeForCalc, secondVolumeForCalc, volume,
             firstSoundForCalc, secondSoundForCalc);
+        if(secondUllage < 0.0) secondUllage=0.0;
+        if(secondUllage > maxSound) secondUllage=maxSound;
 
-        if (trim >= -1 && trim <= 4)
+
+        double result=maxSound;
+        if (trim >= 0 && trim <= 5)
         {
             // интерполируем
-            var interKoef = (trim - closestTrims[0]) / (closestTrims[1] - closestTrims[0]);
-            return GetInterpolatedValueByKoef(interKoef,firstUllage,secondUllage);
+            if (Math.Abs(trim - closestTrims[0]) > 0.0001)
+            {
+                var interKoef = (trim - closestTrims[0]) / (closestTrims[1] - closestTrims[0]);
+                result = GetInterpolatedValueByKoef(interKoef,firstUllage,secondUllage);
+            }
+            else result = firstUllage;
+
         }
         else
         {
             // экстраполируем
-            var extraKoef = (trim - closestTrims[0]) / (closestTrims[0] - closestTrims[1]);
-            return GetExtrapoladedValueByKoef(extraKoef,firstUllage,secondUllage);
+            if (Math.Abs(trim - closestTrims[0]) > 0.0001)
+            {
+                var extraKoef = (trim - closestTrims[0]) / (closestTrims[0] - closestTrims[1]);
+                result = GetExtrapoladedValueByKoef(extraKoef,firstUllage,secondUllage);
+            }
+            else result = firstUllage;
+
         }
+        return result;
+
     }
 }

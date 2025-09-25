@@ -8,7 +8,7 @@ public partial class BallastTank:IEquatable<BallastTank>
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
-        return _name == other._name
+        return _itemName == other._itemName
                && _maxVolume.Equals(other._maxVolume)
                && _sound.Equals(other._sound)
                && _ullage.Equals(other._ullage)
@@ -34,7 +34,7 @@ public partial class BallastTank:IEquatable<BallastTank>
     public override int GetHashCode()
     {
         var hashCode = new HashCode();
-        hashCode.Add(_name);
+        hashCode.Add(_itemName);
         hashCode.Add(_maxVolume);
         hashCode.Add(_sound);
         hashCode.Add(_ullage);

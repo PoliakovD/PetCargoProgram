@@ -9,29 +9,19 @@ namespace PetCargoProgram.ViewModels.MainWindow;
 
 public class ViewModelMainWindow : ViewModelBase
 {
-    // private ViewModelCargoTanks _cargoTanks;
-    // public ViewModelCargoTanks CargoTanks
-    // {
-    //     get => _cargoTanks;
-    //     set => SetField(ref _cargoTanks, value);
-    // }
 
     private static string[] _cargoTanksNames =
     ["COT 1P", "COT 2P", "COT 3P","COT 4P","COT 5P","COT 6P","SLOP P",
         "COT 1S", "COT 2S", "COT 3S","COT 4S","COT 5S","COT 6S","SLOP S"];
 
+    private static string[] _ballastTanksNames =
+    ["FPT", "BWT 1P","BWT 2P", "BWT 3P","BWT 4P","BWT 5P","BWT 6P","APT",
+        "BWT 1S", "BWT 2S", "BWT 3S","BWT 4S","BWT 5S","BWT 6S"];
     public Dictionary<string, CargoTank> CargoTanks { get; set; } = [];
     // public ObservableCollection<CargoTank> CargoTanks { get; } = [];
 
-    private AllCargoTables? _cargoTables;
+    public Dictionary<string, BallastTank> BallastTanks { get; set; } = [];
 
-    private CargoTank _testTank;
-
-    public CargoTank TestTank
-    {
-        get => _testTank;
-        set => SetField(ref _testTank, value);
-    }
 
     public ViewModelMainWindow()
     {
@@ -40,11 +30,15 @@ public class ViewModelMainWindow : ViewModelBase
     }
     private void Init()
     {
+        foreach (var tankName in _ballastTanksNames)
+        {
+            BallastTanks.Add(tankName,new BallastTank(tankName));
+        }
         foreach (var tankName in _cargoTanksNames)
         {
             CargoTanks.Add(tankName,new CargoTank(tankName));
         }
-        TestTank = new CargoTank("COT 1P");
+
     }
 
     private void FillObservableCollections<T>(IEnumerable<T> items, ObservableCollection<T> collection)

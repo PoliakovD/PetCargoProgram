@@ -171,9 +171,9 @@
     <Style x:Key="Style_ValueLabel" TargetType="Label">
         <Setter Property="FontSize" Value="{Binding ElementName=Style_TextBoxValues, Path=FontSize}"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
     <!--Стиль для лейблов Нижнего меню на главной странице-->
     <Style x:Key="Style_LabelDownMenu" TargetType="Label">

@@ -11,8 +11,16 @@ public static class ServiceFindAndCalcHelper
         double currentValue,
         double searchValue1, double searchValue2)
     {
-        double koef = (calcValue1 - currentValue) / (calcValue1 - calcValue2);
-        return koef * (searchValue2 - searchValue1) + searchValue1;
+        if (Math.Abs(currentValue - calcValue1) > 0.0001)
+        {
+            double koef = (calcValue1 - currentValue) / (calcValue1 - calcValue2);
+            return koef * (searchValue2 - searchValue1) + searchValue1;
+        }
+        else
+        {
+            return searchValue1;
+        }
+
     }
     public static double GetInterpolatedValueByKoef(double koef,
         double searchValue1, double searchValue2)
