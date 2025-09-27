@@ -12,5 +12,6 @@ public static class CargoTablesProvider
     public static ServiceVolume Volume= new ServiceVolume(AllTables.TablesVolume);
     public static ServiceBallastSoundTrim BallastSoundTrim= new ServiceBallastSoundTrim(AllTables.TablesBallSoundTrim);
     public static ServiceCargoTankUllageTrim ServiceCargoTankUllageTrim= new ServiceCargoTankUllageTrim(AllTables.TablesCargoTankUllage);
+    public static ServiceOtherSound ServiceOtherSound = new ServiceOtherSound(AllTables.TablesOtherSounding);
 }
 

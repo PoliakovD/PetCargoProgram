@@ -16,8 +16,8 @@ public static class WriterOtherSounding
             foreach (var value_OS in table_OS.Table)
             {
                 // запись данных в файл
-                bw.Write(value_OS.volume);
-                bw.Write(value_OS.sound);
+                bw.Write(value_OS.Volume);
+                bw.Write(value_OS.Sound);
             }
         }
         return fs;
