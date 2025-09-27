@@ -36,7 +36,8 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
         ItemName = name;
         MaxVolume = _sVolume.GetMaxVolume(name);
         MaxUllage = _soundTrim.GetMaxSound(name);
-        _density = 1.0;
+        DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
+        _density = 1.025;
     }
     public BallastTank()
     {

@@ -379,6 +379,9 @@
                                             Binding="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
                         <DataGridTextColumn Header="Ullage(m)"
                                             Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
+                        <DataGridTextColumn Header="Max Ullage(m)"
+                                            Binding="{Binding Path=MaxUllage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"/>
                         <DataGridTextColumn Header="Volume(m3)"
                                             Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
                         <DataGridTextColumn Header="Percents(%)"

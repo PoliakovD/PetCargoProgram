@@ -35,7 +35,8 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         ItemName = name;
         MaxVolume = _sVolume.GetMaxVolume(name);
         MaxUllage = _UllageTrim.GetMaxUllage(name);
-        _density = 1.0;
+        DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
+        _density = 0.988;
     }
     public CargoTank()
     {
