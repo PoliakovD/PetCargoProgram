@@ -13,4 +13,13 @@
       <ProjectReference Include="..\ViewModels.Base\ViewModels.Base.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="PresentationCore">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\9.0.7\PresentationCore.dll</HintPath>
+      </Reference>
+      <Reference Include="PresentationFramework">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\9.0.7\PresentationFramework.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

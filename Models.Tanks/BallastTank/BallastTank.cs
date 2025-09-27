@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Media;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Services.CargoTables;
@@ -25,6 +27,9 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
     private double _iy;
 
     private double _trim = 0.0;
+
+    private SolidColorBrush _color;
+
     // Tables инициализируется статическим методом, до создания любого экземпляра класса
     private static ServiceVolume _sVolume = CargoTablesProvider.Volume;
     private static ServiceBallastSoundTrim _soundTrim=CargoTablesProvider.BallastSoundTrim;
@@ -38,6 +43,8 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
         MaxUllage = _soundTrim.GetMaxSound(name);
         DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
         _density = 1.025;
+        Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(118, 129, 225, 238));
+
     }
     public BallastTank()
     {
@@ -164,24 +171,25 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
         get => _volumePercent;
         set
         {
-            if (value < 0.0) value = 0.0;
-            if (value > 1.0) value = 1.0;
-            SetField(ref _volumePercent, value);
+                if (value < 0.0) value = 0.0;
+                if (value > 1.0) value = 1.0;
+                SetField(ref _volumePercent, value);
 
 
-            _volume=_maxVolume*value;
-            OnPropertyChanged(nameof(Volume));
+                _volume = _maxVolume * value;
+                OnPropertyChanged(nameof(Volume));
 
-            var tableValue = _sVolume.GetValue(_itemName, _volume);
-            DistributeVolumeTableValue(tableValue);
+                var tableValue = _sVolume.GetValue(_itemName, _volume);
+                DistributeVolumeTableValue(tableValue);
 
-            _sound = _soundTrim.GetSoundWithTrim(_itemName, _volume,_trim);
-            if(_sound<0.0) _sound=0.0;
-            if(_sound>_maxUllage-0.0001) _sound=_maxUllage;
-            OnPropertyChanged(nameof(Sound));
+                _sound = _soundTrim.GetSoundWithTrim(_itemName, _volume, _trim);
+                if (_sound < 0.0) _sound = 0.0;
+                if (_sound > _maxUllage - 0.0001) _sound = _maxUllage;
+                OnPropertyChanged(nameof(Sound));
 
-            _ullage=_maxUllage-_sound;
-            OnPropertyChanged(nameof(Ullage));
+                _ullage = _maxUllage - _sound;
+                OnPropertyChanged(nameof(Ullage));
+
         }
     }
 
@@ -259,4 +267,25 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
         set => SetField(ref _iy, value);
     }
 
+    public SolidColorBrush Color
+    {
+        get => _color;
+        set => SetField(ref _color, value);
+    }
+
+    public void Clone(BallastTank clone)
+    {
+        this._itemName =  clone.ItemName;
+        this._maxVolume=clone.MaxVolume;
+        this._maxUllage=clone.MaxUllage;
+        this._sound=clone.Sound;
+        this._ullage=clone.Ullage;
+        this._density=clone.Density;
+        this.Weight=clone.Weight;
+        this.LCG=clone.LCG;
+        this.VCG=clone.VCG;
+        this.TCG=clone.TCG;
+        this.IY=clone.IY;
+        this.Color=clone.Color;
+    }
 }

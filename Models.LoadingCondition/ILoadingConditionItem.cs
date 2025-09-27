@@ -1,4 +1,6 @@
-﻿namespace PetCargoProgram.Models.LoadingCondition;
+﻿using System.Windows.Media;
+
+namespace PetCargoProgram.Models.LoadingCondition;
 
 public interface ILoadingConditionItem
 {
@@ -16,4 +18,5 @@ public interface ILoadingConditionItem
     public double TCG { get; set; }
     public double IY { get; set; }
 
+    public SolidColorBrush Color { get; set; }
 }

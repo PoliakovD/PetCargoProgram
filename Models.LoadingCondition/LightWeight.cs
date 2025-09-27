@@ -1,4 +1,5 @@
-﻿using PetCargoProgram.ViewModels.Base;
+﻿using System.Windows.Media;
+using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.Models.LoadingCondition;
 
@@ -17,6 +18,7 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
     private double _vcg;
     private double _tcg;
     private double _iy;
+    private SolidColorBrush _color;
 
     public string ItemName
     {
@@ -96,6 +98,12 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
         set => SetField(ref _iy, value);
     }
 
+    public SolidColorBrush Color
+    {
+        get => _color;
+        set => SetField(ref _color, value);
+    }
+
     public LightWeight()
     {
         ItemName = "Light Weight";
@@ -113,5 +121,6 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
         MaxUllage = 0;
         Sound = 0;
         Ullage = 0;
+        Color = new SolidColorBrush(Colors.LightGray);
     }
 }

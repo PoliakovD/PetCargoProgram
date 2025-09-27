@@ -1,4 +1,5 @@
-﻿using PetCargoProgram.Models.LoadingCondition;
+﻿using System.Windows.Media;
+using PetCargoProgram.Models.LoadingCondition;
 
 namespace PetCargoProgram.Models.Tanks;
 
@@ -18,6 +19,7 @@ public class OtherTank : ILoadingConditionItem
     private double _tcg;
     private double _iy;
     private double _maxUllage;
+    private SolidColorBrush _color;
 
     // TODO Добавить свойства для грузового танка (вес груза в вакууме, обьем в баррелях и тд)
     public string ItemName
@@ -96,5 +98,11 @@ public class OtherTank : ILoadingConditionItem
     {
         get => _iy;
         set => _iy = value;
+    }
+
+    public SolidColorBrush Color
+    {
+        get => _color;
+        set => _color = value;
     }
 }

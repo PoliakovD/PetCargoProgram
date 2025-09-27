@@ -369,9 +369,9 @@
                           ItemsSource="{Binding Path=LoadingCondition.Table}"
                           AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Compartment"
-                                            Binding="{Binding Path=ItemName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                            IsReadOnly="True"/>
+                        <DataGridTemplateColumn Header="Compartment"
+                                            IsReadOnly="True"
+                                            CellTemplate="{StaticResource  Template_ColorCompartment}"/>
                         <DataGridTextColumn Header="Capacity(m3)"
                                             Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
                                             IsReadOnly="True"/>

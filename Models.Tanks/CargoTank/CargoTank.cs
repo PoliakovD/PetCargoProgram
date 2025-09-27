@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Services.CargoTables;
@@ -25,6 +26,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     private double _vcg;
     private double _tcg;
     private double _iy;
+    private SolidColorBrush _color;
 
     // Tables инициализируется статическим классом, до создания любого экземпляра класса
     private static ServiceVolume _sVolume = CargoTablesProvider.Volume;
@@ -37,6 +39,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         MaxUllage = _UllageTrim.GetMaxUllage(name);
         DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
         _density = 0.988;
+        Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(137, 129, 225, 13));
     }
     public CargoTank()
     {
@@ -257,6 +260,12 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     {
         get => _iy;
         set => SetField(ref _iy, value);
+    }
+
+    public SolidColorBrush Color
+    {
+        get => _color;
+        set => SetField(ref _color, value);
     }
 }
 
