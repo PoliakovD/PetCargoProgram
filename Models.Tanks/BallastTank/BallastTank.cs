@@ -63,7 +63,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
 
             MaxVolume = _sVolume.GetMaxVolume(_itemName);
             MaxUllage = _soundTrim.GetMaxSound(_itemName)+double.Epsilon;
-            _density = 1.0;
+            _density = 1.025;
         }
     }
 
@@ -94,7 +94,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
             _volume = _soundTrim.GetVolumeWithTrim(_itemName,_sound);
             OnPropertyChanged(nameof(Volume));
 
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             var tableValue = _sVolume.GetValue(_itemName, _volume);
@@ -120,7 +120,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
             _volume = _soundTrim.GetVolumeWithTrim(_itemName,_ullage);
             OnPropertyChanged(nameof(Volume));
 
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             var tableValue = _sVolume.GetValue(_itemName, _volume);
@@ -144,7 +144,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
             var tableValue = _sVolume.GetValue(_itemName, _volume);
             DistributeVolumeTableValue(tableValue);
 
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             _sound = _maxUllage;
@@ -222,7 +222,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
             var tableValue = _sVolume.GetValue(_itemName, volume);
             DistributeVolumeTableValue(tableValue);
 
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             _sound = _soundTrim.GetSoundWithTrim(_itemName, _volume);

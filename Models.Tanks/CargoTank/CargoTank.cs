@@ -95,14 +95,23 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         get => _sound;
         set
         {
-            if(value<0.0||value>_maxUllage)
-                throw new ArgumentOutOfRangeException($"Sound is out of range 0.0-{_maxUllage}");
+            if (value<0.0) value = 0.0;
+            if (value>_maxUllage)  value = _maxUllage;
+            // if(value<0.0||value>_maxUllage)
+            //     throw new ArgumentOutOfRangeException($"Sound is out of range 0.0-{_maxUllage}");
             SetField(ref _sound, value);
 
             _ullage = _maxUllage-_sound;
             OnPropertyChanged(nameof(Ullage));
 
-            Volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
+            _volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
+            OnPropertyChanged(nameof(Volume));
+
+            _volumePercent= _volume / _maxVolume;
+            OnPropertyChanged(nameof(VolumePercent));
+
+            var tableValue = _sVolume.GetValue(_itemName, _volume);
+            DistributeVolumeTableValue(tableValue);
 
         }
     }
@@ -118,13 +127,13 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             SetField(ref _ullage, value);
 
 
-            _sound=_maxUllage-value;
+            _sound=_maxUllage-_ullage;
             OnPropertyChanged(nameof(Sound));
 
             _volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
             OnPropertyChanged(nameof(Volume));
 
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             var tableValue = _sVolume.GetValue(_itemName, _volume);
@@ -143,10 +152,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
                 // throw new ArgumentOutOfRangeException($"Volume is out of range 0.0-{_maxVolume}");
             SetField(ref _volume, value);
 
-            var tableValue = _sVolume.GetValue(_itemName, _volume);
-            DistributeVolumeTableValue(tableValue);
-
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
@@ -154,6 +160,9 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
 
             _sound=_maxUllage-_ullage;
             OnPropertyChanged(nameof(Sound));
+
+            var tableValue = _sVolume.GetValue(_itemName, _volume);
+            DistributeVolumeTableValue(tableValue);
         }
     }
 
@@ -178,6 +187,9 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
 
             _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
             OnPropertyChanged(nameof(Ullage));
+
+            _sound=_maxUllage-_ullage;
+            OnPropertyChanged(nameof(Sound));
         }
     }
 
@@ -212,7 +224,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             var tableValue = _sVolume.GetValue(_itemName, volume);
             DistributeVolumeTableValue(tableValue);
 
-            _volumePercent=_sVolume.GetPercentsVolume(_itemName, _volume);
+            _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
             _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);

@@ -366,7 +366,34 @@
 
                 <DataGrid Name="DataGrid_LoadingCondion"
                           ItemsSource="{Binding Path=LoadingCondition.Table}"
-                          AutoGenerateColumns="True">
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Compartment"
+                                            Binding="{Binding Path=ItemName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Capacity"
+                                            Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Sound"
+                                            Binding="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
+                        <DataGridTextColumn Header="Ullage"
+                                            Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
+                        <DataGridTextColumn Header="Volume"
+                                            Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                        <DataGridTextColumn Header="Density"
+                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
+                        <DataGridTextColumn Header="Weight"
+                                            Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                        <DataGridTextColumn Header="LCG"
+                                            Binding="{Binding Path=LCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Header="TCG"
+                                            Binding="{Binding Path=TCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"/>
+                        <DataGridTextColumn Header="VCG"
+                                            Binding="{Binding Path=VCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"/>
+                    </DataGrid.Columns>
                     <!-- <DataGrid.Columns> -->
                     <!--     <DataGridTextColumn Header="Фамилия" -->
                     <!--                         Binding="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
