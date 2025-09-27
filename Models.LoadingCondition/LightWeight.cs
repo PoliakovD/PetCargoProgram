@@ -1,6 +1,8 @@
-﻿namespace PetCargoProgram.Models.LoadingCondition;
+﻿using PetCargoProgram.ViewModels.Base;
 
-public class LightWeight: ILoadingConditionItem
+namespace PetCargoProgram.Models.LoadingCondition;
+
+public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
 {
     private string _itemName;
     private double _maxVolume;
@@ -19,79 +21,79 @@ public class LightWeight: ILoadingConditionItem
     public string ItemName
     {
         get => _itemName;
-        set => _itemName = value;
+        set => SetField(ref _itemName, value);
     }
 
     public double MaxVolume
     {
         get => _maxVolume;
-        set => _maxVolume = value;
+        set => SetField(ref _maxVolume, value);
     }
 
     public double MaxUllage
     {
         get => _maxUllage;
-        set => _maxUllage = value;
+        set => SetField(ref _maxUllage, value);
     }
 
     public double Sound
     {
         get => _sound;
-        set => _sound = value;
+        set => SetField(ref _sound, value);
     }
 
     public double Ullage
     {
         get => _ullage;
-        set => _ullage = value;
+        set => SetField(ref _ullage, value);
     }
 
     public double Volume
     {
         get => _volume;
-        set => _volume = value;
+        set => SetField(ref _volume, value);
     }
 
     public double VolumePercent
     {
         get => _volumePercent;
-        set => _volumePercent = value;
+        set => SetField(ref _volumePercent, value);
     }
 
     public double Density
     {
         get => _density;
-        set => _density = value;
+        set => SetField(ref _density, value);
     }
 
     public double Weight
     {
         get => _weight;
-        set => _weight = value;
+        set => SetField(ref _weight, value);
     }
 
     public double LCG
     {
         get => _lcg;
-        set => _lcg = value;
+        set => SetField(ref _lcg, value);
     }
 
     public double VCG
     {
         get => _vcg;
-        set => _vcg = value;
+        set => SetField(ref _vcg, value);
     }
 
     public double TCG
     {
         get => _tcg;
-        set => _tcg = value;
+        set => SetField(ref _tcg, value);
     }
 
     public double IY
     {
         get => _iy;
-        set => _iy = value;
+        set => SetField(ref _iy, value);
     }
 
     public LightWeight()

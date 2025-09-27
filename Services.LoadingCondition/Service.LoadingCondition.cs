@@ -13,32 +13,44 @@ namespace PetCargoProgram.Services.LoadingCondition;
 
 public partial class ServiceLoadingCondition : NotifyPropertyChanged
 {
-    public BindingList<ILoadingConditionItem> Table{get; set; }
+    public ObservableCollection<ILoadingConditionItem> Table { get; set; } = [];
 
 
-    private ShipCondition _shipCondition;
-    public ShipCondition ShipCondition
+    private ShipConditionClass _shipCondition;
+    public ShipConditionClass ShipCondition
     {
         get => _shipCondition;
-        set=>SetField(ref _shipCondition, value);
+        set => SetField(ref _shipCondition, value);
     }
 
     public ServiceLoadingCondition()
     {
-        Table=new BindingList<ILoadingConditionItem>();
-        Table.ListChanged  += ItemsOnListChanged;
+        Table.CollectionChanged  += ItemsOnListChanged;
+        ShipCondition = new ShipConditionClass();
+        //UpdateShipCondition();
     }
 
     private ServiceHydrostatic _hydrostatic=CargoTablesProvider.Hydrostatic;
     public void Add(ILoadingConditionItem item) => Table.Add(item);
-    public void AddRange(IEnumerable<ILoadingConditionItem> items) => Table.AddRange(items);
-
-    private void ItemsOnListChanged(object sender, ListChangedEventArgs  e)
+    public void AddRange(IEnumerable<ILoadingConditionItem> items)
     {
-        if (e.ListChangedType == ListChangedType.ItemChanged)
+        foreach (var item in items) Table.Add(item);
+    }
+
+    private void ItemsOnListChanged(object sender, NotifyCollectionChangedEventArgs e)
+    {
+        if (e.OldItems != null)
         {
-            UpdateShipCondition();
+            foreach (INotifyPropertyChanged item in e.OldItems)
+                item.PropertyChanged -= UpdateShipCondition;
+        }
+        if (e.NewItems != null)
+        {
+            foreach (INotifyPropertyChanged item in e.NewItems)
+                item.PropertyChanged += UpdateShipCondition;
         }
     }
+
+
 
 }

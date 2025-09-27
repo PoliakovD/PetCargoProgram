@@ -3,7 +3,7 @@ using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.Models.ShipCondition;
 
-public class ShipCondition : NotifyPropertyChanged
+public partial class ShipConditionClass : NotifyPropertyChanged
 {
     private double _lightWeight;
     private double _deadWeight;
@@ -34,6 +34,12 @@ public class ShipCondition : NotifyPropertyChanged
     private double _mctc;
     private double _lcb;
     private double _cm;
+    private double _draftEquiv;
+    private double _dieselOilOnBoard;
+    private double _otherStoresOnBoard;
+    private double _draftFore;
+    private double _trim;
+    private double _list;
 
     public double LightWeight
     {
@@ -189,7 +195,44 @@ public class ShipCondition : NotifyPropertyChanged
         get => _cm;
         set => SetField(ref _cm, value);
     }
-    public ShipCondition()
+
+    public double DraftEquiv
+    {
+        get => _draftEquiv;
+        set => SetField(ref _draftEquiv, value);
+    }
+
+    public double DieselOilOnBoard
+    {
+        get => _dieselOilOnBoard;
+        set { SetField(ref _dieselOilOnBoard, value); }
+    }
+
+    public double OtherStoresOnBoard
+    {
+        get => _otherStoresOnBoard;
+        set => SetField(ref _otherStoresOnBoard, value);
+    }
+
+    public double DraftFore
+    {
+        get =>  _draftFore;
+        set => SetField(ref _draftFore, value);
+    }
+
+    public double Trim
+    {
+        get =>  _trim;
+        set => SetField(ref _trim, value);
+    }
+
+    public double List
+    {
+        get => _list;
+        set => SetField(ref _list, value);
+    }
+
+    public ShipConditionClass()
     {
         LightWeight = 17475.9;
         DeadWeightRegistred = 1054999;

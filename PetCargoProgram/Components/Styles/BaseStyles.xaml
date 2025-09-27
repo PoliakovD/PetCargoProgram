@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:PetCargoProgram.Converters"
+                    xmlns:converters="clr-namespace:PetCargoProgram.Converters"
                     xmlns:brushes="clr-namespace:System.Windows.Media;assembly=PresentationCore"
                     xmlns:c="clr-namespace:PetCargoProgram.Components">
 
@@ -8,7 +8,7 @@
     <!--<c:SelectTextOnFocus Active="False" x:Key="SelectTextOnFocus"/>-->
 
 
-    <local:Converter_PercentsToDouble x:Key="Converter_PercentsToDouble"/>
+    <converters:Converter_PercentsToDouble x:Key="Converter_PercentsToDouble"/>
 
 
     <!--Control colors.-->

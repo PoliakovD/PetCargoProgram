@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <Folder Include="CargoTables\" />
+      <Folder Include="Components\LoadingCondition\" />
     </ItemGroup>
 
     <ItemGroup>

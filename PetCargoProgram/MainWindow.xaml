@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="clr-namespace:PetCargoProgram.Components"
+        xmlns:converters="clr-namespace:PetCargoProgram.Converters"
         xmlns:mainWindow="clr-namespace:PetCargoProgram.ViewModels.MainWindow;assembly=ViewModel.MainWindow"
         Title="MainWindow" Height="800" Width="1600"
         >
@@ -363,26 +364,28 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Loading Condition">
-
-                <DataGrid Name="DataGrid_LoadingCondion"
+                <DockPanel>
+                    <DataGrid Name="DataGrid_LoadingCondion" DockPanel.Dock="Left"
                           ItemsSource="{Binding Path=LoadingCondition.Table}"
                           AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Compartment"
                                             Binding="{Binding Path=ItemName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                             IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Capacity"
+                        <DataGridTextColumn Header="Capacity(m3)"
                                             Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
                                             IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Sound"
+                        <DataGridTextColumn Header="Sound(m)"
                                             Binding="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
-                        <DataGridTextColumn Header="Ullage"
+                        <DataGridTextColumn Header="Ullage(m)"
                                             Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
-                        <DataGridTextColumn Header="Volume"
+                        <DataGridTextColumn Header="Volume(m3)"
                                             Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
-                        <DataGridTextColumn Header="Density"
+                        <DataGridTextColumn Header="Percents(%)"
+                                            Binding="{Binding Path=VolumePercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:p2\}, Converter={StaticResource Converter_PercentsToDouble}}"/>
+                        <DataGridTextColumn Header="Density(t/m3)"
                                             Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
-                        <DataGridTextColumn Header="Weight"
+                        <DataGridTextColumn Header="Weight(t)"
                                             Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
                         <DataGridTextColumn Header="LCG"
                                             Binding="{Binding Path=LCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
@@ -394,16 +397,29 @@
                                             Binding="{Binding Path=VCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
                                             IsReadOnly="True"/>
                     </DataGrid.Columns>
-                    <!-- <DataGrid.Columns> -->
-                    <!--     <DataGridTextColumn Header="Фамилия" -->
-                    <!--                         Binding="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
-                    <!--     <DataGridTextColumn Header="Имя" -->
-                    <!--                         Binding="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
-                    <!--     <DataGridTemplateColumn Header="Дата рождения" -->
-                    <!--                             CellTemplate="{StaticResource ResourceKey=Template_DateOfBirth_View}" -->
-                    <!--                             CellEditingTemplate="{StaticResource ResourceKey=Template_DateOfBirth_Edit}"/> -->
-                    <!-- </DataGrid.Columns> -->
-                </DataGrid>
+                    </DataGrid>
+                    <c:ComponentShipCondition DataContext="{Binding Path=LoadingCondition.ShipCondition}"
+                        DockPanel.Dock="Right"
+                        LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftEquiv="{Binding DraftEquiv, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </DockPanel>
+
+
             </TabItem>
         </TabControl>
 

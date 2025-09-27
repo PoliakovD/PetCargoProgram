@@ -7,10 +7,73 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Light Weight"/>
-                    <TextBox Name = "OutputLightWeight"
-                             IsReadOnly="true"
-                             Text="{Binding}"/>
+                    <TextBlock Text="{Binding Path=LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Deadweight"/>
+                    <TextBlock Text="{Binding Path=DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Displacement"/>
+                    <TextBlock Text="{Binding Path=Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Deadweight Registred"/>
+                    <TextBlock Text="{Binding Path=DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Cargo On Board"/>
+                    <TextBlock Text="{Binding Path=CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Ballast On Board"/>
+                    <TextBlock Text="{Binding Path=BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Fuel Oil On Board"/>
+                    <TextBlock Text="{Binding Path=FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Diesel Oil On Board"/>
+                    <TextBlock Text="{Binding Path=DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Fresh Water On Board"/>
+                    <TextBlock Text="{Binding Path=FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Lube Oil OnBoard"/>
+                    <TextBlock Text="{Binding Path=LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Other Stores OnBoard"/>
+                    <TextBlock Text="{Binding Path=OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel><StackPanel Orientation="Horizontal">
+                    <Label Content="DraftEquiv"/>
+                    <TextBlock Text="{Binding Path=DraftEquiv, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="DraftFore"/>
+                    <TextBlock Text="{Binding Path=DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="DraftAft"/>
+                    <TextBlock Text="{Binding Path=DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="DraftMean"/>
+                    <TextBlock Text="{Binding Path=DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Trim"/>
+                    <TextBlock Text="{Binding Path=Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="List"/>
+                    <TextBlock Text="{Binding Path=List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+
             </StackPanel>
         </GroupBox>
     </Grid>

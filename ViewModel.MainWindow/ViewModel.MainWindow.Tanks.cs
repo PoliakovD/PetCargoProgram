@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
+using PetCargoProgram.Models.ShipCondition;
 using PetCargoProgram.Models.Tanks;
 using PetCargoProgram.Services.LoadingCondition;
 using PetCargoProgram.ViewModels.Base;

@@ -5,8 +5,7 @@ namespace PetCargoProgram.ViewModels.MainWindow;
 
 public partial class ViewModelMainWindow
 {
-    public ServiceLoadingCondition LoadingCondition
-        { get; set; }
+    public ServiceLoadingCondition? LoadingCondition { get; set; }
 
     void InitLoadingCondition()
     {
@@ -15,5 +14,6 @@ public partial class ViewModelMainWindow
         LoadingCondition.AddRange(BallastTanks.Values);
         LoadingCondition.Add( new LightWeight());
     }
-
 }
+
+//TODO Попробовать переделать BindingList в ObservableCollection

@@ -16,7 +16,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DeadWeight
     public static readonly DependencyProperty DeadWeightProperty =
-        DependencyProperty.Register(nameof(DeadWeightProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DeadWeight), typeof(double), typeof(ComponentShipCondition));
     public double DeadWeight
     {
         get => (double)GetValue(DeadWeightProperty);
@@ -25,7 +25,7 @@ public partial class ComponentShipCondition : UserControl
 
     // Displacement
     public static readonly DependencyProperty DisplacementProperty =
-        DependencyProperty.Register(nameof(DisplacementProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(Displacement), typeof(double), typeof(ComponentShipCondition));
     public double Displacement
     {
         get => (double)GetValue(DisplacementProperty);
@@ -34,7 +34,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DeadWeightRegistred
     public static readonly DependencyProperty DeadWeightRegistredProperty =
-        DependencyProperty.Register(nameof(DeadWeightRegistredProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DeadWeightRegistred), typeof(double), typeof(ComponentShipCondition));
     public double DeadWeightRegistred
     {
         get => (double)GetValue(DeadWeightRegistredProperty);
@@ -43,7 +43,7 @@ public partial class ComponentShipCondition : UserControl
 
     // CargoOnBoard
     public static readonly DependencyProperty CargoOnBoardProperty =
-        DependencyProperty.Register(nameof(CargoOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(CargoOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double CargoOnBoard
     {
         get => (double)GetValue(CargoOnBoardProperty);
@@ -52,7 +52,7 @@ public partial class ComponentShipCondition : UserControl
 
     // BallastOnBoard
     public static readonly DependencyProperty BallastOnBoardProperty =
-        DependencyProperty.Register(nameof(BallastOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(BallastOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double BallastOnBoard
     {
         get => (double)GetValue(BallastOnBoardProperty);
@@ -61,7 +61,7 @@ public partial class ComponentShipCondition : UserControl
 
     // FuelOilOnBoard
     public static readonly DependencyProperty FuelOilOnBoardProperty =
-        DependencyProperty.Register(nameof(FuelOilOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(FuelOilOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double FuelOilOnBoard
     {
         get => (double)GetValue(FuelOilOnBoardProperty);
@@ -70,7 +70,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DieselOilOnBoard
     public static readonly DependencyProperty DieselOilOnBoardProperty =
-        DependencyProperty.Register(nameof(DieselOilOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DieselOilOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double DieselOilOnBoard
     {
         get => (double)GetValue(DieselOilOnBoardProperty);
@@ -79,7 +79,7 @@ public partial class ComponentShipCondition : UserControl
 
     // FreshWaterOnBoard
     public static readonly DependencyProperty FreshWaterOnBoardProperty =
-        DependencyProperty.Register(nameof(FreshWaterOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(FreshWaterOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double FreshWaterOnBoard
     {
         get => (double)GetValue(FreshWaterOnBoardProperty);
@@ -88,7 +88,7 @@ public partial class ComponentShipCondition : UserControl
 
     // LubeOilOnBoard
     public static readonly DependencyProperty LubeOilOnBoardProperty =
-        DependencyProperty.Register(nameof(LubeOilOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(LubeOilOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double LubeOilOnBoard
     {
         get => (double)GetValue(LubeOilOnBoardProperty);
@@ -97,7 +97,7 @@ public partial class ComponentShipCondition : UserControl
 
     // OtherStoresOnBoard
     public static readonly DependencyProperty OtherStoresOnBoardProperty =
-        DependencyProperty.Register(nameof(OtherStoresOnBoardProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(OtherStoresOnBoard), typeof(double), typeof(ComponentShipCondition));
     public double OtherStoresOnBoard
     {
         get => (double)GetValue(OtherStoresOnBoardProperty);
@@ -108,7 +108,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DraftEquiv
     public static readonly DependencyProperty DraftEquivProperty =
-        DependencyProperty.Register(nameof(DraftEquivProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DraftEquiv), typeof(double), typeof(ComponentShipCondition));
     public double DraftEquiv
     {
         get => (double)GetValue(DraftEquivProperty);
@@ -117,7 +117,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DraftFore
     public static readonly DependencyProperty DraftForeProperty =
-        DependencyProperty.Register(nameof(DraftForeProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DraftFore), typeof(double), typeof(ComponentShipCondition));
     public double DraftFore
     {
         get => (double)GetValue(DraftForeProperty);
@@ -126,7 +126,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DraftMean
     public static readonly DependencyProperty DraftMeanProperty =
-        DependencyProperty.Register(nameof(DraftMeanProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DraftMean), typeof(double), typeof(ComponentShipCondition));
     public double DraftMean
     {
         get => (double)GetValue(DraftMeanProperty);
@@ -135,7 +135,7 @@ public partial class ComponentShipCondition : UserControl
 
     // DraftAft
     public static readonly DependencyProperty DraftAftProperty =
-        DependencyProperty.Register(nameof(DraftAftProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(DraftAft), typeof(double), typeof(ComponentShipCondition));
     public double DraftAft
     {
         get => (double)GetValue(DraftAftProperty);
@@ -144,7 +144,7 @@ public partial class ComponentShipCondition : UserControl
 
     // Trim
     public static readonly DependencyProperty TrimProperty =
-        DependencyProperty.Register(nameof(TrimProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(Trim), typeof(double), typeof(ComponentShipCondition));
     public double Trim
     {
         get => (double)GetValue(TrimProperty);
@@ -153,7 +153,7 @@ public partial class ComponentShipCondition : UserControl
 
     // List
     public static readonly DependencyProperty ListProperty =
-        DependencyProperty.Register(nameof(ListProperty), typeof(double), typeof(ComponentShipCondition));
+        DependencyProperty.Register(nameof(List), typeof(double), typeof(ComponentShipCondition));
     public double List
     {
         get => (double)GetValue(ListProperty);
