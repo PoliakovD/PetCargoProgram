@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using PetCargoProgram.Services.CargoTables;
 using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.Models.ShipCondition;
@@ -24,7 +25,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _draftMean;
 
     private double _tcg;
-    private double _lcg;
+    private double _lcf;
     private double _vcg;
     private double _gm;
     private double _gom;
@@ -34,7 +35,6 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _mctc;
     private double _lcb;
     private double _cm;
-    private double _draftEquiv;
     private double _dieselOilOnBoard;
     private double _otherStoresOnBoard;
     private double _draftFore;
@@ -137,10 +137,10 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         set => SetField(ref _tcg, value);
     }
 
-    public double LCG
+    public double LCF
     {
-        get => _lcg;
-        set => SetField(ref _lcg, value);
+        get => _lcf;
+        set => SetField(ref _lcf, value);
     }
 
     public double VCG
@@ -196,10 +196,10 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         set => SetField(ref _cm, value);
     }
 
-    public double DraftEquiv
+    public double DraftActual
     {
-        get => _draftEquiv;
-        set => SetField(ref _draftEquiv, value);
+        get => _draftActual;
+        set => SetField(ref _draftActual, value);
     }
 
     public double DieselOilOnBoard
@@ -235,6 +235,17 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     public ShipConditionClass()
     {
         LightWeight = 17475.9;
+        Displacement = 17475.9;
         DeadWeightRegistred = 1054999;
+        SeaWaterDensity = 1.025;
+        var value = CargoTablesProvider.Hydrostatic.GetValue(Displacement);
+        DraftMean = value.Draft;
+        TPC = value.TPC;
+        Gm = value.MetacentrKM;
+        LCF = value.FloatationCenterLCF;
+        MCTC= value.MCTC;
+        LCB= value.LCB;
+        CM = value.CM;
+        DraftEquivalent = DraftMean;
     }
 }

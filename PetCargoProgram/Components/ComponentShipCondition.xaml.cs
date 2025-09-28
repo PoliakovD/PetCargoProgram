@@ -133,6 +133,15 @@ public partial class ComponentShipCondition : UserControl
         set => SetValue(DraftMeanProperty, value);
     }
 
+    // DraftActual
+    public static readonly DependencyProperty DraftActualProperty =
+        DependencyProperty.Register(nameof(DraftActual), typeof(double), typeof(ComponentShipCondition));
+    public double DraftActual
+    {
+        get => (double)GetValue(DraftActualProperty);
+        set => SetValue(DraftActualProperty, value);
+    }
+
     // DraftAft
     public static readonly DependencyProperty DraftAftProperty =
         DependencyProperty.Register(nameof(DraftAft), typeof(double), typeof(ComponentShipCondition));

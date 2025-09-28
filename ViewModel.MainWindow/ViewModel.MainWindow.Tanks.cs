@@ -43,13 +43,6 @@ public partial class ViewModelMainWindow : ViewModelBase
         "NO.1 CYL.OIL.STOR.T. (S)", "NO.2 CYL.OIL.STOR.T. (P)", "GE L.O STOR.T. (S)", "TUR.L.O.STOR.T. (S)",
         "MAIN L.O SUMP T. (C)"
     ];
-
-    private static SolidColorBrush _fuelOilBrush = new SolidColorBrush(Color.FromArgb(156, 229, 190, 182));
-    private static SolidColorBrush _dieselOilBrush = new SolidColorBrush(Color.FromArgb(76, 229, 190, 47));
-    private static SolidColorBrush _lubeOilBrush = new SolidColorBrush(Color.FromArgb(77, 241, 232, 0));
-    private static SolidColorBrush _freshWaterBrush = new SolidColorBrush(Color.FromArgb(38, 33, 137, 248));
-    private static SolidColorBrush _otherBrush = new SolidColorBrush(Color.FromArgb(10, 33, 6, 1));
-
     private static string[] _freshWaterTanksNames = ["FWT P", "FWT S"];
 
     private static string[] _otherTanksNames =
@@ -59,8 +52,11 @@ public partial class ViewModelMainWindow : ViewModelBase
         "BW (ER FWD,S)"
     ];
 
-
-
+    private static SolidColorBrush _fuelOilBrush = new SolidColorBrush(Color.FromArgb(156, 229, 190, 182));
+    private static SolidColorBrush _dieselOilBrush = new SolidColorBrush(Color.FromArgb(76, 229, 190, 47));
+    private static SolidColorBrush _lubeOilBrush = new SolidColorBrush(Color.FromArgb(77, 241, 232, 0));
+    private static SolidColorBrush _freshWaterBrush = new SolidColorBrush(Color.FromArgb(38, 33, 137, 248));
+    private static SolidColorBrush _otherBrush = new SolidColorBrush(Color.FromArgb(10, 33, 6, 1));
 
     public Dictionary<string, CargoTank> CargoTanks { get; set; } = [];
     // public ObservableCollection<CargoTank> CargoTanks { get; } = [];

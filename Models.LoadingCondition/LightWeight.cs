@@ -118,7 +118,7 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
         Volume = 0;
         VolumePercent = 0;
         Density = 0;
-        LCG = 108.72;
+        LCG = -10.78;
         VCG = 11.65;
         TCG = -10.78;
         IY = 0;

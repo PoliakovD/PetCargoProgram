@@ -12,4 +12,10 @@
       <ProjectReference Include="..\Models.Tanks\Models.Tanks.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="PresentationFramework">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\9.0.7\PresentationFramework.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Windows.Data;
 using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Models.ShipCondition;
 using PetCargoProgram.Models.Tanks;
@@ -28,6 +29,8 @@ public partial class ServiceLoadingCondition : NotifyPropertyChanged
         Table.CollectionChanged  += ItemsOnListChanged;
         ShipCondition = new ShipConditionClass();
         //UpdateShipCondition();
+        // WeightOnListChanged();
+
     }
 
     private ServiceHydrostatic _hydrostatic=CargoTablesProvider.Hydrostatic;
@@ -50,7 +53,6 @@ public partial class ServiceLoadingCondition : NotifyPropertyChanged
                 item.PropertyChanged += UpdateShipCondition;
         }
     }
-
 
 
 }

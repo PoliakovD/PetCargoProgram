@@ -8,8 +8,11 @@ public partial class ServiceLoadingCondition
 {
     public void UpdateShipCondition(object sender, PropertyChangedEventArgs e)
     {
-        UpdateOnBoard();
-        UpdateFromHydrostaticTable();
+        if (e.PropertyName == nameof(ILoadingConditionItem.Weight))
+        {
+            UpdateOnBoard();
+            UpdateFromHydrostaticTable();
+        }
     }
 
     private void UpdateOnBoard()
@@ -21,8 +24,14 @@ public partial class ServiceLoadingCondition
         double sumLube = 0.0;
         double sumFW = 0.0;
         double sumOther = 0.0;
+        double sumMomentX = 0.0;
+        double sumMomentY = 0.0;
+        double sumMomentZ = 0.0;
         foreach (var item in Table)
         {
+            sumMomentX += item.Weight * item.LCG;
+            sumMomentY += item.Weight * item.TCG;
+            sumMomentZ += item.Weight * item.VCG;
             if (item is BallastTank) sumBallast += item.Weight;
             if (item is CargoTank) sumCargo += item.Weight;
             if (item is OtherTank)
@@ -68,18 +77,23 @@ public partial class ServiceLoadingCondition
 
         ShipCondition.Displacement =  totalSum + _shipCondition.LightWeight;
         ShipCondition.DeadWeight = totalSum;
+
+        ShipCondition.MomentX= sumMomentX/ShipCondition.Displacement;
+        ShipCondition.MomentY= sumMomentY/ShipCondition.Displacement;
+        ShipCondition.MomentZ= sumMomentZ/ShipCondition.Displacement;
     }
 
     private void UpdateFromHydrostaticTable()
     {
         var value = _hydrostatic.GetValue(_shipCondition.Displacement);
-        ShipCondition.DraftMean = value.Draft;
+        ShipCondition.DraftEquivalent = value.Draft;
         ShipCondition.TPC = value.TPC;
         ShipCondition.Gm = value.MetacentrKM;
-        ShipCondition.LCG = value.FloatationCenterLCF;
+        ShipCondition.LCF = value.FloatationCenterLCF;
         ShipCondition.MCTC= value.MCTC;
         ShipCondition.LCB= value.LCB;
         ShipCondition.CM = value.CM;
+        ShipCondition.CalcDrafts();
 
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Windows.Media;
+﻿using System.ComponentModel;
+using System.Windows.Media;
 
 namespace PetCargoProgram.Models.LoadingCondition;
 
-public interface ILoadingConditionItem
+public interface ILoadingConditionItem : INotifyPropertyChanged
 {
     public string ItemName { get; set; }
     public double MaxVolume { get; set; }

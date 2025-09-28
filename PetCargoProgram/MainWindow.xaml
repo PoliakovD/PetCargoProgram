@@ -313,7 +313,31 @@
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Vertical">
+                     <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Vertical">
+                        <GroupBox Header="Sttings">
+                            <StackPanel Orientation="Vertical">
+                               <Grid>
+                                   <Grid.ColumnDefinitions>
+                                       <ColumnDefinition Width="*"/>
+                                       <ColumnDefinition Width="*"/>
+                                   </Grid.ColumnDefinitions>
+                                   <Label
+                                       Grid.Column="0"
+                                       Content="Sea Water Density"
+                                       Style="{StaticResource Style_LabelDownMenu}"/>
+                                   <TextBox
+                                       Grid.Column="1"
+                                       Text="{Binding Path=LoadingCondition.ShipCondition.SeaWaterDensity,
+                                       Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                       KeyDown="Event_LoseFocusOnEnter"
+                                       c:SelectTextOnFocus.Active="True"/>
+                               </Grid>
+                            </StackPanel>
+                        </GroupBox>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Grid.Row="5" Orientation="Vertical">
                         <GroupBox Header="ASTM Tables 21,51">
                             <StackPanel Orientation="Vertical">
                                 <Grid>
@@ -330,7 +354,7 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Target="Output_Den60F" Content="Den. 60/60F t/m3"
+                                    <Label Grid.Column="0" Target="Output_Den60F" Content="Den. 60/60F"
                                            Style="{StaticResource Style_LabelDownMenu}"/>
                                     <TextBox Grid.Column="1" Name="Output_Den60F"/>
                                 </Grid>
@@ -345,21 +369,34 @@
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="ASTM Tables 21,51">
-                            <StackPanel Orientation="Vertical">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Target="IO_APIi60F" Content="API 60 F"
-                                           Style="{StaticResource Style_LabelDownMenu}"/>
-                                    <TextBox Grid.Column="1" Name="IO_APIi60F"/>
-                                </Grid>
 
-                            </StackPanel>
-                        </GroupBox>
                     </StackPanel>
+                    <c:ComponentShipCondition
+                        Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="4"
+                        Grid.RowSpan="2"
+                        DataContext="{Binding Path=LoadingCondition.ShipCondition}"
+                        DockPanel.Dock="Right"
+                        LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftEquiv="{Binding DraftEquivalent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                        DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+
 
                 </Grid>
             </TabItem>
@@ -414,7 +451,8 @@
                         FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftEquiv="{Binding DraftEquiv, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                        DraftEquiv="{Binding DraftEquivalent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"

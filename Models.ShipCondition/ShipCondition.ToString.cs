@@ -7,7 +7,7 @@ public partial class ShipConditionClass
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.AppendLine("CargoTank: {");
+        sb.AppendLine("Ship Condition: {");
 
         var type = GetType();
         var properties = type.GetProperties();

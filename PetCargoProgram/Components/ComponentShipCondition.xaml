@@ -6,14 +6,14 @@
         <WrapPanel Orientation="Vertical">
             <GroupBox Header="Displacement">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
+                    <Grid>
                         <Label Content="Light Weight"/>
                         <TextBlock Text="{Binding Path=LightWeight,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
                         StringFormat=\{0:f0\}}"
                                    HorizontalAlignment="Right"/>
-                    </StackPanel>
+                    </Grid>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Deadweight"/>
                         <TextBlock Text="{Binding Path=DeadWeight,
@@ -130,6 +130,14 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="DraftMean"/>
                             <TextBlock Text="{Binding Path=DraftMean,
+                             Mode=OneWay,
+                             UpdateSourceTrigger=PropertyChanged,
+                             StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="DraftActual"/>
+                            <TextBlock Text="{Binding Path=DraftActual,
                              Mode=OneWay,
                              UpdateSourceTrigger=PropertyChanged,
                              StringFormat=\{0:f2\}}"

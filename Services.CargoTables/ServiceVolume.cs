@@ -23,9 +23,13 @@ public class ServiceVolume
     {
         // Получаем ближайшие значения
         var closest = GetClosestTableValues(name,volume);
-        var interKoef = (volume - closest.First().Volume)
-                        / (closest.Last().Volume - closest.First().Volume);
-        return GetInterpolatedFullValue(closest[0],closest[1],interKoef,volume);
+        if (Math.Abs(closest[0].Volume - volume) > 0.25)
+        {
+            var interKoef = (volume - closest.First().Volume) / (closest.Last().Volume - closest.First().Volume);
+            return GetInterpolatedFullValue(closest[0],closest[1],interKoef,volume);
+        }
+        return closest[0];
+
     }
 
     public double GetLCG(string name, double volume)
