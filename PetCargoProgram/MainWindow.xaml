@@ -312,7 +312,16 @@
                                      TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Grid
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="3"
+                            Grid.RowSpan="3">
+                            <c:ChartVessel>
 
+                            </c:ChartVessel>
+
+                        </Grid>
                      <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Vertical">
                         <GroupBox Header="Sttings">
                             <StackPanel Orientation="Vertical">
@@ -396,6 +405,7 @@
                         DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+
 
 
                 </Grid>

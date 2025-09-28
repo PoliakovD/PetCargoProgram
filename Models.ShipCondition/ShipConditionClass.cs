@@ -247,5 +247,9 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         LCB= value.LCB;
         CM = value.CM;
         DraftEquivalent = DraftMean;
+        MomentX = -188442.63;
+        MomentY = 0.0;
+        MomentZ = 203646.66;
+
     }
 }
