@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Models.Tanks;
 
 namespace PetCargoProgram.Services.LoadingCondition;
@@ -19,25 +20,54 @@ public partial class ServiceLoadingCondition
         double sumDiesel = 0.0;
         double sumLube = 0.0;
         double sumFW = 0.0;
+        double sumOther = 0.0;
         foreach (var item in Table)
         {
             if (item is BallastTank) sumBallast += item.Weight;
             if (item is CargoTank) sumCargo += item.Weight;
-            if (item is OtherTank) sumFuel += item.Weight; // TODO Добавить остальные типы танков
+            if (item is OtherTank)
+                switch (item.TypeOfItem)
+            {
+                case  TypeOfLoadingConditionItem.FuelOilTank:
+                {
+                    sumFuel+=item.Weight;
+                    break;
+                }
+                case TypeOfLoadingConditionItem.DieselOilTank:
+                {
+                    sumDiesel+=item.Weight;
+                    break;
+                }
+                case TypeOfLoadingConditionItem.LubeOilTank:
+                {
+                    sumLube+=item.Weight;
+                    break;
+                }
+                case TypeOfLoadingConditionItem.FreshWaterTank:
+                {
+                    sumFW+=item.Weight;
+                    break;
+                }
+                case TypeOfLoadingConditionItem.Other:
+                {
+                    sumOther += item.Weight;
+                    break;
+                }
+            }; // TODO Добавить остальные типы танков
         }
+
+        var totalSum = sumCargo + sumBallast + sumFuel + sumDiesel + sumLube + sumFW + sumOther;
 
         ShipCondition.CargoOnBoard = sumCargo;
         ShipCondition.BallastOnBoard = sumBallast;
         ShipCondition.FuelOilOnBoard = sumFuel;
-        ShipCondition.Displacement =  _shipCondition.CargoOnBoard
-                                      + _shipCondition.BallastOnBoard
-                                      + _shipCondition.FuelOilOnBoard
-                                      + _shipCondition.LubeOilOnBoard
-                                      + _shipCondition.DieselOnBoard
-                                      + _shipCondition.FreshWaterOnBoard
-                                      + _shipCondition.LubeOilOnBoard
-                                      + _shipCondition.LightWeight;
-        ShipCondition.DeadWeight = _shipCondition.Displacement - _shipCondition.LightWeight;
+        ShipCondition.DieselOilOnBoard = sumDiesel;
+        ShipCondition.LubeOilOnBoard = sumLube;
+        ShipCondition.FreshWaterOnBoard = sumFW;
+        ShipCondition.OtherStoresOnBoard = sumOther;
+
+        ShipCondition.Displacement =  totalSum + _shipCondition.LightWeight;
+        ShipCondition.DeadWeight = totalSum;
     }
 
     private void UpdateFromHydrostaticTable()

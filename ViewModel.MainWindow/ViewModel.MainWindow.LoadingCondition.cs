@@ -12,6 +12,7 @@ public partial class ViewModelMainWindow
         LoadingCondition = new ServiceLoadingCondition();
         LoadingCondition.AddRange(CargoTanks.Values);
         LoadingCondition.AddRange(BallastTanks.Values);
+        LoadingCondition.AddRange(OtherTanks.Values);
         LoadingCondition.Add( new LightWeight());
     }
 }

@@ -9,7 +9,7 @@ using PetCargoProgram.Models.CargoTables.Values;
 namespace PetCargoProgram.Services.CargoTables;
 public class ServiceVolume
 {
-    private List<Table_Volume> Tables { get; set; }
+    public List<Table_Volume> Tables { get; set; }
 
     public ServiceVolume(Tables_Volume volume)
     {

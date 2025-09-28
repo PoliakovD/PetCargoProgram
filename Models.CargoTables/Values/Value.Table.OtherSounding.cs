@@ -2,17 +2,17 @@
 
 public class Value_Table_OtherSounding
 {
-    public double volume { get; set; }
-    public double sound { get; set; }
-    public Value_Table_OtherSounding(double Volume, double Sound)
+    public double Volume { get; set; }
+    public double Sound { get; set; }
+    public Value_Table_OtherSounding(double volume, double sound)
     {
-        volume = Volume;
-        sound = Sound;
+        this.Volume = volume;
+        this.Sound = sound;
 
     }
     public override string ToString()
     {
-        return volume + "\t" + sound;
+        return Volume + "\t" + Sound;
     }
     public override int GetHashCode()
     {

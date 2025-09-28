@@ -19,6 +19,7 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
     private double _tcg;
     private double _iy;
     private SolidColorBrush _color;
+    private TypeOfLoadingConditionItem _typeOfTank;
 
     public string ItemName
     {
@@ -104,6 +105,12 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
         set => SetField(ref _color, value);
     }
 
+    public TypeOfLoadingConditionItem TypeOfItem
+    {
+        get => _typeOfTank;
+        set => _typeOfTank = value;
+    }
+
     public LightWeight()
     {
         ItemName = "Light Weight";
@@ -122,5 +129,6 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
         Sound = 0;
         Ullage = 0;
         Color = new SolidColorBrush(Colors.LightGray);
+        TypeOfItem=TypeOfLoadingConditionItem.Other;
     }
 }

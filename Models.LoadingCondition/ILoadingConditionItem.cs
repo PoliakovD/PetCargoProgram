@@ -19,4 +19,10 @@ public interface ILoadingConditionItem
     public double IY { get; set; }
 
     public SolidColorBrush Color { get; set; }
+    public TypeOfLoadingConditionItem TypeOfItem { get; set; }
+}
+
+public enum TypeOfLoadingConditionItem
+{
+    CargoTank,BallastTank,FuelOilTank,DieselOilTank,LubeOilTank,FreshWaterTank,Stores,Other
 }

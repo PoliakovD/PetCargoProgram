@@ -29,6 +29,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
     private double _trim = 0.0;
 
     private SolidColorBrush _color;
+    private TypeOfLoadingConditionItem _typeOfItem;
 
     // Tables инициализируется статическим методом, до создания любого экземпляра класса
     private static ServiceVolume _sVolume = CargoTablesProvider.Volume;
@@ -44,6 +45,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
         DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
         _density = 1.025;
         Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(118, 129, 225, 238));
+        TypeOfItem = TypeOfLoadingConditionItem.BallastTank;
 
     }
     public BallastTank()
@@ -61,6 +63,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
         _vcg = 0;
         _tcg = 0;
         _iy = 0;
+        TypeOfItem = TypeOfLoadingConditionItem.BallastTank;
     }
    public string ItemName
     {
@@ -71,7 +74,6 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
 
             MaxVolume = _sVolume.GetMaxVolume(_itemName);
             MaxUllage = _soundTrim.GetMaxSound(_itemName)+double.Epsilon;
-            _density = 1.025;
         }
     }
 
@@ -125,7 +127,7 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
             _sound=_maxUllage-value;
             OnPropertyChanged(nameof(Sound));
 
-            _volume = _soundTrim.GetVolumeWithTrim(_itemName,_ullage);
+            _volume = _soundTrim.GetVolumeWithTrim(_itemName,_sound);
             OnPropertyChanged(nameof(Volume));
 
             _volumePercent= _volume / _maxVolume;
@@ -271,6 +273,12 @@ public partial class BallastTank : NotifyPropertyChanged, ILoadingConditionItem
     {
         get => _color;
         set => SetField(ref _color, value);
+    }
+
+    public TypeOfLoadingConditionItem TypeOfItem
+    {
+        get => _typeOfItem;
+        set => _typeOfItem = value;
     }
 
     public void Clone(BallastTank clone)

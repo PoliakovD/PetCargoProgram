@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using PetCargoProgram.DataAccess;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Services.CargoTables;
@@ -23,4 +25,16 @@ Console.WriteLine("VCG: " + VCG);
 Console.WriteLine("IY: " + IY);
 Console.WriteLine("Volume: " + Volume);
 Console.WriteLine("Searched to FullValue: "+tableService.GetValue(Name, Volume));
+
+var sb = new StringBuilder();
+sb.Append("{");
+foreach (var item in CargoTablesProvider.Volume.Tables)
+{
+    sb.Append("\"");
+    sb.Append(item.Name);
+    sb.Append("\"");
+    sb.Append(",");
+}
+sb.Append("}");
+File.WriteAllText("Cargossssss.txt", sb.ToString());
 Console.ReadKey();

@@ -11,21 +11,24 @@
                         <TextBlock Text="{Binding Path=LightWeight,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f0\}}"/>
+                        StringFormat=\{0:f0\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Deadweight"/>
                         <TextBlock Text="{Binding Path=DeadWeight,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f1\}}"/>
+                        StringFormat=\{0:f1\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Displacement"/>
                         <TextBlock Text="{Binding Path=Displacement,
                          Mode=OneWay,
                           UpdateSourceTrigger=PropertyChanged,
-                          StringFormat=\{0:f1\}}"/>
+                          StringFormat=\{0:f1\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Deadweight Reg"/>
@@ -33,7 +36,8 @@
                         Path=      DeadWeightRegistred,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f0\}}"/>
+                        StringFormat=\{0:f0\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -44,49 +48,56 @@
                         <TextBlock Text="{Binding Path=CargoOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f1\}}"/>
+                        StringFormat=\{0:f1\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Ballast"/>
                         <TextBlock Text="{Binding Path=BallastOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f1\}}"/>
+                        StringFormat=\{0:f1\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Fuel Oil"/>
                         <TextBlock Text="{Binding Path=FuelOilOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f1\}}"/>
+                        StringFormat=\{0:f1\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Diesel Oil"/>
                         <TextBlock Text="{Binding Path=DieselOilOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f2\}}"/>
+                        StringFormat=\{0:f2\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Lube Oil"/>
                         <TextBlock Text="{Binding Path=LubeOilOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f2\}}"/>
+                        StringFormat=\{0:f2\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Fresh Water"/>
                         <TextBlock Text="{Binding Path=FreshWaterOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f2\}}"/>
+                        StringFormat=\{0:f2\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Other Stores"/>
                         <TextBlock Text="{Binding Path=OtherStoresOnBoard,
                         Mode=OneWay,
                         UpdateSourceTrigger=PropertyChanged,
-                        StringFormat=\{0:f2\}}"/>
+                        StringFormat=\{0:f2\}}"
+                                   HorizontalAlignment="Right"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -97,42 +108,48 @@
                             <TextBlock Text="{Binding Path=DraftEquiv,
                             Mode=OneWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            StringFormat=\{0:f2\}}"/>
+                            StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="DraftFore"/>
                             <TextBlock Text="{Binding Path=DraftFore,
                             Mode=OneWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            StringFormat=\{0:f2\}}"/>
+                            StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="DraftAft"/>
                             <TextBlock Text="{Binding Path=DraftAft,
                              Mode=OneWay,
                              UpdateSourceTrigger=PropertyChanged,
-                             StringFormat=\{0:f2\}}"/>
+                             StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="DraftMean"/>
                             <TextBlock Text="{Binding Path=DraftMean,
                              Mode=OneWay,
                              UpdateSourceTrigger=PropertyChanged,
-                             StringFormat=\{0:f2\}}"/>
+                             StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Trim"/>
                             <TextBlock Text="{Binding Path=Trim,
                             Mode=OneWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            StringFormat=\{0:f2\}}"/>
+                            StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="List"/>
                             <TextBlock Text="{Binding Path=List,
                             Mode=OneWay,
                             UpdateSourceTrigger=PropertyChanged,
-                            StringFormat=\{0:f2\}}"/>
+                            StringFormat=\{0:f2\}}"
+                                       HorizontalAlignment="Right"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

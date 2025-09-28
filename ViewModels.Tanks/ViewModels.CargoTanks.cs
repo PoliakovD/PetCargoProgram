@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Text;
+using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.Tanks;
+using PetCargoProgram.Services.CargoTables;
 using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.ViewModels.Tanks;
@@ -26,6 +30,8 @@ public class ViewModelCargoTanks: NotifyPropertyChanged
         {
             CargoTanks.Add(tankName,new CargoTank(tankName));
         }
+        var sb = new StringBuilder(){};
+
     }
 
     private void FillObservableCollections<T>(IEnumerable<T> items, ObservableCollection<T> collection)

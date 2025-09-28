@@ -27,6 +27,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     private double _tcg;
     private double _iy;
     private SolidColorBrush _color;
+    private TypeOfLoadingConditionItem _typeOfItem;
 
     // Tables инициализируется статическим классом, до создания любого экземпляра класса
     private static ServiceVolume _sVolume = CargoTablesProvider.Volume;
@@ -40,6 +41,8 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
         _density = 0.988;
         Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(137, 129, 225, 13));
+        TypeOfItem = TypeOfLoadingConditionItem.CargoTank;
+
     }
     public CargoTank()
     {
@@ -56,6 +59,8 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         _vcg = 0;
         _tcg = 0;
         _iy = 0;
+        TypeOfItem = TypeOfLoadingConditionItem.CargoTank;
+
     }
 
 
@@ -266,6 +271,12 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     {
         get => _color;
         set => SetField(ref _color, value);
+    }
+
+    public TypeOfLoadingConditionItem TypeOfItem
+    {
+        get => _typeOfItem;
+        set => _typeOfItem = value;
     }
 }
 
