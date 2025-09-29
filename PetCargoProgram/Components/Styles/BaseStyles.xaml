@@ -191,4 +191,21 @@
         <Setter Property="HorizontalContentAlignment" Value="Right"/>
     </Style>
 
+    <!--Стиль для лейблов статистикиглавной странице-->
+    <Style x:Key="Style_LabelStatistic" TargetType="Label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <!-- <Setter Property="MinWidth" Value="100"/> -->
+    </Style>
+
+    <!--Стиль для textbox статистики на главной странице-->
+    <Style x:Key="Style_TextBlockStatistic" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
 </ResourceDictionary>

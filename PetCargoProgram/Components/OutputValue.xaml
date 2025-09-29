@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="PetCargoProgram.Components.OutputValue"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Component">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="Styles/Styles.xaml">
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid DataContext="{Binding ElementName=Component}">
+        <Label Content="{Binding Path=Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+               Style="{StaticResource Style_LabelStatistic}"/>
+        <TextBlock
+            Style="{StaticResource Style_TextBlockStatistic}"
+            Text="{Binding Path=Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</UserControl>
+
