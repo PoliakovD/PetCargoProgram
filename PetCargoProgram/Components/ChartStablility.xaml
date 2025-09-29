@@ -23,10 +23,11 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Image Name="image1" Margin="25,-50,25,0" Grid.Row="0" Grid.RowSpan="2">
+        <Image Name="image1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+               Grid.Row="0" Grid.RowSpan="2">
             <Image.RenderTransform>
                 <TransformGroup>
-
+                    <TranslateTransform Y="-24.2"/>
                     <RotateTransform Angle="{Binding Angle}"
                                      CenterY="{Binding Draft}"/>
                     <TranslateTransform Y="{Binding Draft}"/>

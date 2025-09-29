@@ -20,7 +20,6 @@ namespace PetCargoProgram.Components
 {
     public partial class ChartStablility : UserControl
     {
-        //TODO Исправить правильно отображение графика
         public static readonly DependencyProperty AngleProperty =
             DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
         public double Angle
@@ -39,10 +38,15 @@ namespace PetCargoProgram.Components
             get => (double)GetValue(DraftProperty);
             set
             {
-                SetValue(DraftProperty, -value);
+                SetValue(DraftProperty, value);
             }
         }
-
+        // public Binding RotationBinding = new Binding("Angle");
+        // public Binding DraftBinding = new Binding("Draft");
+        // public RotateTransform Rotate { get; set; }
+        //
+        // public TranslateTransform Down { get; set; }
+        // public TransformGroup RotateAndDown { get; set; }
         //
         // Поля
         //
@@ -56,7 +60,15 @@ namespace PetCargoProgram.Components
         public ChartStablility()
         {
             InitializeComponent();
-
+            //
+            // RotationBinding.ElementName = "ChartStablility"; // элемент-источник
+            // RotationBinding.Path = new PropertyPath("Angle"); // свойство элемента-источника
+            // RotationBinding.SetBinding(TextBlock.TextProperty, binding); // установка привязки для элемента-приемника
+            //
+            //
+            // Rotate = new RotateTransform(0.0);
+            // Rotate.CenterX = 120.0;
+            // Rotate.CenterY = DraftBinding;
                 ;
             DataFill();// Заполнение списка данными
             Execute(); // Заполнение слоев
@@ -83,6 +95,38 @@ namespace PetCargoProgram.Components
             //CosFun();           // Строим косинус точками
             //MarkerFun();        // Надписи
 
+        }
+
+        // Фон
+        private void BackgroundFun()
+        {
+            // Создаем объект для описания геометрической фигуры
+            GeometryDrawing geometryDrawing = new GeometryDrawing();
+
+            // Описываем и сохраняем геометрию квадрата
+            RectangleGeometry rectGeometry = new RectangleGeometry();
+            rectGeometry.Rect = new Rect(0, 0, 300, 50);
+            geometryDrawing.Geometry = rectGeometry;
+
+            // Настраиваем перо и кисть
+            geometryDrawing.Pen = new Pen(Brushes.Red, 0.005);// Перо рамки
+
+            // Настраиваем кисть
+            var fillBrush = new LinearGradientBrush();
+
+            var seaColor = Colors.Blue;
+            seaColor.A = 100;
+
+
+            fillBrush.GradientStops.Add(new GradientStop(seaColor, 0.0));
+            fillBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1.0));
+            fillBrush.StartPoint = new Point(0.0, 0.0);
+            fillBrush.EndPoint = new Point(0, 1);
+
+            geometryDrawing.Brush = fillBrush;// Кисть закраски
+
+            // Добавляем готовый слой в контейнер отображения
+            drawingGroup.Children.Add(geometryDrawing);
         }
 
 
@@ -118,13 +162,19 @@ namespace PetCargoProgram.Components
             geometryDrawing.Geometry = lineGroup;
 
             // Настраиваем перо
-            geometryDrawing.Pen = new Pen(Brushes.Black, 1.0);
+            geometryDrawing.Pen = new Pen(Brushes.Black, 0.5);
 
+            //добавление вращения
+
+            //
+            // geometryDrawing.Geometry.Transform = RotateAndDown;
 
             // Добавляем готовый слой в контейнер отображения
             drawingGroup.Children.Add(geometryDrawing);
 
         }
+
+
  }
 
 }
