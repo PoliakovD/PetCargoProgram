@@ -62,7 +62,6 @@ namespace PetCargoProgram.Components
         // StatusValve
         public static readonly DependencyProperty StatusValveProperty =
             DependencyProperty.Register(nameof(StatusValve), typeof(bool), typeof(ViewCargoTank));
-        private bool _statusValve = true;
 
         public bool StatusValve
         {
