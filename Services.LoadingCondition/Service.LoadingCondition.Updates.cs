@@ -27,41 +27,47 @@ public partial class ServiceLoadingCondition
         double sumMomentX = 0.0;
         double sumMomentY = 0.0;
         double sumMomentZ = 0.0;
+        double sumFreeSurface = 0.0;
         foreach (var item in Table)
         {
-            sumMomentX += item.Weight * item.LCG;
-            sumMomentY += item.Weight * item.TCG;
-            sumMomentZ += item.Weight * item.VCG;
-            if (item is BallastTank) sumBallast += item.Weight;
-            if (item is CargoTank) sumCargo += item.Weight;
-            if (item is OtherTank)
-                switch (item.TypeOfItem)
+            if (item.Weight > 0.0)
             {
-                case  TypeOfLoadingConditionItem.FuelOilTank:
-                {
-                    sumFuel+=item.Weight;
-                    break;
-                }
-                case TypeOfLoadingConditionItem.DieselOilTank:
-                {
-                    sumDiesel+=item.Weight;
-                    break;
-                }
-                case TypeOfLoadingConditionItem.LubeOilTank:
-                {
-                    sumLube+=item.Weight;
-                    break;
-                }
-                case TypeOfLoadingConditionItem.FreshWaterTank:
-                {
-                    sumFW+=item.Weight;
-                    break;
-                }
-                case TypeOfLoadingConditionItem.Other:
-                {
-                    sumOther += item.Weight;
-                    break;
-                }
+                sumMomentX += item.Weight * item.LCG;
+                sumMomentY += item.Weight * item.TCG;
+                sumMomentZ += item.Weight * item.VCG;
+                sumFreeSurface += item.IY*item.Density;
+                if (item is BallastTank) sumBallast += item.Weight;
+                if (item is CargoTank) sumCargo += item.Weight;
+                if (item is OtherTank)
+                    switch (item.TypeOfItem)
+                    {
+                        case  TypeOfLoadingConditionItem.FuelOilTank:
+                        {
+                            sumFuel+=item.Weight;
+                            break;
+                        }
+                        case TypeOfLoadingConditionItem.DieselOilTank:
+                        {
+                            sumDiesel+=item.Weight;
+                            break;
+                        }
+                        case TypeOfLoadingConditionItem.LubeOilTank:
+                        {
+                            sumLube+=item.Weight;
+                            break;
+                        }
+                        case TypeOfLoadingConditionItem.FreshWaterTank:
+                        {
+                            sumFW+=item.Weight;
+                            break;
+                        }
+                        case TypeOfLoadingConditionItem.Other:
+                        {
+                            sumOther += item.Weight;
+                            break;
+                        }
+            }
+
             }; // TODO Добавить остальные типы танков
         }
 
@@ -78,9 +84,10 @@ public partial class ServiceLoadingCondition
         ShipCondition.Displacement =  totalSum + _shipCondition.LightWeight;
         ShipCondition.DeadWeight = totalSum;
 
-        ShipCondition.MomentX= sumMomentX/ShipCondition.Displacement;
-        ShipCondition.MomentY= sumMomentY/ShipCondition.Displacement;
-        ShipCondition.MomentZ= sumMomentZ/ShipCondition.Displacement;
+        ShipCondition.MomentX= sumMomentX;
+        ShipCondition.MomentY= sumMomentY;
+        ShipCondition.MomentZ= sumMomentZ;
+        ShipCondition.FreeSurface = sumFreeSurface;
     }
 
     private void UpdateFromHydrostaticTable()

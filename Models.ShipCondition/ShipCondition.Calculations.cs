@@ -1,4 +1,6 @@
-﻿namespace PetCargoProgram.Models.ShipCondition;
+﻿using System;
+
+namespace PetCargoProgram.Models.ShipCondition;
 
 public partial class ShipConditionClass
 {
@@ -31,6 +33,7 @@ public partial class ShipConditionClass
 
 
     private double _someValueForCalculations;
+    private double _freeSurface;
 
     public double SomeValueForCalculations
     {
@@ -61,17 +64,23 @@ public partial class ShipConditionClass
     // Расчет кормовой осадки
 
     //=(Dfp+((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*figa
+
+    // Расчет угла крена
+    // =ОКРУГЛ((ATAN(My/((Zm-Zg-(FSM_FACT/DISPLACEMENT))*DISPLACEMENT)))*57.3;2)&"°"
+    // My - момент по Y
+    // Zm - KM из гидростатических таблиц
+    // Zg - MomentZ/Displacement
     public void CalcDrafts()
     {
         _draftActual = (_draftEquivalent + Displacement / (100.0 * _tpc) * ((1.025 - _seaWaterDensity) / _seaWaterDensity));
         OnPropertyChanged(nameof(DraftActual));
 
         _draftFore = (_draftActual - ((LengthBetweenPerpendiculars / 2 - LCF) / LengthBetweenPerpendiculars) *
-            ((Displacement * (LCB - MomentX)) / (MCTC * 100.0)));
+            ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
         OnPropertyChanged(nameof(DraftFore));
 
         _draftAft = (_draftActual + ((LengthBetweenPerpendiculars / 2 - LCF) / LengthBetweenPerpendiculars) *
-            ((Displacement * (LCB - MomentX)) / (MCTC * 100.0)));
+            ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
         OnPropertyChanged(nameof(DraftAft));
 
         _draftMean = (_draftAft + _draftFore) / 2.0;
@@ -79,6 +88,19 @@ public partial class ShipConditionClass
 
         _trim = _draftAft-_draftFore;
         OnPropertyChanged(nameof(Trim));
+
+        // =Math.Round((Math.Atan(MomentY/((Gm-(MomentZ/Displacement)-(FreeSurface/Displacement))*Displacement)))*57.3,2)&"°"
+        _list=Math.Round(Math.Atan(MomentY/((Gm-(MomentZ/Displacement)-(FreeSurface/Displacement))*Displacement))*57.3,2);
+
+        // =ОКРУГЛ((ATAN(My/((Zm-Zg-(FSM_FACT/DISPLACEMENT))*DISPLACEMENT)))*57.3;2)&"°"
+
+        // var My=MomentY;
+        // var Zm = Gm;
+        // var Zg = MomentZ / Displacement;
+        //
+        // _list = Math.Round((Math.Atan(My / ((Zm - Zg - (FreeSurface / Displacement)) * Displacement))) * 57.3, 2);
+        OnPropertyChanged(nameof(List));
+
 
     }
 
@@ -90,5 +112,11 @@ public partial class ShipConditionClass
             SetField(ref _seaWaterDensity, value);
             CalcDrafts();
         }
+    }
+
+    public double FreeSurface
+    {
+        get => _freeSurface;
+        set =>SetField(ref _freeSurface, value);
     }
 }

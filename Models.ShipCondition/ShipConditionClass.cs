@@ -238,6 +238,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         Displacement = 17475.9;
         DeadWeightRegistred = 1054999;
         SeaWaterDensity = 1.025;
+
         var value = CargoTablesProvider.Hydrostatic.GetValue(Displacement);
         DraftMean = value.Draft;
         TPC = value.TPC;
@@ -246,7 +247,9 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         MCTC= value.MCTC;
         LCB= value.LCB;
         CM = value.CM;
+
         DraftEquivalent = DraftMean;
+        CalcDrafts();
         MomentX = -188442.63;
         MomentY = 0.0;
         MomentZ = 203646.66;
