@@ -20,6 +20,29 @@ namespace PetCargoProgram.Components
 {
     public partial class ChartStablility : UserControl
     {
+        //TODO Исправить правильно отображение графика
+        public static readonly DependencyProperty AngleProperty =
+            DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
+        public double Angle
+        {
+            get => (double)GetValue(AngleProperty);
+            set
+            {
+                SetValue(AngleProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty DraftProperty =
+            DependencyProperty.Register(nameof(Draft), typeof(double), typeof(ChartStablility));
+        public double Draft
+        {
+            get => (double)GetValue(DraftProperty);
+            set
+            {
+                SetValue(DraftProperty, -value);
+            }
+        }
+
         //
         // Поля
         //
@@ -34,6 +57,7 @@ namespace PetCargoProgram.Components
         {
             InitializeComponent();
 
+                ;
             DataFill();// Заполнение списка данными
             Execute(); // Заполнение слоев
 
@@ -52,12 +76,13 @@ namespace PetCargoProgram.Components
         // Послойное формирование рисунка в Z-последовательности
         void Execute()
         {
-            BackgroundFun();    // Фон
+            ShipFun();
+            //BackgroundFun();    // Фон
             //GridFun();          // Мелкая сетка
             //SinFun();           // Строим синус линией
             //CosFun();           // Строим косинус точками
             //MarkerFun();        // Надписи
-            ShipFun();
+
         }
 
         // Фон
@@ -68,12 +93,25 @@ namespace PetCargoProgram.Components
 
             // Описываем и сохраняем геометрию квадрата
             RectangleGeometry rectGeometry = new RectangleGeometry();
-            rectGeometry.Rect = new Rect(0, 0, 1, 1);
+            rectGeometry.Rect = new Rect(0, 0, 300, 50);
             geometryDrawing.Geometry = rectGeometry;
 
             // Настраиваем перо и кисть
             geometryDrawing.Pen = new Pen(Brushes.Red, 0.005);// Перо рамки
-            geometryDrawing.Brush = Brushes.Beige;// Кисть закраски
+
+            // Настраиваем кисть
+            var fillBrush = new LinearGradientBrush();
+
+            var seaColor = Colors.Blue;
+            seaColor.A = 100;
+
+
+            fillBrush.GradientStops.Add(new GradientStop(seaColor, 0.0));
+            fillBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1.0));
+            fillBrush.StartPoint = new Point(0.0, 0.0);
+            fillBrush.EndPoint = new Point(0, 1);
+
+            geometryDrawing.Brush = fillBrush;// Кисть закраски
 
             // Добавляем готовый слой в контейнер отображения
             drawingGroup.Children.Add(geometryDrawing);
@@ -83,19 +121,19 @@ namespace PetCargoProgram.Components
         private void GridFun()
         {
             // Создаем коллекцию для описания геометрических фигур
-            GeometryGroup geometryGroup = new GeometryGroup();
+            GeometryGroup lineGroup = new GeometryGroup();
 
             // Создаем и добавляем в коллекцию десять параллельных линий
             for (int i = 1; i < 10; i++)
             {
                 LineGeometry line = new LineGeometry(new Point(1.0, i * 0.1),
                     new Point(-0.1, i * 0.1));
-                geometryGroup.Children.Add(line);
+                lineGroup.Children.Add(line);
             }
 
             // Сохраняем описание геометрии
             GeometryDrawing geometryDrawing = new GeometryDrawing();
-            geometryDrawing.Geometry = geometryGroup;
+            geometryDrawing.Geometry = lineGroup;
 
             // Настраиваем перо
             geometryDrawing.Pen = new Pen(Brushes.Gray, 0.003);
@@ -104,32 +142,6 @@ namespace PetCargoProgram.Components
 
             // Настраиваем кисть
             geometryDrawing.Brush = Brushes.Beige;
-
-            // Добавляем готовый слой в контейнер отображения
-            drawingGroup.Children.Add(geometryDrawing);
-        }
-
-        // Строим синус линией
-        private void SinFun()
-        {
-            // Строим описание синусоиды
-            GeometryGroup geometryGroup = new GeometryGroup();
-            for (int i = 0; i < dataList[0].Length - 1; i++)
-            {
-                LineGeometry line = new LineGeometry(
-                    new Point((double)i / (double)countDot,
-                        .5 - (dataList[0][i] / 2.0)),
-                    new Point((double)(i + 1) / (double)countDot,
-                        .5 - (dataList[0][i + 1] / 2.0)));
-                geometryGroup.Children.Add(line);
-            }
-
-            // Сохраняем описание геометрии
-            GeometryDrawing geometryDrawing = new GeometryDrawing();
-            geometryDrawing.Geometry = geometryGroup;
-
-            // Настраиваем перо
-            geometryDrawing.Pen = new Pen(Brushes.Blue, 0.005);
 
             // Добавляем готовый слой в контейнер отображения
             drawingGroup.Children.Add(geometryDrawing);
@@ -151,31 +163,34 @@ namespace PetCargoProgram.Components
         // Рисуем кораблик
         private void ShipFun()
         {
-            countDot = dataList[0].Length/2;
             // Строим описание судна
-            GeometryGroup geometryGroup = new GeometryGroup();
+            GeometryGroup lineGroup = new GeometryGroup();
             LineGeometry line;
             int i = 0;
             for (i = 0; i < dataList[0].Length - 3; i+=2)
             {
                 line = new LineGeometry(
-                    new Point(dataList[0][i], -dataList[0][i+1]),
-                    new Point(dataList[0][i+2], -dataList[0][i+3]));
-                geometryGroup.Children.Add(line);
+                    new Point(dataList[0][i]+25.0, -dataList[0][i+1]),
+                    new Point(dataList[0][i+2]+25.0, -dataList[0][i+3]));
+                lineGroup.Children.Add(line);
             }
-            // line = new LineGeometry(
-            //     new Point(dataList[0][0], dataList[0][1]),
-            //     new Point(dataList[0][dataList[0].Length-2], -dataList[0][dataList[0].Length-1]));
-            // geometryGroup.Children.Add(line);
             // Сохраняем описание геометрии
             GeometryDrawing geometryDrawing = new GeometryDrawing();
-            geometryDrawing.Geometry = geometryGroup;
+            geometryDrawing.Geometry = lineGroup;
 
             // Настраиваем перо
             geometryDrawing.Pen = new Pen(Brushes.Black, 0.5);
 
+
             // Добавляем готовый слой в контейнер отображения
             drawingGroup.Children.Add(geometryDrawing);
+
+        }
+
+        private void ShipRotate()
+        {
+            var rotate = new RotateTransform(Angle);
+            ((drawingGroup.Children[0] as GeometryDrawing)!).Geometry.Transform = rotate;
         }
 
 

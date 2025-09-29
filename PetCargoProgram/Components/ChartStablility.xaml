@@ -5,9 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:PetCargoProgram.Components"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="20">
-        <Image Name="image1" />
+             d:DesignHeight="300" d:DesignWidth="300"
+             x:Name="Component">
+    <Grid Margin="20"
+          DataContext="{Binding ElementName=Component}"
+          x:Name="GridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle  VerticalAlignment="Stretch" Grid.Row="1" Width="Auto" HorizontalAlignment="Stretch">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="DodgerBlue" Offset="0"/>
+                    <GradientStop Color="Transparent" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Image Name="image1" Margin="25,0,25,0" Grid.Row="0" Grid.RowSpan="2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="{Binding Angle}"
+                                     CenterY="{Binding Draft}"/>
+                    <TranslateTransform Y="{Binding Draft}"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
     </Grid>
 </UserControl>
 

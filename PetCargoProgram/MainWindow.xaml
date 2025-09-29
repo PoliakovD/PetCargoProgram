@@ -317,7 +317,9 @@
                             Grid.ColumnSpan="2"
                             Grid.Row="3"
                             Grid.RowSpan="3">
-                            <c:ChartStablility>
+                            <c:ChartStablility
+                                Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
+                                Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}">
 
                             </c:ChartStablility>
                             <!-- <c:ChartVessel> -->
@@ -390,6 +392,7 @@
                         Grid.RowSpan="2"
                         DataContext="{Binding Path=LoadingCondition.ShipCondition}"
                         DockPanel.Dock="Right"
+                        TrimAngle="{Binding TrimAngle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"

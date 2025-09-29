@@ -101,6 +101,8 @@ public partial class ShipConditionClass
         // _list = Math.Round((Math.Atan(My / ((Zm - Zg - (FreeSurface / Displacement)) * Displacement))) * 57.3, 2);
         OnPropertyChanged(nameof(List));
 
+        TrimAngle=Math.Asin(Trim/LengthBetweenPerpendiculars)*-57.3;
+        OnPropertyChanged(nameof(TrimAngle));
 
     }
 

@@ -14,6 +14,15 @@ public partial class ComponentShipCondition : UserControl
         set => SetValue(LightWeightProperty, value);
     }
 
+    // TrimAngle
+    public static readonly DependencyProperty TrimAngleProperty =
+        DependencyProperty.Register(nameof(TrimAngle), typeof(double), typeof(ComponentShipCondition));
+    public double TrimAngle
+    {
+        get => (double)GetValue(TrimAngleProperty);
+        set => SetValue(TrimAngleProperty, value);
+    }
+
     // DeadWeight
     public static readonly DependencyProperty DeadWeightProperty =
         DependencyProperty.Register(nameof(DeadWeight), typeof(double), typeof(ComponentShipCondition));

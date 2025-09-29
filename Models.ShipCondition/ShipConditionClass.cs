@@ -40,6 +40,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _draftFore;
     private double _trim;
     private double _list;
+    private double _trimAngle;
 
     public double LightWeight
     {
@@ -230,6 +231,12 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     {
         get => _list;
         set => SetField(ref _list, value);
+    }
+
+    public double TrimAngle
+    {
+        get => _trimAngle;
+        set => SetField(ref _trimAngle, value);
     }
 
     public ShipConditionClass()

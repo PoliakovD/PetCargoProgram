@@ -26,6 +26,9 @@
                     <c:OutputValue Title="Deadweight Reg"
                                    Value="{Binding Path=DeadWeightRegistred,
                                    Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f0\}}"/>
+                    <c:OutputValue Title="TrimAngle"
+                                   Value="{Binding Path=TrimAngle,
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="On Board"
