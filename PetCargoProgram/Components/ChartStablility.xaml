@@ -23,7 +23,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Image Name="image1" Margin="25,0,25,0" Grid.Row="0" Grid.RowSpan="2">
+        <Image Name="image1" Margin="25,-50,25,0" Grid.Row="0" Grid.RowSpan="2">
             <Image.RenderTransform>
                 <TransformGroup>
 
