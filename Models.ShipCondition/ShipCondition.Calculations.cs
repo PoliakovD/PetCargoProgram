@@ -7,7 +7,7 @@ public partial class ShipConditionClass
     private double _draftActual; // Берется из гидростатических таблиц(DRAFT_1025)
     private double _draftEquivalent; // Считается из солености воды
     private double _seaWaterDensity; //Cлёность воды
-    private const double LengthBetweenPerpendiculars = 239.0; // Длинна между перпенднуларями
+    public const double LengthBetweenPerpendiculars = 239.0; // Длинна между перпенднуларями
 
     private double _momentX;
     private double _momentY;
@@ -75,6 +75,8 @@ public partial class ShipConditionClass
         _draftActual = (_draftEquivalent + Displacement / (100.0 * _tpc) * ((1.025 - _seaWaterDensity) / _seaWaterDensity));
         OnPropertyChanged(nameof(DraftActual));
 
+        DraftForChart = -_draftActual;
+
         _draftFore = (_draftActual - ((LengthBetweenPerpendiculars / 2 - LCF) / LengthBetweenPerpendiculars) *
             ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
         OnPropertyChanged(nameof(DraftFore));
@@ -89,16 +91,7 @@ public partial class ShipConditionClass
         _trim = _draftAft-_draftFore;
         OnPropertyChanged(nameof(Trim));
 
-        // =Math.Round((Math.Atan(MomentY/((Gm-(MomentZ/Displacement)-(FreeSurface/Displacement))*Displacement)))*57.3,2)&"°"
         _list=Math.Round(Math.Atan(MomentY/((Gm-(MomentZ/Displacement)-(FreeSurface/Displacement))*Displacement))*57.3,2);
-
-        // =ОКРУГЛ((ATAN(My/((Zm-Zg-(FSM_FACT/DISPLACEMENT))*DISPLACEMENT)))*57.3;2)&"°"
-
-        // var My=MomentY;
-        // var Zm = Gm;
-        // var Zg = MomentZ / Displacement;
-        //
-        // _list = Math.Round((Math.Atan(My / ((Zm - Zg - (FreeSurface / Displacement)) * Displacement))) * 57.3, 2);
         OnPropertyChanged(nameof(List));
 
         TrimAngle=Math.Asin(Trim/LengthBetweenPerpendiculars)*-57.3;

@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="Styles/Styles.xaml"/>
     </UserControl.Resources>
-
+<!-- <Grid DataContext="{Binding ElementName=Component}"> -->
     <Grid Margin="20"
           DataContext="{Binding ElementName=Component}"
           x:Name="GridMain">
@@ -18,26 +18,24 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Rectangle  VerticalAlignment="Stretch" Grid.Row="1"  HorizontalAlignment="Stretch">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="DodgerBlue" Offset="0"/>
-                    <GradientStop Color="Transparent" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
+        <!-- <Rectangle  VerticalAlignment="Stretch" Grid.Row="1"  HorizontalAlignment="Stretch"> -->
+        <!--     <Rectangle.Fill> -->
+        <!--         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1"> -->
+        <!--             <GradientStop Color="DodgerBlue" Offset="0"/> -->
+        <!--             <GradientStop Color="Transparent" Offset="1"/> -->
+        <!--         </LinearGradientBrush> -->
+        <!--     </Rectangle.Fill> -->
+        <!-- </Rectangle> -->
         <Image Name="image1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
                Grid.Row="0">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <RotateTransform Angle="{Binding Angle, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
-                                     CenterY="{Binding Draft, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
-                                     CenterX="120.0"/>
-                    <TranslateTransform Y="{Binding Draft, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
-                </TransformGroup>
-            </Image.RenderTransform>
+            <!-- <Image.RenderTransform> -->
+            <!--     <TransformGroup> -->
+            <!--         <RotateTransform Angle="{Binding Angle, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" -->
+            <!--                          CenterY="{Binding Draft, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" -->
+            <!--                          CenterX="{Binding LCF, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/> -->
+            <!--         <TranslateTransform Y="{Binding Draft, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/> -->
+            <!--     </TransformGroup> -->
+            <!-- </Image.RenderTransform> -->
         </Image>
         <!--     <Image.RenderTransform> -->
         <!--         <TransformGroup> -->
@@ -57,8 +55,14 @@
         <!--         </TransformGroup> -->
         <!--     </Image.RenderTransform> -->
         <!-- </Image> -->
-
-
     </Grid>
+    <!-- <StackPanel Orientation="Vertical"> -->
+    <!--     <Label Content="{Binding Path=Draft, StringFormat=Draft \{0:f2\}}"/> -->
+    <!--     <Label Content="{Binding Path=LCF, StringFormat=LCF \{0:f2\}}"/> -->
+    <!--     <Label Content="{Binding Path=Angle, StringFormat=Angle \{0:f2\}}"/> -->
+    <!-- </StackPanel> -->
+<!-- </Grid> -->
+
+
 </UserControl>
 

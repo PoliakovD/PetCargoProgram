@@ -41,6 +41,17 @@ namespace PetCargoProgram.Components
                 SetValue(DraftProperty, value);
             }
         }
+
+        public static readonly DependencyProperty LCFProperty =
+            DependencyProperty.Register(nameof(LCF), typeof(double), typeof(ChartStablility));
+        public double LCF
+        {
+            get => (double)GetValue(LCFProperty);
+            set
+            {
+                SetValue(LCFProperty, value+119.5);
+            }
+        }
         public static readonly DependencyProperty AngleProperty =
             DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
         public double Angle
@@ -53,95 +64,39 @@ namespace PetCargoProgram.Components
         }
 
 
-        // public Binding RotationBinding = new Binding("Angle");
-        // public Binding DraftBinding = new Binding("Draft");
-        // public RotateTransform Rotate { get; set; }
-        //
-        // public TranslateTransform Down { get; set; }
-        // public TransformGroup RotateAndDown { get; set; }
+         public Binding RotationBinding = new Binding("Angle");
+         public Binding DraftBinding = new Binding("Draft");
+
         //
         // Поля
         //
-        // Список для хранения данных
-        List<double[]> dataList = new List<double[]>();
-        // Или можно DoubleCollection data = new DoubleCollection();
+
         // Контейнер слоев рисунков
         DrawingGroup drawingGroup = new DrawingGroup();
         //
         //
-        // public GeometryDrawing Ship = new GeometryDrawing();
-        // public RotateTransform Rotate = new RotateTransform();
-        // public TranslateTransform Down = new TranslateTransform();
-        // public TransformGroup RotateAndDown = new TransformGroup();
+         public GeometryDrawing Ship = new GeometryDrawing();
+
+         //
+         public RotateTransform Rotate = new RotateTransform();
+         public TranslateTransform Down = new TranslateTransform();
+         public TransformGroup RotateAndDown = new TransformGroup();
         //
 
 
         public ChartStablility()
         {
             InitializeComponent();
-            //
-            // RotationBinding.ElementName = "ChartStablility"; // элемент-источник
-            // RotationBinding.Path = new PropertyPath("Angle"); // свойство элемента-источника
-            // RotationBinding.SetBinding(TextBlock.TextProperty, binding); // установка привязки для элемента-приемника
-            //
-            //
-            // Rotate = new RotateTransform(0.0);
-            // Rotate.CenterX = 120.0;
-            // Rotate.CenterY = DraftBinding;
-
-
-            DataFill();// Заполнение списка данными
             Execute(); // Заполнение слоев
-
-            // Down = new TranslateTransform();
-            // Rotate = new RotateTransform();
-            // Rotate.CenterX = 120.0;
-            //
-            // Binding RotationBinding = new Binding();
-            //
-            // RotationBinding.ElementName = "Component"; // элемент-источник
-            // RotationBinding.Path = new PropertyPath("AngleProperty"); // свойство элемента-источника
-            // RotationBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            // RotationBinding.Mode = BindingMode.OneWay;
-            //
-            // Binding DownBinding = new Binding();
-            //
-            // DownBinding.ElementName = "Component"; // элемент-источник
-            // DownBinding.Path = new PropertyPath("DraftProperty"); // свойство элемента-источника
-            // DownBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            // DownBinding.Mode = BindingMode.OneWay;
-            //
-            //
-            // BindingOperations.SetBinding(Component, RotateTransform.AngleProperty, RotationBinding);
-            //
-            // BindingOperations.SetBinding(Component, RotateTransform.CenterYProperty, DownBinding);
-            //
-            // BindingOperations.SetBinding(Component, TranslateTransform.YProperty, DownBinding);
-            //
-            // RotateAndDown.Children.Add(Rotate);
-            // RotateAndDown.Children.Add(Down);
-            //
-            // Ship.Geometry.Transform = RotateAndDown;
-
-
             // Отображение на экране
             image1.Source = new DrawingImage(drawingGroup);
         }
 
-        // Генерация точек графиков
-        void DataFill()
-        {
-            double[] ship = GetShipPoints();
-
-            dataList.Add(ship);
-        }
-
-        // Послойное формирование рисунка в Z-последовательности
+        // Послойное формирование рисунка
         void Execute()
         {
             ShipFun();
-            //BackgroundFun();    // Фон
-
+            BackgroundFun();    // Фон
         }
 
         // Фон
@@ -194,14 +149,17 @@ namespace PetCargoProgram.Components
         private void ShipFun()
         {
             // Строим описание судна
+
+            double[] ship = GetShipPoints();
+
             GeometryGroup lineGroup = new GeometryGroup();
             LineGeometry line;
-            int i = 0;
-            for (i = 0; i < dataList[0].Length - 3; i+=2)
+
+            for (int i = 0; i < ship.Length - 3; i+=2)
             {
                 line = new LineGeometry(
-                    new Point(dataList[0][i]+25.0, -dataList[0][i+1]),
-                    new Point(dataList[0][i+2]+25.0, -dataList[0][i+3]));
+                    new Point(ship[i]+25.0, -ship[i+1]),
+                    new Point(ship[i+2]+25.0, -ship[i+3]));
                 lineGroup.Children.Add(line);
             }
             // Сохраняем описание геометрии
@@ -212,7 +170,49 @@ namespace PetCargoProgram.Components
             Ship.Pen = new Pen(Brushes.Black, 0.8);
 
             //добавление вращения
+            RotateAndDown = new TransformGroup();
 
+            Down = new TranslateTransform();
+            Rotate=new RotateTransform();
+
+
+            Binding RotationBinding = new Binding();
+
+            RotationBinding.ElementName = "Component"; // элемент-источник
+            RotationBinding.Path = new PropertyPath("Angle"); // свойство элемента-источника
+            RotationBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            RotationBinding.Mode = BindingMode.OneWay;
+
+            Binding DownBinding = new Binding();
+
+            DownBinding.ElementName = "Component"; // элемент-источник
+            DownBinding.Path = new PropertyPath("Draft"); // свойство элемента-источника
+            DownBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            DownBinding.Mode = BindingMode.OneWay;
+
+            Binding LcfBinding = new Binding();
+            LcfBinding.ElementName = "Component"; // элемент-источник
+            LcfBinding.Path = new PropertyPath("LCF"); // свойство элемента-источника
+            LcfBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            LcfBinding.Mode = BindingMode.OneWay;
+
+            BindingOperations.SetBinding(Rotate, RotateTransform.AngleProperty, RotationBinding);
+            BindingOperations.SetBinding(Rotate, RotateTransform.CenterYProperty, DownBinding);
+            BindingOperations.SetBinding(Rotate, RotateTransform.CenterXProperty, LcfBinding);
+
+            BindingOperations.SetBinding(Down, TranslateTransform.YProperty, DownBinding);
+
+            // Rotate.SetCurrentValue(RotateTransform.AngleProperty, Angle);
+            // Rotate.SetCurrentValue(RotateTransform.CenterYProperty, Draft); // установка привязки для элемента-приемника
+            // Rotate.SetCurrentValue(RotateTransform.CenterXProperty, LCF);
+            //
+            // Down.SetCurrentValue(TranslateTransform.YProperty, Draft);
+
+
+            RotateAndDown.Children.Add(Rotate);
+            RotateAndDown.Children.Add(Down);
+
+            Ship.Geometry.Transform = RotateAndDown;
             //
             // geometryDrawing.Geometry.Transform = RotateAndDown;
 

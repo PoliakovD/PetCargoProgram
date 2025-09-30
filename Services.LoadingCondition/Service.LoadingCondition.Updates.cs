@@ -97,6 +97,7 @@ public partial class ServiceLoadingCondition
         ShipCondition.TPC = value.TPC;
         ShipCondition.Gm = value.MetacentrKM;
         ShipCondition.LCF = value.FloatationCenterLCF;
+        ShipCondition.LCFForChart = ShipCondition.LCF + 119.5; // LBP/2
         ShipCondition.MCTC= value.MCTC;
         ShipCondition.LCB= value.LCB;
         ShipCondition.CM = value.CM;
