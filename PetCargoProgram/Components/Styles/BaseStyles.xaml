@@ -9,6 +9,7 @@
 
 
     <converters:Converter_PercentsToDouble x:Key="Converter_PercentsToDouble"/>
+    <converters:ConverterDraft x:Key="Converter_Draft"/>
 
 
     <!--Control colors.-->
