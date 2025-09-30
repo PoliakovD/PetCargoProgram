@@ -478,7 +478,14 @@
 
 
             </TabItem>
+            <TabItem Header="Ship DRWG">
+                <c:ChartStablility
+                    Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
+                    Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}">
+                </c:ChartStablility>
+            </TabItem>
         </TabControl>
+
 
     </Grid>
 

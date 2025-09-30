@@ -20,16 +20,16 @@ namespace PetCargoProgram.Components
 {
     public partial class ChartStablility : UserControl
     {
-        public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
-        public double Angle
-        {
-            get => (double)GetValue(AngleProperty);
-            set
-            {
-                SetValue(AngleProperty, value);
-            }
-        }
+        // public static readonly DependencyProperty AngleProperty =
+        //     DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
+        // public double Angle
+        // {
+        //     get => (double)GetValue(AngleProperty);
+        //     set
+        //     {
+        //         SetValue(AngleProperty, value);
+        //     }
+        // }
 
         public static readonly DependencyProperty DraftProperty =
             DependencyProperty.Register(nameof(Draft), typeof(double), typeof(ChartStablility));
@@ -41,6 +41,18 @@ namespace PetCargoProgram.Components
                 SetValue(DraftProperty, value);
             }
         }
+        public static readonly DependencyProperty AngleProperty =
+            DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
+        public double Angle
+        {
+            get => (double)GetValue(AngleProperty);
+            set
+            {
+                SetValue(AngleProperty, value);
+            }
+        }
+
+
         // public Binding RotationBinding = new Binding("Angle");
         // public Binding DraftBinding = new Binding("Draft");
         // public RotateTransform Rotate { get; set; }
@@ -50,12 +62,19 @@ namespace PetCargoProgram.Components
         //
         // Поля
         //
-        private int countDot = 0;// Количество отрезков
         // Список для хранения данных
         List<double[]> dataList = new List<double[]>();
         // Или можно DoubleCollection data = new DoubleCollection();
         // Контейнер слоев рисунков
         DrawingGroup drawingGroup = new DrawingGroup();
+        //
+        //
+        // public GeometryDrawing Ship = new GeometryDrawing();
+        // public RotateTransform Rotate = new RotateTransform();
+        // public TranslateTransform Down = new TranslateTransform();
+        // public TransformGroup RotateAndDown = new TransformGroup();
+        //
+
 
         public ChartStablility()
         {
@@ -69,9 +88,41 @@ namespace PetCargoProgram.Components
             // Rotate = new RotateTransform(0.0);
             // Rotate.CenterX = 120.0;
             // Rotate.CenterY = DraftBinding;
-                ;
+
+
             DataFill();// Заполнение списка данными
             Execute(); // Заполнение слоев
+
+            // Down = new TranslateTransform();
+            // Rotate = new RotateTransform();
+            // Rotate.CenterX = 120.0;
+            //
+            // Binding RotationBinding = new Binding();
+            //
+            // RotationBinding.ElementName = "Component"; // элемент-источник
+            // RotationBinding.Path = new PropertyPath("AngleProperty"); // свойство элемента-источника
+            // RotationBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            // RotationBinding.Mode = BindingMode.OneWay;
+            //
+            // Binding DownBinding = new Binding();
+            //
+            // DownBinding.ElementName = "Component"; // элемент-источник
+            // DownBinding.Path = new PropertyPath("DraftProperty"); // свойство элемента-источника
+            // DownBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            // DownBinding.Mode = BindingMode.OneWay;
+            //
+            //
+            // BindingOperations.SetBinding(Component, RotateTransform.AngleProperty, RotationBinding);
+            //
+            // BindingOperations.SetBinding(Component, RotateTransform.CenterYProperty, DownBinding);
+            //
+            // BindingOperations.SetBinding(Component, TranslateTransform.YProperty, DownBinding);
+            //
+            // RotateAndDown.Children.Add(Rotate);
+            // RotateAndDown.Children.Add(Down);
+            //
+            // Ship.Geometry.Transform = RotateAndDown;
+
 
             // Отображение на экране
             image1.Source = new DrawingImage(drawingGroup);
@@ -90,10 +141,6 @@ namespace PetCargoProgram.Components
         {
             ShipFun();
             //BackgroundFun();    // Фон
-            //GridFun();          // Мелкая сетка
-            //SinFun();           // Строим синус линией
-            //CosFun();           // Строим косинус точками
-            //MarkerFun();        // Надписи
 
         }
 
@@ -109,7 +156,7 @@ namespace PetCargoProgram.Components
             geometryDrawing.Geometry = rectGeometry;
 
             // Настраиваем перо и кисть
-            geometryDrawing.Pen = new Pen(Brushes.Red, 0.005);// Перо рамки
+            geometryDrawing.Pen = new Pen(Brushes.Red, 0.015);// Перо рамки
 
             // Настраиваем кисть
             var fillBrush = new LinearGradientBrush();
@@ -158,11 +205,11 @@ namespace PetCargoProgram.Components
                 lineGroup.Children.Add(line);
             }
             // Сохраняем описание геометрии
-            GeometryDrawing geometryDrawing = new GeometryDrawing();
-            geometryDrawing.Geometry = lineGroup;
+            var Ship = new GeometryDrawing();
+            Ship.Geometry = lineGroup;
 
             // Настраиваем перо
-            geometryDrawing.Pen = new Pen(Brushes.Black, 0.5);
+            Ship.Pen = new Pen(Brushes.Black, 0.8);
 
             //добавление вращения
 
@@ -170,7 +217,7 @@ namespace PetCargoProgram.Components
             // geometryDrawing.Geometry.Transform = RotateAndDown;
 
             // Добавляем готовый слой в контейнер отображения
-            drawingGroup.Children.Add(geometryDrawing);
+            drawingGroup.Children.Add(Ship);
 
         }
 
