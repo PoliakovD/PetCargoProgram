@@ -319,7 +319,8 @@
                             Grid.RowSpan="3">
                             <c:ChartStablility
                                 Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
-                                Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}">
+                                Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
+                                LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}">
 
                             </c:ChartStablility>
                             <!-- <c:ChartVessel> -->
@@ -387,9 +388,9 @@
                     </StackPanel>
                     <c:ComponentShipCondition
                         Grid.Column="3"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="3"
                         Grid.Row="4"
-                        Grid.RowSpan="3"
+                        Grid.RowSpan="2"
                         DataContext="{Binding Path=LoadingCondition.ShipCondition}"
                         DockPanel.Dock="Right"
                         TrimAngle="{Binding TrimAngle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
@@ -481,7 +482,8 @@
             <TabItem Header="Ship DRWG">
                 <c:ChartStablility
                     Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
-                    Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}">
+                    Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
+                    LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}">
                 </c:ChartStablility>
             </TabItem>
         </TabControl>
