@@ -42,7 +42,7 @@
                 <ProgressBar Grid.Column="1" Grid.Row="1" Grid.RowSpan="5"
                              Style="{StaticResource Style_ProgressBarVolume}"
                              Value="{Binding Path=Percents, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                             Foreground="DarkSlateGray"/>
+                             Foreground="Green"/>
                 <Button Name ="Input_ValveButtonStatus"
                         Grid.Column="2" Grid.Row="0"
                         Content=""
