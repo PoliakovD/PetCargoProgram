@@ -60,13 +60,14 @@
                 <Label Grid.Column="2" Grid.Row="1"
                        Target="Input_Output_Ullage"
                        Content ="U:"
-                       Style="{StaticResource Style_ValueLabel}"/>
+                       Style="{StaticResource Style_ValueLabel}"
+                       ToolTip="Ullage"/>
                 <TextBox Grid.Column="3" Grid.Row="1"
                          Name ="Input_Output_Ullage"
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                         StringFormat=\{0:f3\}}"
+                         StringFormat=\{0:f3\} m}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
 
@@ -74,20 +75,21 @@
                         Target="Input_Output_Temperature"
                         Content ="C:"
                         Style="{StaticResource Style_ValueLabel}"
-                        />
+                        ToolTip="Temperature"/>
                 <TextBox Grid.Column="3" Grid.Row="2"
                          x:Name ="Input_Output_Temperature"
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=TemperatureTank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                         StringFormat=\{0:f1\}}"
+                         StringFormat=\{0:f1\}°C}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
 
                 <Label  Grid.Column="2" Grid.Row="3"
                         Target="Input_Output_Percents"
                         Content ="%:"
-                        Style="{StaticResource Style_ValueLabel}"/>
+                        Style="{StaticResource Style_ValueLabel}"
+                        ToolTip="Volume in percents"/>
                 <TextBox Grid.Column="3" Grid.Row="3"
                          Name ="Input_Output_Percents"
                          Template="{StaticResource Template_IOTextBoxValues}"
@@ -115,28 +117,30 @@
                 <Label  Grid.Column="2" Grid.Row="4"
                         Target="Input_Output_Volume"
                         Content ="V:"
-                        Style="{StaticResource Style_ValueLabel}"/>
+                        Style="{StaticResource Style_ValueLabel}"
+                        ToolTip="Volume"/>
                 <TextBox Grid.Column="3" Grid.Row="4"
                          Name ="Input_Output_Volume"
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Volume,
                          Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                         StringFormat=\{0:f2\}}"
+                         StringFormat=\{0:f2\} m3}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
 
                 <Label  Grid.Column="2" Grid.Row="5"
                         Target="Input_Output_Weight"
                         Content ="W:"
-                        Style="{StaticResource Style_ValueLabel}"/>
+                        Style="{StaticResource Style_ValueLabel}"
+                        ToolTip="Weight"/>
                 <TextBox Grid.Column="3" Grid.Row="5"
                          Name ="Input_Output_Weight"
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Weight,
                          Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                         StringFormat=\{0:f2\}}"
+                         StringFormat=\{0:f2\} mt}"
                          KeyDown="Event_LoseFocusOnEnter"/>
             </Grid>
         </GroupBox>

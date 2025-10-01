@@ -95,7 +95,7 @@ public partial class ServiceLoadingCondition
         var value = _hydrostatic.GetValue(_shipCondition.Displacement);
         ShipCondition.DraftEquivalent = value.Draft;
         ShipCondition.TPC = value.TPC;
-        ShipCondition.Gm = value.MetacentrKM;
+        ShipCondition.KM = value.MetacentrKM;
         ShipCondition.LCF = value.FloatationCenterLCF;
         ShipCondition.LCFForChart = ShipCondition.LCF + 119.5; // LBP/2
         ShipCondition.MCTC= value.MCTC;

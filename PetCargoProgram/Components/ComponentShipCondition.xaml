@@ -16,45 +16,43 @@
                 <StackPanel Orientation="Vertical">
                     <c:OutputValue Title="Light Weight"
                                    Value="{Binding Path=LightWeight,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f0\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f0\} mt}"/>
                     <c:OutputValue Title="Deadweight"
                                    Value="{Binding Path=DeadWeight,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\} mt}"/>
                     <c:OutputValue Title="Displacement"
                                    Value="{Binding Path=Displacement,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\} mt}"/>
                     <c:OutputValue Title="Deadweight Reg"
                                    Value="{Binding Path=DeadWeightRegistred,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f0\}}"/>
-                    <c:OutputValue Title="TrimAngle"
-                                   Value="{Binding Path=TrimAngle,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f0\} mt}"/>
+
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="On Board"
-                      MinWidth="120">
+                      MinWidth="150">
                 <StackPanel Orientation="Vertical">
                     <c:OutputValue Title="Cargo"
                                    Value="{Binding Path=CargoOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\} mt}"/>
                     <c:OutputValue Title="Ballast"
                                    Value="{Binding Path=BallastOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\} mt}"/>
                     <c:OutputValue Title="Fuel Oil"
                                    Value="{Binding Path=FuelOilOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} mt}"/>
                     <c:OutputValue Title="Diesel Oil"
                                    Value="{Binding Path=DieselOilOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} mt}"/>
                     <c:OutputValue Title="Lube Oil"
                                    Value="{Binding Path=LubeOilOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} mt}"/>
                     <c:OutputValue Title="Fresh Water"
                                    Value="{Binding Path=FreshWaterOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} mt}"/>
                     <c:OutputValue Title="Other Stores"
                                    Value="{Binding Path=OtherStoresOnBoard,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} mt}"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Drafts"
@@ -62,33 +60,46 @@
                     <StackPanel Orientation="Vertical">
                         <c:OutputValue Title="DraftEquiv"
                                        Value="{Binding Path=DraftEquiv,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
 
                         <c:OutputValue Title="DraftFore"
                                        Value="{Binding Path=DraftFore,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
 
                         <c:OutputValue Title="DraftAft"
                                        Value="{Binding Path=DraftAft,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
-
-                        <c:OutputValue Title="DraftMean"
-                                       Value="{Binding Path=DraftMean,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
 
                         <c:OutputValue Title="DraftActual"
                                        Value="{Binding Path=DraftActual,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
 
                         <c:OutputValue Title="Trim"
                                        Value="{Binding Path=Trim,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                        <c:OutputValue Title="TrimAngle"
+                                       Value="{Binding Path=TrimAngle,
+                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}°}"/>
 
                         <c:OutputValue Title="List"
                                        Value="{Binding Path=List,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}°}"/>
                     </StackPanel>
                 </GroupBox>
+            <GroupBox Header="Stability"
+                      MinWidth="120">
+                <StackPanel Orientation="Vertical">
+
+                    <c:OutputValue Title="Gm"
+                                   Value="{Binding Path=Gm,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                    <c:OutputValue Title="Gom"
+                                   Value="{Binding Path=Gom,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+                </StackPanel>
+            </GroupBox>
         </WrapPanel>
     </Grid>
 </UserControl>

@@ -5,6 +5,9 @@ namespace PetCargoProgram.Components;
 
 public partial class ComponentShipCondition : UserControl
 {
+    public static readonly DependencyProperty GomProperty = DependencyProperty.Register(nameof(Gom), typeof(double), typeof(ComponentShipCondition), new PropertyMetadata(default(double)));
+    public static readonly DependencyProperty GmProperty = DependencyProperty.Register(nameof(Gm), typeof(double), typeof(ComponentShipCondition), new PropertyMetadata(default(double)));
+
     // LightWeight
     public static readonly DependencyProperty LightWeightProperty =
         DependencyProperty.Register(nameof(LightWeight), typeof(double), typeof(ComponentShipCondition));
@@ -176,6 +179,18 @@ public partial class ComponentShipCondition : UserControl
     {
         get => (double)GetValue(ListProperty);
         set => SetValue(ListProperty, value);
+    }
+
+    public double Gm
+    {
+        get => (double)GetValue(GmProperty);
+        set => SetValue(GmProperty, value);
+    }
+
+    public double Gom
+    {
+        get => (double)GetValue(GomProperty);
+        set => SetValue(GomProperty, value);
     }
 
     public ComponentShipCondition()

@@ -20,10 +20,10 @@
             <TabItem Header="Main Window">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height ="5*"/>
+                        <RowDefinition Height ="4.5*"/>
                         <RowDefinition Height ="7*"/>
                         <RowDefinition Height ="7*"/>
-                        <RowDefinition Height ="5*"/>
+                        <RowDefinition Height ="4.5*"/>
                         <RowDefinition Height ="4*"/>
                         <RowDefinition Height ="4*"/>
                     </Grid.RowDefinitions>
@@ -388,7 +388,7 @@
                     </StackPanel>
                     <c:ComponentShipCondition
                         Grid.Column="3"
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="4"
                         Grid.Row="4"
                         Grid.RowSpan="2"
                         DataContext="{Binding Path=LoadingCondition.ShipCondition}"
@@ -411,7 +411,9 @@
                         DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                         DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"/>
 
 
 
@@ -474,7 +476,9 @@
                         DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"/>
                 </DockPanel>
 
 

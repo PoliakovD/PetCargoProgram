@@ -27,6 +27,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _tcg;
     private double _lcf;
     private double _vcg;
+    private double _km;
     private double _gm;
     private double _gom;
     private double _shearingForce;
@@ -108,24 +109,6 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         set => SetField(ref _draftAft, value);
     }
 
-    public double DraftAftPependicular
-    {
-        get => _draftAftPependicular;
-        set => SetField(ref _draftAftPependicular, value);
-    }
-
-    public double DraftFwd
-    {
-        get => _draftFwd;
-        set => SetField(ref _draftFwd, value);
-    }
-
-    public double DraftFwdPependicular
-    {
-        get => _draftFwdPependicular;
-        set => SetField(ref _draftFwdPependicular, value);
-    }
-
     public double DraftMean
     {
         get => _draftMean;
@@ -148,6 +131,12 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     {
         get => _vcg;
         set => SetField(ref _vcg, value);
+    }
+
+    public double KM
+    {
+        get => _km;
+        set => SetField(ref _km, value);
     }
 
     public double Gm
@@ -249,7 +238,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         var value = CargoTablesProvider.Hydrostatic.GetValue(Displacement);
         DraftMean = value.Draft;
         TPC = value.TPC;
-        Gm = value.MetacentrKM;
+        KM = value.MetacentrKM;
         LCF = value.FloatationCenterLCF;
         MCTC= value.MCTC;
         LCB= value.LCB;
