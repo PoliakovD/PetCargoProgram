@@ -32,17 +32,7 @@ public partial class ShipConditionClass
     }
 
 
-    private double _someValueForCalculations;
     private double _freeSurface;
-
-    public double SomeValueForCalculations
-    {
-        get => _someValueForCalculations;
-        set => SetField(ref _someValueForCalculations, value);
-    }
-
-
-
 
 
     public double DraftEquivalent
@@ -56,7 +46,7 @@ public partial class ShipConditionClass
 
     //Расчет носовой  осадки
 
-    //=(DRAFT_ACT-((Lpp/2-Xf)/Lpp)*((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*
+    //(DRAFT_ACT-((Lpp/2-Xf)/Lpp)*((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*
     //(xf - lcf from lpp/2)
     // xc- LCB
     // Xg - момент по х
@@ -66,7 +56,7 @@ public partial class ShipConditionClass
     //=(Dfp+((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*figa
 
     // Расчет угла крена
-    // =ОКРУГЛ((ATAN(My/((Zm-Zg-(FSM_FACT/DISPLACEMENT))*DISPLACEMENT)))*57.3;2)&"°"
+    // ((ATAN(My/((Zm-Zg-(FSM_FACT/DISPLACEMENT))*DISPLACEMENT)))*57.3)
     // My - момент по Y
     // Zm - KM из гидростатических таблиц
     // Zg - MomentZ/Displacement
@@ -91,12 +81,19 @@ public partial class ShipConditionClass
         _trim = _draftAft-_draftFore;
         OnPropertyChanged(nameof(Trim));
 
-        _list=Math.Round(Math.Atan(MomentY/((Gm-(MomentZ/Displacement)-(FreeSurface/Displacement))*Displacement))*57.3,2);
-        OnPropertyChanged(nameof(List));
+
 
         TrimAngle=Math.Asin(Trim/LengthBetweenPerpendiculars)*-57.3;
         OnPropertyChanged(nameof(TrimAngle));
 
+        Gm = KM - MomentZ / Displacement;
+        OnPropertyChanged(nameof(Gm));
+
+        Gom = KM - (MomentZ / Displacement) - (FreeSurface / Displacement);
+        OnPropertyChanged(nameof(Gom));
+
+        _list=Math.Round(Math.Atan(MomentY/(Gom*Displacement))*57.3,2);
+        OnPropertyChanged(nameof(List));
     }
 
     public double SeaWaterDensity

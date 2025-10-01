@@ -65,7 +65,7 @@
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                         StringFormat=\{0:f2\}}"
+                         StringFormat=\{0:f2\} m3}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
                 <Label  Grid.Column="2" Grid.Row="2"
@@ -77,7 +77,7 @@
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                         StringFormat=\{0:f2\}}"
+                         StringFormat=\{0:f2\} mt}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
                 <Label  Grid.Column="2" Grid.Row="3"
@@ -89,7 +89,7 @@
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                         StringFormat=\{0:f2\}}"
+                         StringFormat=\{0:f2\} m}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
             </Grid>
