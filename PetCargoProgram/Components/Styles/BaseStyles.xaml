@@ -170,7 +170,7 @@
     </Style>
     <!--Стиль для лейбла Значений-->
     <Style x:Key="Style_ValueLabel" TargetType="Label">
-        <Setter Property="FontSize" Value="{Binding ElementName=Style_TextBoxValues, Path=FontSize}"/>
+        <Setter Property="FontSize" Value="13"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>

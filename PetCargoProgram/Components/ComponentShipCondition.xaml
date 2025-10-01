@@ -76,15 +76,18 @@
 
                         <c:OutputValue Title="Trim"
                                        Value="{Binding Path=Trim,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"
+                                       ToolTip="+ on AFT  - on BOW"/>
 
                         <c:OutputValue Title="TrimAngle"
                                        Value="{Binding Path=TrimAngle,
-                                   Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}°}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}°}"
+                                       ToolTip="+ on BOW  - on AFT"/>
 
                         <c:OutputValue Title="List"
                                        Value="{Binding Path=List,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}°}"/>
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}°}"
+                                       ToolTip="+ on STBD  - on PORT"/>
                     </StackPanel>
                 </GroupBox>
             <GroupBox Header="Stability"

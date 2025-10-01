@@ -9,7 +9,7 @@
     </UserControl.Resources>
 
     <Grid DataContext="{Binding ElementName=ComponentBallastTank}"
-          MaxHeight="125">
+          MaxHeight="140">
         <GroupBox Name ="GroupBoxTank" Style="{StaticResource Style_GroupBoxBallast}"
                   Header="{Binding Path=BallastTankName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
             <Grid >
