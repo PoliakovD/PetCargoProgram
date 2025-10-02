@@ -21,6 +21,22 @@
                 </Setter>
             </Style>
 
+            <Style x:Key="Style_MainWindowGrid" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource TabItemBackground}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Style_GroupBoxInfo" TargetType="GroupBox">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource GroupBoxInfoBackGround}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="Style_GroupBoxBallast" TargetType="GroupBox">
                 <Setter Property="MinWidth" Value="100"/>
                 <Setter Property="MinHeight" Value="80"/>
@@ -63,6 +79,7 @@
                     </TextBlock.Text>
                 </TextBlock>
             </DataTemplate>
+
 
 
         </ResourceDictionary>

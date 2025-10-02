@@ -8,79 +8,63 @@
     <Grid>
         <DataGrid ItemsSource="{Binding ElementName=Component, Path=CargoTanks}"
                           AutoGenerateColumns="False"
-                          CanUserAddRows="False">
+                          CanUserAddRows="False"
+                          RowHeight="25">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Compartment"
                                             IsReadOnly="True"
-                                            CellTemplate="{StaticResource  Template_ColorCompartment}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            CellTemplate="{StaticResource  Template_ColorCompartment}"/>
 
                         <DataGridTextColumn Header="Capacity(m3)"
                                             Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            IsReadOnly="True"/>
 
                         <DataGridTextColumn Header="Max Ullage(m)"
                                             Binding="{Binding Path=MaxUllage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            IsReadOnly="True"/>
 
                         <DataGridTextColumn Header="Ullage(m)"
-                                            Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
 
                         <DataGridTextColumn Header="TOV(m3)"
-                                            Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
 
                         <DataGridTextColumn Header="GSV(m3)"
-                                            Binding="{Binding Path=GrossVolume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=GrossVolume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
 
                         <DataGridTextColumn Header="Percents(%)"
                                             Binding="{Binding Path=VolumePercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:p2\},
-                                            Converter={StaticResource Converter_PercentsToDouble}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Converter={StaticResource Converter_PercentsToDouble}}"/>
 
                         <DataGridTextColumn Header="T °C"
-                                            Binding="{Binding Path=CurrentTemperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=CurrentTemperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
 
                         <DataGridTextColumn Header="D 15°C(t/m3)"
-                                            Binding="{Binding Path=Density15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=Density15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"/>
 
                         <DataGridTextColumn Header="D 60°F(t/m3)"
-                                            Binding="{Binding Path=Density60, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=Density60, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"/>
 
                         <DataGridTextColumn Header="D curr (t/m3)"
-                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
-                                            IsReadOnly="True"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"/>
 
                         <DataGridTextColumn Header="°API"
-                                            Binding="{Binding Path=API, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=API, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
 
                         <DataGridTextColumn Header="Weight(t)"
-                                            Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
 
                         <DataGridTextColumn Header="LCG(m)"
                                             Binding="{Binding Path=LCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            IsReadOnly="True"/>
 
                         <DataGridTextColumn Header="TCG(m)"
                                             Binding="{Binding Path=TCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            IsReadOnly="True"/>
 
                         <DataGridTextColumn Header="VCG(m)"
                                             Binding="{Binding Path=VCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"
-                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+                                            IsReadOnly="True"/>
 
                     </DataGrid.Columns>
         </DataGrid>

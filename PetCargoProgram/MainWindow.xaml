@@ -21,7 +21,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Main Window" Style="{StaticResource StyleBase_TabItem}">
-                <Grid>
+                <Grid Style="{StaticResource Style_MainWindowGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height ="4.5*"/>
                         <RowDefinition Height ="7*"/>
@@ -457,8 +457,6 @@
                         Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
                         Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"/>
                 </DockPanel>
-
-
             </TabItem>
             <TabItem Header="Ship DRWG" Style="{StaticResource StyleBase_TabItem}">
                 <c:ChartStablility

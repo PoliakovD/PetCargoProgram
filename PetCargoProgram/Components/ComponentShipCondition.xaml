@@ -12,7 +12,8 @@
     <Grid DataContext="{Binding ElementName=Component}">
         <WrapPanel Orientation="Vertical">
             <GroupBox Header="Displacement"
-                      MinWidth="180">
+                      MinWidth="180"
+                      Style="{StaticResource Style_GroupBoxInfo}">
                 <StackPanel Orientation="Vertical">
                     <c:OutputValue Title="Light Weight"
                                    Value="{Binding Path=LightWeight,
@@ -29,8 +30,23 @@
 
                 </StackPanel>
             </GroupBox>
+            <GroupBox Header="Stability"
+                      MinWidth="120"
+                      Style="{StaticResource Style_GroupBoxInfo}">
+                <StackPanel Orientation="Vertical">
+
+                    <c:OutputValue Title="Gm"
+                                   Value="{Binding Path=Gm,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                    <c:OutputValue Title="Gom"
+                                   Value="{Binding Path=Gom,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+                </StackPanel>
+            </GroupBox>
             <GroupBox Header="On Board"
-                      MinWidth="150">
+                      MinWidth="150"
+                      Style="{StaticResource Style_GroupBoxInfo}">
                 <StackPanel Orientation="Vertical">
                     <c:OutputValue Title="Cargo"
                                    Value="{Binding Path=CargoOnBoard,
@@ -56,7 +72,8 @@
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Drafts"
-                      MinWidth="120">
+                      MinWidth="120"
+                      Style="{StaticResource Style_GroupBoxInfo}">
                     <StackPanel Orientation="Vertical">
                         <c:OutputValue Title="DraftEquiv"
                                        Value="{Binding Path=DraftEquiv,
@@ -90,19 +107,7 @@
                                        ToolTip="+ on STBD  - on PORT"/>
                     </StackPanel>
                 </GroupBox>
-            <GroupBox Header="Stability"
-                      MinWidth="120">
-                <StackPanel Orientation="Vertical">
 
-                    <c:OutputValue Title="Gm"
-                                   Value="{Binding Path=Gm,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
-
-                    <c:OutputValue Title="Gom"
-                                   Value="{Binding Path=Gom,
-                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
-                </StackPanel>
-            </GroupBox>
         </WrapPanel>
     </Grid>
 </UserControl>

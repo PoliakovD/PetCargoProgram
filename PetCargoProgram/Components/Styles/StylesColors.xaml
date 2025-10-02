@@ -30,7 +30,7 @@
     <Color x:Key="GlyphMouseOver">sc#1, 0.004391443, 0.002428215, 0.242281124</Color>
 
     <!--Border colors-->
-    <Color x:Key="BorderLightColor">#FFCCCCCC</Color>
+    <Color x:Key="GroupBoxInfoBackGround">White</Color>
     <Color x:Key="BorderMediumColor">#FF888888</Color>
     <Color x:Key="BorderDarkColor">#FF444444</Color>
 
