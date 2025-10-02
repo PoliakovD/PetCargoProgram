@@ -43,19 +43,19 @@
                                             CellStyle="{StaticResource Style_DataGridColumn}"/>
 
                         <DataGridTextColumn Header="T °C"
-                                            Binding="{Binding Path=CurrentTemperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            Binding="{Binding Path=CurrentTemperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"
                                             CellStyle="{StaticResource Style_DataGridColumn}"/>
 
                         <DataGridTextColumn Header="D 15°C(t/m3)"
-                                            Binding="{Binding Path=Density15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            Binding="{Binding Path=Density15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
                                             CellStyle="{StaticResource Style_DataGridColumn}"/>
 
                         <DataGridTextColumn Header="D 60°F(t/m3)"
-                                            Binding="{Binding Path=Density60, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            Binding="{Binding Path=Density60, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
                                             CellStyle="{StaticResource Style_DataGridColumn}"/>
 
                         <DataGridTextColumn Header="D curr (t/m3)"
-                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
                                             IsReadOnly="True"
                                             CellStyle="{StaticResource Style_DataGridColumn}"/>
 

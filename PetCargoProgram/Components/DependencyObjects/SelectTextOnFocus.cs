@@ -17,28 +17,27 @@ namespace PetCargoProgram.Components
         {
             if (d is TextBox)
             {
-                TextBox textBox = d as TextBox;
-                if ((e.NewValue as bool?).GetValueOrDefault(false))
+                TextBox? textBox = d as TextBox;
+                if (textBox != null)
                 {
-                    textBox.GotKeyboardFocus += OnKeyboardFocusSelectText;
-                    textBox.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
+                    if ((e.NewValue as bool?).GetValueOrDefault(false))
+                    {
+                        textBox.GotKeyboardFocus += OnKeyboardFocusSelectText;
+                        textBox.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
+                    }
+                    else
+                    {
+                        textBox.GotKeyboardFocus -= OnKeyboardFocusSelectText;
+                        textBox.PreviewMouseLeftButtonDown -= OnMouseLeftButtonDown;
+                    }
                 }
-                else
-                {
-                    textBox.GotKeyboardFocus -= OnKeyboardFocusSelectText;
-                    textBox.PreviewMouseLeftButtonDown -= OnMouseLeftButtonDown;
-                }
+
             }
         }
 
         private static void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DependencyObject dependencyObject = GetParentFromVisualTree(e.OriginalSource);
-
-            if (dependencyObject == null)
-            {
-                return;
-            }
 
             var textBox = (TextBox)dependencyObject;
             if (!textBox.IsKeyboardFocusWithin)

@@ -9,7 +9,7 @@ public class ConverterDraft: IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return value is null ? null : System.Convert.ToDouble(value.ToString().Replace('%', '\0'));
+        return value is null ? null : System.Convert.ToDouble(value.ToString()?.Replace('%', '\0'));
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

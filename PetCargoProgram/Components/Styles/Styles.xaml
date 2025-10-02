@@ -3,8 +3,23 @@
                     xmlns:loadingCondition="clr-namespace:PetCargoProgram.Models.LoadingCondition;assembly=Models.LoadingCondition">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BaseStyles.xaml"/>
-
+        <ResourceDictionary Source="StylesColors.xaml"/>
         <ResourceDictionary>
+            <Style x:Key="Style_MainWindow" TargetType="Window">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource ContentAreaColorLight}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="StyleBase_TabItem" TargetType="TabItem">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource TabItemBackground}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="Style_GroupBoxBallast" TargetType="GroupBox">
                 <Setter Property="MinWidth" Value="100"/>

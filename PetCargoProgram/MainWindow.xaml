@@ -4,12 +4,15 @@
         xmlns:c="clr-namespace:PetCargoProgram.Components"
         xmlns:converters="clr-namespace:PetCargoProgram.Converters"
         xmlns:mainWindow="clr-namespace:PetCargoProgram.ViewModels.MainWindow;assembly=ViewModel.MainWindow"
-        Title="MainWindow" Height="800" Width="1600"
-        >
+        Title="MainWindow" Height="800" Width="1600">
 
     <Window.Resources>
         <ResourceDictionary Source="Components/Styles/Styles.xaml"/>
     </Window.Resources>
+
+    <Window.Style>
+        <StaticResource ResourceKey="Style_MainWindow"/>
+    </Window.Style>
 
     <Window.DataContext>
         <mainWindow:ViewModelMainWindow/>
@@ -17,7 +20,7 @@
 
     <Grid>
         <TabControl>
-            <TabItem Header="Main Window">
+            <TabItem Header="Main Window" Style="{StaticResource StyleBase_TabItem}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height ="4.5*"/>
@@ -389,10 +392,10 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="CargoTanks">
+            <TabItem Header="CargoTanks" Style="{StaticResource StyleBase_TabItem}">
                 <c:CargoTanksSpecial CargoTanks="{Binding Path=LoadingCondition.TableCargoTanks}"/>
             </TabItem>
-            <TabItem Header="Loading Condition">
+            <TabItem Header="Loading Condition" Style="{StaticResource StyleBase_TabItem}">
                 <DockPanel>
                     <DataGrid Name="DataGrid_LoadingCondion" DockPanel.Dock="Left"
                           ItemsSource="{Binding Path=LoadingCondition.Table}"
@@ -457,7 +460,7 @@
 
 
             </TabItem>
-            <TabItem Header="Ship DRWG">
+            <TabItem Header="Ship DRWG" Style="{StaticResource StyleBase_TabItem}">
                 <c:ChartStablility
                     Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
                     Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
