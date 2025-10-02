@@ -12,12 +12,10 @@ public partial class CargoTank
         _tcg= tableValue.TCG;
         _vcg= tableValue.VCG;
         _iy= tableValue.IY;
-        _weight= tableValue.Volume*Density;
         OnPropertyChanged(nameof(LCG));
         OnPropertyChanged(nameof(TCG));
         OnPropertyChanged(nameof(VCG));
         OnPropertyChanged(nameof(IY));
-        OnPropertyChanged(nameof(Weight));
     }
 
 

@@ -14,6 +14,7 @@ namespace PetCargoProgram.Services.LoadingCondition;
 
 public partial class ServiceLoadingCondition : NotifyPropertyChanged
 {
+    public ObservableCollection<CargoTank> TableCargoTanks { get; set; } = [];
     public ObservableCollection<ILoadingConditionItem> Table { get; set; } = [];
 
 
@@ -38,6 +39,11 @@ public partial class ServiceLoadingCondition : NotifyPropertyChanged
     public void AddRange(IEnumerable<ILoadingConditionItem> items)
     {
         foreach (var item in items) Table.Add(item);
+    }
+    public void AddCargoTanks(IEnumerable<CargoTank> items)
+    {
+        foreach (var item in items) TableCargoTanks.Add(item);
+        AddRange(items);
     }
 
     private void ItemsOnListChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -7,16 +7,16 @@ namespace ViewModel.ASTM;
 
 public class ViewModelASTM : NotifyPropertyChanged
 {
-    private double _density15;
-    private double _density60;
-    private double _api;
-    private double _currentTemperature;
-    private double _volumeCorrection;
-    private double _weightVacToAir;
-    private double _weightAirToVac;
+    protected double _density15;
+    protected double _density60;
+    protected double _api;
+    protected double _currentTemperature;
+    protected double _volumeCorrection;
+    protected double _weightVacToAir;
+    protected double _weightAirToVac;
 
 
-    public double Density15
+    public virtual double Density15
     {
         get => _density15;
         set
@@ -40,7 +40,7 @@ public class ViewModelASTM : NotifyPropertyChanged
         }
     }
 
-    public double Density60
+    public virtual double Density60
     {
         get => _density60;
         set
@@ -63,7 +63,7 @@ public class ViewModelASTM : NotifyPropertyChanged
         }
     }
 
-    public double API
+    public virtual double API
     {
         get => _api;
         set
@@ -86,7 +86,7 @@ public class ViewModelASTM : NotifyPropertyChanged
         }
     }
 
-    public double CurrentTemperature
+    public virtual double CurrentTemperature
     {
         get => _currentTemperature;
         set
@@ -115,7 +115,6 @@ public class ViewModelASTM : NotifyPropertyChanged
     {
         CurrentTemperature = 30.0;
         OnPropertyChanged(nameof(CurrentTemperature));
-
         _density15 = 0.0;
         _density60= 0.0;
         _api= 0.0;

@@ -7,14 +7,13 @@ public partial class ViewModelMainWindow
 {
     public ServiceLoadingCondition? LoadingCondition { get; set; }
 
+
     void InitLoadingCondition()
     {
         LoadingCondition = new ServiceLoadingCondition();
-        LoadingCondition.AddRange(CargoTanks.Values);
+        LoadingCondition.AddCargoTanks(CargoTanks.Values);
         LoadingCondition.AddRange(BallastTanks.Values);
         LoadingCondition.AddRange(OtherTanks.Values);
         LoadingCondition.Add( new LightWeight());
     }
 }
-
-//TODO Попробовать переделать BindingList в ObservableCollection

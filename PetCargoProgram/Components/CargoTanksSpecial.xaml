@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="PetCargoProgram.Components.CargoTanksSpecial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Component">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Styles/Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid ItemsSource="{Binding ElementName=Component, Path=CargoTanks}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Compartment"
+                                            IsReadOnly="True"
+                                            CellTemplate="{StaticResource  Template_ColorCompartment}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="Capacity(m3)"
+                                            Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="Max Ullage(m)"
+                                            Binding="{Binding Path=MaxUllage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="Ullage(m)"
+                                            Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="TOV(m3)"
+                                            Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="GSV(m3)"
+                                            Binding="{Binding Path=GrossVolume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="Percents(%)"
+                                            Binding="{Binding Path=VolumePercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:p2\},
+                                            Converter={StaticResource Converter_PercentsToDouble}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="T °C"
+                                            Binding="{Binding Path=CurrentTemperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="D 15°C(t/m3)"
+                                            Binding="{Binding Path=Density15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="D 60°F(t/m3)"
+                                            Binding="{Binding Path=Density60, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="D curr (t/m3)"
+                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"
+                                            IsReadOnly="True"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="°API"
+                                            Binding="{Binding Path=API, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="Weight(t)"
+                                            Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="LCG(m)"
+                                            Binding="{Binding Path=LCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="TCG(m)"
+                                            Binding="{Binding Path=TCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                        <DataGridTextColumn Header="VCG(m)"
+                                            Binding="{Binding Path=VCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                            IsReadOnly="True"
+                                            CellStyle="{StaticResource Style_DataGridColumn}"/>
+
+                    </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
+

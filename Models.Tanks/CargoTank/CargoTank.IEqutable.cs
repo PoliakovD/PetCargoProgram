@@ -6,6 +6,7 @@ namespace PetCargoProgram.Models.Tanks;
 
 public partial class CargoTank
 {
+    //TODO ПЕРЕДЕЛАТЬ!!!
 
     public bool Equals(CargoTank? other)
     {
@@ -22,13 +23,8 @@ public partial class CargoTank
                && LCG.Equals(other.LCG)
                && VCG.Equals(other.VCG)
                && TCG.Equals(other.TCG)
-               && TempCelsius.Equals(other.TempCelsius)
-               && TempFaringates.Equals(other.TempFaringates)
                && API.Equals(other.API)
-               && VolumeCorrectionFactorBBLS.Equals(other.VolumeCorrectionFactorBBLS)
-               && VolumeCorrectionFactor.Equals(other.VolumeCorrectionFactor)
-               && ObservedVolume.Equals(other.ObservedVolume)
-               && GrossVolume.Equals(other.GrossVolume);
+               && VolumeCorrection.Equals(other.VolumeCorrection);
     }
 
     public override bool Equals(object? obj)
@@ -53,13 +49,8 @@ public partial class CargoTank
         hashCode.Add(LCG);
         hashCode.Add(VCG);
         hashCode.Add(TCG);
-        hashCode.Add(TempCelsius);
-        hashCode.Add(TempFaringates);
         hashCode.Add(API);
-        hashCode.Add(VolumeCorrectionFactorBBLS);
-        hashCode.Add(VolumeCorrectionFactor);
-        hashCode.Add(ObservedVolume);
-        hashCode.Add(GrossVolume);
+        hashCode.Add(VolumeCorrection);
         return hashCode.ToHashCode();
     }
     public static bool operator ==(CargoTank? left, CargoTank? right)

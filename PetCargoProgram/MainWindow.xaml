@@ -179,7 +179,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 1P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -189,7 +189,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 2P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -199,7 +199,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 3P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -209,7 +209,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 4P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -219,7 +219,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 5P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -229,7 +229,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 6P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -239,7 +239,7 @@
                                      DataContext="{Binding Path=CargoTanks[SLOP P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -249,7 +249,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 1S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -259,7 +259,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 2S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -269,7 +269,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 3S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -279,7 +279,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 4S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -289,7 +289,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 5S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -299,7 +299,7 @@
                                      DataContext="{Binding Path=CargoTanks[COT 6S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -309,7 +309,7 @@
                                      DataContext="{Binding Path=CargoTanks[SLOP S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=TempCelsius,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Grid
@@ -389,11 +389,15 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="CargoTanks">
+                <c:CargoTanksSpecial CargoTanks="{Binding Path=LoadingCondition.TableCargoTanks}"/>
+            </TabItem>
             <TabItem Header="Loading Condition">
                 <DockPanel>
                     <DataGrid Name="DataGrid_LoadingCondion" DockPanel.Dock="Left"
                           ItemsSource="{Binding Path=LoadingCondition.Table}"
-                          AutoGenerateColumns="False">
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Compartment"
                                             IsReadOnly="True"
@@ -461,8 +465,6 @@
                 </c:ChartStablility>
             </TabItem>
         </TabControl>
-
-
     </Grid>
 
 </Window>

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Media;
-using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Services.CargoTables;
-using PetCargoProgram.ViewModels.Base;
+using static PetCargoProgram.Services.ASTM.ServiceASTM;
+using ViewModel.ASTM;
 
 namespace PetCargoProgram.Models.Tanks;
 
 
-public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, IEquatable<CargoTank>
+public partial class CargoTank : ViewModelASTM, ILoadingConditionItem, IEquatable<CargoTank>
 {
     //TODO написать методы для расчета показаний в грузовом танке, узнать у преподавателя про интерфейс InotifiedProperty
 
@@ -33,13 +33,60 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
     private static ServiceVolume _sVolume = CargoTablesProvider.Volume;
     private static ServiceCargoTankUllageTrim _UllageTrim =CargoTablesProvider.ServiceCargoTankUllageTrim;
 
+
+    private double _grossVolume;
+
+    public double GrossVolume
+    {
+        get => _grossVolume;
+        set
+        {
+
+            var volume = value / _volumeCorrection;
+
+            if (volume < 0.0)
+            {
+                value = 0.0;
+                volume = 0.0;
+            }
+
+            if (volume > _maxVolume)
+            {
+                value = _maxVolume/_volumeCorrection;
+                volume = _maxVolume;
+            }
+
+            SetField(ref _grossVolume, value);
+
+            SetField(ref _volume, volume);
+            OnPropertyChanged(nameof(Volume));
+
+            _volumePercent= _volume / _maxVolume;
+            OnPropertyChanged(nameof(VolumePercent));
+
+            _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
+            OnPropertyChanged(nameof(Ullage));
+
+            _sound=_maxUllage-_ullage;
+            OnPropertyChanged(nameof(Sound));
+
+            _weight = _grossVolume * _density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
+            var tableValue = _sVolume.GetValue(_itemName, _volume);
+            DistributeVolumeTableValue(tableValue);
+        }
+    }
+
     public CargoTank(string name)
     {
         ItemName = name;
         MaxVolume = _sVolume.GetMaxVolume(name);
         MaxUllage = _UllageTrim.GetMaxUllage(name);
         DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
-        _density = 0.988;
+        CurrentTemperature = 30.0;
+        _density15 = 0.988;
+        base.Density15=_density15;
         Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(137, 129, 225, 13));
         TypeOfItem = TypeOfLoadingConditionItem.CargoTank;
 
@@ -53,7 +100,6 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         _ullage = 0;
         _volume = 2000;
         _volumePercent = 50;
-        _density = 1.0;
         _weight = 0;
         _lcg = 0;
         _vcg = 0;
@@ -62,18 +108,6 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
         TypeOfItem = TypeOfLoadingConditionItem.CargoTank;
 
     }
-
-
-    // TODO Добавить свойства для грузового танка (вес груза в вакууме, обьем в баррелях и тд)
-    public double TempCelsius{ get; set; }
-    public double TempFaringates{ get; set; }
-    public double API { get; set; }
-    public double VolumeCorrectionFactorBBLS { get; set; }
-    public double VolumeCorrectionFactor { get; set; }
-
-    public double ObservedVolume{ get; set; }
-    public double GrossVolume{ get; set; }
-
 
     public string ItemName
     {
@@ -84,7 +118,7 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
 
             MaxVolume = _sVolume.GetMaxVolume(_itemName);
             MaxUllage = _UllageTrim.GetMaxUllage(_itemName);
-            _density = 1.0;
+            _density15 = 1.0;
         }
     }
 
@@ -116,6 +150,12 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             _volume = _UllageTrim.GetVolumeWithTrim(_itemName,_ullage);
             OnPropertyChanged(nameof(Volume));
 
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * base._density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
             _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
@@ -145,6 +185,12 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             _volumePercent= _volume / _maxVolume;
             OnPropertyChanged(nameof(VolumePercent));
 
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * base._density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
             var tableValue = _sVolume.GetValue(_itemName, _volume);
             DistributeVolumeTableValue(tableValue);
 
@@ -170,6 +216,12 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             _sound=_maxUllage-_ullage;
             OnPropertyChanged(nameof(Sound));
 
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * base._density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
             var tableValue = _sVolume.GetValue(_itemName, _volume);
             DistributeVolumeTableValue(tableValue);
         }
@@ -191,11 +243,14 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             var tableValue = _sVolume.GetValue(_itemName, _volume);
             DistributeVolumeTableValue(tableValue);
 
-            _weight=Volume * Density;
-            OnPropertyChanged(nameof(Weight));
-
             _ullage = _UllageTrim.GetUllageWithTrim(_itemName, _volume);
             OnPropertyChanged(nameof(Ullage));
+
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * _density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
 
             _sound=_maxUllage-_ullage;
             OnPropertyChanged(nameof(Sound));
@@ -204,13 +259,124 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
 
     public double Density
     {
-        get => _density;
+        get { return _density; }
+        set { SetField(ref _density, value); }
+    }
+
+    public override double Density15
+    {
+        get => _density15;
         set
         {
-            SetField(ref _density, value);
+            if (value < 0.5) value = 0.5;
+            if (value > 1.1) value = 1.1;
+            SetField(ref _density15, value);
 
-            _weight=Volume * Density;
+            _api = GetAPIbyDensity15(_density15);
+            OnPropertyChanged(nameof(API));
+
+            _density60 = GetRelativeDensity6060byDensity15(_density15);
+            OnPropertyChanged(nameof(Density60));
+
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+
+            WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
+
+            WeightAirToVac= GetWeightAirToVacByDensity15(_density15);
+
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * _density15 * _weightVacToAir;
             OnPropertyChanged(nameof(Weight));
+
+            _density=_density15*_volumeCorrection*_weightVacToAir;
+            OnPropertyChanged(nameof(Density));
+
+        }
+    }
+
+    public override double Density60
+    {
+        get => _density60;
+        set
+        {
+            if (value < 0.5) value = 0.5;
+            if (value > 1.1) value = 1.1;
+            SetField(ref _density60, value);
+
+            _density15=GetDensity15byRelativeDensity6060(_density60);
+            OnPropertyChanged(nameof(Density));
+
+            _api = GetAPIbyDensity15(_density15);
+            OnPropertyChanged(nameof(API));
+
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+
+            WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
+
+            WeightAirToVac= GetWeightAirToVacByDensity15(_density15);
+
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * _density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
+            _density=_density15*_volumeCorrection*_weightVacToAir;
+            OnPropertyChanged(nameof(Density));
+        }
+    }
+
+    public override double CurrentTemperature
+    {
+        get => _currentTemperature;
+        set
+        {
+            SetField(ref _currentTemperature, value);
+
+            _volumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            OnPropertyChanged(nameof(VolumeCorrection));
+
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * _density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
+            _density=_density15*_volumeCorrection*_weightVacToAir;
+            OnPropertyChanged(nameof(Density));
+        }
+    }
+
+    public override double API
+    {
+        get => _api;
+        set
+        {
+            SetField(ref _api, value);
+
+            _density15=GetDensity15byAPI(_api);
+            OnPropertyChanged(nameof(Density15));
+
+            _density60 = GetRelativeDensity6060byDensity15(_density15);
+            OnPropertyChanged(nameof(Density60));
+
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+
+            WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
+
+            WeightAirToVac= GetWeightAirToVacByDensity15(_density15);
+
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
+
+            _weight = _grossVolume * _density15 * _weightVacToAir;
+            OnPropertyChanged(nameof(Weight));
+
+            _density=_density15*_volumeCorrection*_weightVacToAir;
+            OnPropertyChanged(nameof(Density));
+
         }
     }
 
@@ -224,11 +390,13 @@ public partial class CargoTank : NotifyPropertyChanged, ILoadingConditionItem, I
             if(volume<0) value = 0;
             if(volume>_maxVolume) value=MaxVolume*Density;
 
-                // throw new ArgumentOutOfRangeException($"Weight is out of range 0.0-{_maxVolume*Density}");
             SetField(ref _weight, value);
 
             _volume=volume;
             OnPropertyChanged(nameof(Volume));
+
+            _grossVolume = _volume*_volumeCorrection;
+            OnPropertyChanged(nameof(GrossVolume));
 
             var tableValue = _sVolume.GetValue(_itemName, volume);
             DistributeVolumeTableValue(tableValue);

@@ -80,7 +80,7 @@
                          x:Name ="Input_Output_Temperature"
                          Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
-                         Text="{Binding Path=TemperatureTank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                         Text="{Binding Path=TemperatureTank, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                          StringFormat=\{0:f1\}°C}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 

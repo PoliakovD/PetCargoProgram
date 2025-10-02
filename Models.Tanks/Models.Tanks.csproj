@@ -9,7 +9,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Models.CargoTables\Models.CargoTables.csproj" />
       <ProjectReference Include="..\Models.LoadingCondition\Models.LoadingCondition.csproj" />
+      <ProjectReference Include="..\Services.ASTM\Services.ASTM.csproj" />
       <ProjectReference Include="..\Services.CargoTables\Services.CargoTables.csproj" />
+      <ProjectReference Include="..\ViewModel.ASTM\ViewModel.ASTM.csproj" />
       <ProjectReference Include="..\ViewModels.Base\ViewModels.Base.csproj" />
     </ItemGroup>
 
