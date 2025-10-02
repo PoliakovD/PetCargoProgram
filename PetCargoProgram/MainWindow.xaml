@@ -328,7 +328,7 @@
                             <!-- </c:ChartVessel> -->
 
                         </Grid>
-                     <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Vertical">
+                     <StackPanel Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Orientation="Vertical">
                         <GroupBox Header="Settings">
                             <StackPanel Orientation="Vertical">
                                <Grid>
@@ -343,49 +343,19 @@
                                    <TextBox
                                        Grid.Column="1"
                                        Text="{Binding Path=LoadingCondition.ShipCondition.SeaWaterDensity,
-                                       Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                       Mode=TwoWay,
+                                       UpdateSourceTrigger=LostFocus,
+                                       StringFormat=\{0:f3\} t/m3}"
+
                                        KeyDown="Event_LoseFocusOnEnter"
                                        c:SelectTextOnFocus.Active="True"/>
                                </Grid>
                             </StackPanel>
                         </GroupBox>
+                         <c:ViewASTMTAbles/>
 
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Grid.Row="5" Orientation="Vertical">
-                        <GroupBox Header="ASTM Tables 21,51">
-                            <StackPanel Orientation="Vertical">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Target="IO_API60F" Content="API 60 F"
-                                           Style="{StaticResource Style_LabelDownMenu}"/>
-                                    <TextBox Grid.Column="1" Name="IO_API60F"/>
-                                </Grid>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Target="Output_Den60F" Content="Den. 60/60F"
-                                           Style="{StaticResource Style_LabelDownMenu}"/>
-                                    <TextBox Grid.Column="1" Name="Output_Den60F"/>
-                                </Grid>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Target="Output_Den15C" Content="Den. 15C kg/m3"
-                                           Style="{StaticResource Style_LabelDownMenu}"/>
-                                    <TextBox Grid.Column="1" Name="Output_Den15C"/>
-                                </Grid>
-                            </StackPanel>
-                        </GroupBox>
-
-                    </StackPanel>
                     <c:ComponentShipCondition
                         Grid.Column="3"
                         Grid.ColumnSpan="4"

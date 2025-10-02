@@ -32,6 +32,7 @@ public class ServiceVolume
 
     }
 
+
     public double GetLCG(string name, double volume)
     {
 
