@@ -360,7 +360,7 @@
 
                     </StackPanel>
 
-                    <c:ComponentShipCondition
+                    <c:ComponentShipCondition x:Name="ComponentShipCondition"
                         Grid.Column="3"
                         Grid.ColumnSpan="4"
                         Grid.Row="4"
@@ -394,7 +394,12 @@
                 </Grid>
             </TabItem>
             <TabItem Header="CargoTanks" Style="{StaticResource StyleBase_TabItem}">
-                <c:CargoTanksSpecial CargoTanks="{Binding Path=LoadingCondition.TableCargoTanks}"/>
+                <DockPanel LastChildFill="True">
+                    <c:CargoTanksSpecial DockPanel.Dock="Left" CargoTanks="{Binding Path=LoadingCondition.TableCargoTanks}"/>
+                    <c:ComponentShipCondition DataContext="{Binding Path=LoadingCondition.ShipCondition}"
+                                              />
+                </DockPanel>
+
             </TabItem>
             <TabItem Header="Loading Condition" Style="{StaticResource StyleBase_TabItem}">
                 <DockPanel>
