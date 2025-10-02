@@ -87,14 +87,54 @@ public static class ServiceASTM
 
     public static double GetAPIbyDensity15(double density15) => GetAPIbyRelativeDensity6060(GetRelativeDensity6060byDensity15(density15));
 
-    public static double GetDensity15byRelativeDensity6060(double relativeDensity6060) => relativeDensity6060 - 0.0001;
+    public static double GetDensity15byRelativeDensity6060(double density6060)
+    {
+        var correction = 0.0;
+        if(density6060 < 0.5) correction = 0.0001;
+        else if(density6060 >= 0.6836 && density6060<0.7576) correction = 0.0002;
+        else if(density6060 >= 0.7576 && density6060<0.7866) correction = 0.0003;
+        else if(density6060 >= 0.7866 && density6060<0.8526) correction = 0.0004;
+        else if(density6060 >= 0.8526 && density6060<0.9416) correction = 0.0005;
+        else if(density6060 >= 0.9416 && density6060<1.0336) correction = 0.0006;
+        else if(density6060 >= 1.0336 && density6060 <1.0750) correction = 0.0007;
+        else correction = 0.0008;
+        return density6060 - correction;;
+    }
 
-    public static double GetRelativeDensity6060byDensity15(double density15) => density15 + 0.0001;
+    public static double GetRelativeDensity6060byDensity15(double density15)
+    {
+        var correction = 0.0;
+        if(density15 < 0.5) correction = 0.0001;
+        else if(density15 >= 0.6834 && density15<0.7573) correction = 0.0002;
+        else if(density15 >= 0.7573 && density15<0.7862) correction = 0.0003;
+        else if(density15 >= 0.7862 && density15<0.8521) correction = 0.0004;
+        else if(density15 >= 0.8521 && density15<0.9410) correction = 0.0005;
+        else if(density15 >= 0.9410 && density15<1.0329) correction = 0.0006;
+        else if(density15 >= 1.0329 && density15 <1.0750) correction = 0.0007;
+        else correction = 0.0008;
+        return density15 + correction;;
+    }
 
     public static double GetRelativeDensity6060byAPI(double api) => 141.5 / (api + 131.5);
 
-    public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) - 0.0001;
+    // public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) -
 
+     //public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) * 0.99901647;
+    // public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) * 0.999012 + 0.0001;
+    public static double GetDensity15byAPI(double api)
+    {
+        var density6060 = GetRelativeDensity6060byAPI(api);
+        var correction = 0.0;
+        if(density6060 < 0.5) correction = 0.0001;
+        else if(density6060 >= 0.6836 && density6060<0.7576) correction = 0.0002;
+        else if(density6060 >= 0.7576&& density6060<0.7866) correction = 0.0003;
+        else if(density6060 >= 0.7866&& density6060<0.8526) correction = 0.0004;
+        else if(density6060 >= 0.8526&& density6060<0.9416) correction = 0.0005;
+        else if(density6060 >= 0.9416&& density6060<1.0336) correction = 0.0006;
+        else if(density6060 >= 1.0336 && density6060 <1.0750) correction = 0.0007;
+        else correction = 0.0008;
+        return density6060 - correction;;
+    }
     public static double GetWeightVacToAirByDensity15(double density15)
     {
         if (density15 >= 0.5 && density15 <= 0.5191) return 0.99775;

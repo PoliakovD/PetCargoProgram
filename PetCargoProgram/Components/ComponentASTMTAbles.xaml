@@ -13,7 +13,8 @@
 
 
     <Grid>
-        <GroupBox Header="ASTM Tables">
+        <GroupBox Header="ASTM Tables"
+                  Style="{StaticResource Style_GroupBoxInfo}">
             <StackPanel Orientation="Vertical">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -46,7 +47,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Target="IO_Den15C" Content="Den. 15C kg/m3"
+                    <Label Grid.Column="0" Target="IO_Den15C" Content="Den. 15C mt/m3"
                            Style="{StaticResource Style_LabelDownMenu}"/>
                     <TextBox Grid.Column="1" Name="IO_Den15C"
 
@@ -78,12 +79,10 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Target="Output_VolumeCorrection" Content="Volume Correction"
                            Style="{StaticResource Style_LabelDownMenu}"/>
-                    <TextBox Grid.Column="1" Name="Output_VolumeCorrection"
-
-                             Style="{StaticResource Style_TextBoxValues}"
-                             Text="{Binding VolumeCorrection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                             StringFormat=\{0:f4\} }"
-                             IsReadOnly="True"/>
+                    <TextBlock Grid.Column="1" Name="Output_VolumeCorrection"
+                               Text="{Binding VolumeCorrection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                               StringFormat=\{0:f4\} }"
+                               HorizontalAlignment="Right"/>
 
                 </Grid>
                 <Grid>
@@ -93,12 +92,10 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Target="Output_WeightAirToVac" Content="WeightAirToVac"
                            Style="{StaticResource Style_LabelDownMenu}"/>
-                    <TextBox Grid.Column="1" Name="Output_WeightAirToVac"
-
-                             Style="{StaticResource Style_TextBoxValues}"
-                             Text="{Binding WeightAirToVac, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                    <TextBlock Grid.Column="1" Name="Output_WeightAirToVac"
+                               Text="{Binding WeightAirToVac, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                              StringFormat=\{0:f4\} }"
-                             IsReadOnly="True"/>
+                               HorizontalAlignment="Right"/>
 
                 </Grid>
                 <Grid>
@@ -108,12 +105,10 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Target="Output_WeightVacToAir" Content="WeightVacToAir"
                            Style="{StaticResource Style_LabelDownMenu}"/>
-                    <TextBox Grid.Column="1" Name="Output_WeightVacToAir"
-
-                             Style="{StaticResource Style_TextBoxValues}"
+                    <TextBlock Grid.Column="1" Name="Output_WeightVacToAir"
                              Text="{Binding WeightVacToAir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                              StringFormat=\{0:f4\}}"
-                             IsReadOnly="True"/>
+                             HorizontalAlignment="Right"/>
 
                 </Grid>
             </StackPanel>
