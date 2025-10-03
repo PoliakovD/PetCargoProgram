@@ -8,7 +8,7 @@ public partial class ShipConditionClass : IEquatable<ShipConditionClass>
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
-        return _lightWeight.Equals(other._lightWeight) && _deadWeight.Equals(other._deadWeight) && _displacement.Equals(other._displacement) && _deadWeightRegistred.Equals(other._deadWeightRegistred) && _cargoOnBoard.Equals(other._cargoOnBoard) && _ballastOnBoard.Equals(other._ballastOnBoard) && _fuelOilOnBoard.Equals(other._fuelOilOnBoard) && _dieselOnBoard.Equals(other._dieselOnBoard) && _freshWaterOnBoard.Equals(other._freshWaterOnBoard) && _lubeOilOnBoard.Equals(other._lubeOilOnBoard) && _draftAft.Equals(other._draftAft) && _draftAftPependicular.Equals(other._draftAftPependicular) && _draftFwd.Equals(other._draftFwd) && _draftFwdPependicular.Equals(other._draftFwdPependicular) && _draftMean.Equals(other._draftMean) && _tcg.Equals(other._tcg) && _lcf.Equals(other._lcf) && _vcg.Equals(other._vcg) && _km.Equals(other._km) && _gom.Equals(other._gom) && _shearingForce.Equals(other._shearingForce) && _bendingMoment.Equals(other._bendingMoment) && _tpc.Equals(other._tpc) && _mctc.Equals(other._mctc) && _lcb.Equals(other._lcb) && _cm.Equals(other._cm) && _draftActual.Equals(other._draftActual) && _dieselOilOnBoard.Equals(other._dieselOilOnBoard) && _otherStoresOnBoard.Equals(other._otherStoresOnBoard) && _draftFore.Equals(other._draftFore) && _trim.Equals(other._trim) && _list.Equals(other._list);
+        return _lightWeight.Equals(other._lightWeight) && _deadWeight.Equals(other._deadWeight) && _displacement.Equals(other._displacement) && _deadWeightRegistred.Equals(other._deadWeightRegistred) && _cargoOnBoard.Equals(other._cargoOnBoard) && _ballastOnBoard.Equals(other._ballastOnBoard) && _fuelOilOnBoard.Equals(other._fuelOilOnBoard) && _dieselOnBoard.Equals(other._dieselOnBoard) && _freshWaterOnBoard.Equals(other._freshWaterOnBoard) && _lubeOilOnBoard.Equals(other._lubeOilOnBoard) && _draftAft.Equals(other._draftAft)  && _draftFwd.Equals(other._draftFwd) && _draftMean.Equals(other._draftMean) && _tcg.Equals(other._tcg) && _lcf.Equals(other._lcf) && _vcg.Equals(other._vcg) && _km.Equals(other._km) && _gom.Equals(other._gom) && _shearingForce.Equals(other._shearingForce) && _bendingMoment.Equals(other._bendingMoment) && _tpc.Equals(other._tpc) && _mctc.Equals(other._mctc) && _lcb.Equals(other._lcb) && _cm.Equals(other._cm) && _draftActual.Equals(other._draftActual) && _dieselOilOnBoard.Equals(other._dieselOilOnBoard) && _otherStoresOnBoard.Equals(other._otherStoresOnBoard) && _draftFore.Equals(other._draftFore) && _trim.Equals(other._trim) && _list.Equals(other._list);
     }
 
     public override bool Equals(object? obj)
@@ -33,9 +33,7 @@ public partial class ShipConditionClass : IEquatable<ShipConditionClass>
         hashCode.Add(_freshWaterOnBoard);
         hashCode.Add(_lubeOilOnBoard);
         hashCode.Add(_draftAft);
-        hashCode.Add(_draftAftPependicular);
         hashCode.Add(_draftFwd);
-        hashCode.Add(_draftFwdPependicular);
         hashCode.Add(_draftMean);
         hashCode.Add(_tcg);
         hashCode.Add(_lcf);

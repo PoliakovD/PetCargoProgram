@@ -80,7 +80,7 @@ namespace PetCargoProgram.Components
             InitializeComponent();
             Execute(); // Заполнение слоев
             // Отображение на экране
-            image1.Source = new DrawingImage(drawingGroup);
+            DrawingImage.Source = new DrawingImage(drawingGroup);
         }
 
         // Послойное формирование рисунка

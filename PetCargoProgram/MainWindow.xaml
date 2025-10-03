@@ -324,12 +324,7 @@
                                 Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
                                 Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
                                 LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}">
-
                             </c:ChartStablility>
-                            <!-- <c:ChartVessel> -->
-                            <!-- -->
-                            <!-- </c:ChartVessel> -->
-
                         </Grid>
                      <StackPanel Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Orientation="Vertical">
                         <GroupBox Header="Settings"

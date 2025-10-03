@@ -10,14 +10,14 @@ namespace PetCargoProgram.Converters
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            return value is null ? null : System.Convert.ToDouble(value.ToString().Replace('%', '\0'));
+            return value is null ? null : System.Convert.ToDouble(value.ToString()?.Replace('%', '\0'));
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             try
             {
-                double? result = value is null ? null : System.Convert.ToDouble(value.ToString().Replace('%', '\0').Replace(',', '.')) / 100.0;
+                double? result = value is null ? null : System.Convert.ToDouble(value.ToString()?.Replace('%', '\0').Replace(',', '.')) / 100.0;
                 return result;
             }
 

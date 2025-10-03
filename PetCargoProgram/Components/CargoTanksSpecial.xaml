@@ -46,7 +46,8 @@
                                             Binding="{Binding Path=Density60, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"/>
 
                         <DataGridTextColumn Header="D curr (t/m3)"
-                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"/>
+                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"
+                                            IsReadOnly="True"/>
 
                         <DataGridTextColumn Header="°API"
                                             Binding="{Binding Path=API, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>

@@ -19,9 +19,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _lubeOilOnBoard;
 
     private double _draftAft;
-    private double _draftAftPependicular;
     private double _draftFwd;
-    private double _draftFwdPependicular;
     private double _draftMean;
 
     private double _tcg;

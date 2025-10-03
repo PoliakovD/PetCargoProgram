@@ -9,6 +9,7 @@ public partial class ShipConditionClass
     private double _seaWaterDensity; //Cлёность воды
     public const double LengthBetweenPerpendiculars = 239.0; // Длинна между перпенднуларями
 
+    private double _freeSurface;
     private double _momentX;
     private double _momentY;
     private double _momentZ;
@@ -31,41 +32,16 @@ public partial class ShipConditionClass
         set => SetField(ref _momentZ, value);
     }
 
-
-    private double _freeSurface;
-
-
     public double DraftEquivalent
     {
         get => _draftEquivalent;
         set => SetField(ref _draftEquivalent, value);
     }
 
-    // Расчет актуальной осадки от солнеситости воды
-    //=(DRAFT_1025+DISPLACEMENT/(100*TPC)*((1.025-SWD)/SWD))
-
-    //Расчет носовой  осадки
-
-    //(DRAFT_ACT-((Lpp/2-Xf)/Lpp)*((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*
-    //(xf - lcf from lpp/2)
-    // xc- LCB
-    // Xg - момент по х
-
-    // Расчет кормовой осадки
-
-    //=(Dfp+((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*figa
-
-    // Расчет угла крена
-    // ((ATAN(My/((Zm-Zg-(FSM_FACT/DISPLACEMENT))*DISPLACEMENT)))*57.3)
-    // My - момент по Y
-    // Zm - KM из гидростатических таблиц
-    // Zg - MomentZ/Displacement
     public void CalcDrafts()
     {
         _draftActual = (_draftEquivalent + Displacement / (100.0 * _tpc) * ((1.025 - _seaWaterDensity) / _seaWaterDensity));
         OnPropertyChanged(nameof(DraftActual));
-
-        DraftForChart = -_draftActual;
 
         _draftFore = (_draftActual - ((LengthBetweenPerpendiculars / 2 - LCF) / LengthBetweenPerpendiculars) *
             ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
@@ -81,15 +57,13 @@ public partial class ShipConditionClass
         _trim = _draftAft-_draftFore;
         OnPropertyChanged(nameof(Trim));
 
-
-
         TrimAngle=Math.Asin(Trim/LengthBetweenPerpendiculars)*-57.3;
         OnPropertyChanged(nameof(TrimAngle));
 
         Gm = KM - MomentZ / Displacement;
         OnPropertyChanged(nameof(Gm));
 
-        Gom = KM - (MomentZ / Displacement) - (FreeSurface / Displacement);
+        Gom = Gm - (FreeSurface / Displacement);
         OnPropertyChanged(nameof(Gom));
 
         _list=Math.Round(Math.Atan(MomentY/(Gom*Displacement))*57.3,2);
@@ -101,6 +75,8 @@ public partial class ShipConditionClass
         get => _seaWaterDensity;
         set
         {
+            if (value < 0.990) value = 0.990;
+            if (value > 1.030) value = 1.030;
             SetField(ref _seaWaterDensity, value);
             CalcDrafts();
         }

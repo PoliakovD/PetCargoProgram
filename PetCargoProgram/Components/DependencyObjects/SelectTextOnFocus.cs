@@ -37,7 +37,7 @@ namespace PetCargoProgram.Components
 
         private static void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DependencyObject dependencyObject = GetParentFromVisualTree(e.OriginalSource);
+            DependencyObject dependencyObject = GetParentFromVisualTree(e.OriginalSource)!;
 
             var textBox = (TextBox)dependencyObject;
             if (!textBox.IsKeyboardFocusWithin)
@@ -47,9 +47,9 @@ namespace PetCargoProgram.Components
             }
         }
 
-        private static DependencyObject GetParentFromVisualTree(object source)
+        private static DependencyObject? GetParentFromVisualTree(object source)
         {
-            DependencyObject parent = source as UIElement;
+            DependencyObject? parent = source as UIElement;
             while (parent != null && !(parent is TextBox))
             {
                 parent = VisualTreeHelper.GetParent(parent);
@@ -60,7 +60,7 @@ namespace PetCargoProgram.Components
 
         private static void OnKeyboardFocusSelectText(object sender, KeyboardFocusChangedEventArgs e)
         {
-            TextBox textBox = e.OriginalSource as TextBox;
+            TextBox? textBox = e.OriginalSource as TextBox;
             if (textBox != null)
             {
                 textBox.SelectAll();
