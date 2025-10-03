@@ -99,7 +99,7 @@ public class ServiceBallastSoundTrim
 
         // ищем ближайшие значения для диферентов
         int[] indexedTrims = new int[]{0,1,2,3,4,5};
-        var closestTrims = indexedTrims.OrderBy(n => Math.Abs((double)n - trim)).Take(2).ToList();
+        var closestTrims = indexedTrims.OrderBy(n => Math.Abs(n - trim)).Take(2).ToList();
 
         // в ближайших дифферентах идем по столбцам и находим ближайшее значения обьемов
         var firstVolume = new Dictionary<double, double>();

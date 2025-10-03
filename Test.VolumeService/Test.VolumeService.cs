@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using PetCargoProgram.DataAccess;
-using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Services.CargoTables;
 
 
 
 var tableService = CargoTablesProvider.Volume;
 
-string Name = "COT 1P";
-double Volume = 2000.0;
+string name = "COT 1P";
+double volume = 2000.0;
 
 
-var LCG = tableService.GetLCG(Name, Volume);
-var TCG = tableService.GetTCG(Name, Volume);
-var VCG = tableService.GetVCG(Name, Volume);
-var IY = tableService.GetIY(Name, Volume);
 
-Console.WriteLine("LCG: " + LCG);
-Console.WriteLine("TCG: " + TCG);
-Console.WriteLine("VCG: " + VCG);
-Console.WriteLine("IY: " + IY);
-Console.WriteLine("Volume: " + Volume);
-Console.WriteLine("Searched to FullValue: "+tableService.GetValue(Name, Volume));
+var lcg = tableService.GetLCG(name, volume);
+var tcg = tableService.GetTCG(name, volume);
+var vcg = tableService.GetVCG(name, volume);
+var iy = tableService.GetIY(name, volume);
+
+Console.WriteLine("LCG: " + lcg);
+Console.WriteLine("TCG: " + tcg);
+Console.WriteLine("VCG: " + vcg);
+Console.WriteLine("IY: " + iy);
+Console.WriteLine("Volume: " + volume);
+Console.WriteLine("Searched to FullValue: "+tableService.GetValue(name, volume));
 
 var sb = new StringBuilder();
 sb.Append("{");
@@ -36,5 +34,5 @@ foreach (var item in CargoTablesProvider.Volume.Tables)
     sb.Append(",");
 }
 sb.Append("}");
-File.WriteAllText("Cargossssss.txt", sb.ToString());
+File.WriteAllText("Cargoes.txt", sb.ToString());
 Console.ReadKey();
