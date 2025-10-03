@@ -1,11 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using PetCargoProgram.DataAccess;
-using PetCargoProgram.Models.CargoTables;
-using PetCargoProgram.Models.Tanks;
-using PetCargoProgram.Services.CargoTables;
-using PetCargoProgram.Services.LoadingCondition;
+
 
 namespace PetCargoProgram
 {
