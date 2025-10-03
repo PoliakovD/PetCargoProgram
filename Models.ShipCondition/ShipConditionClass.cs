@@ -18,9 +18,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _freshWaterOnBoard;
     private double _lubeOilOnBoard;
 
-    private double _draftAft;
-    private double _draftFwd;
-    private double _draftMean;
+
 
     private double _tcg;
     private double _lcf;
@@ -36,7 +34,6 @@ public partial class ShipConditionClass : NotifyPropertyChanged
     private double _cm;
     private double _dieselOilOnBoard;
     private double _otherStoresOnBoard;
-    private double _draftFore;
     private double _trim;
     private double _list;
     private double _trimAngle;

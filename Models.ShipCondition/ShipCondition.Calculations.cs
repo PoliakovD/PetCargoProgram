@@ -6,6 +6,10 @@ public partial class ShipConditionClass
 {
     private double _draftActual; // Берется из гидростатических таблиц(DRAFT_1025)
     private double _draftEquivalent; // Считается из солености воды
+    private double _draftAft;
+    private double _draftMean;
+    private double _draftFore;
+
     private double _seaWaterDensity; //Cлёность воды
     public const double LengthBetweenPerpendiculars = 239.0; // Длинна между перпенднуларями
 

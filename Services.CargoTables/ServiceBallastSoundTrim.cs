@@ -17,7 +17,7 @@ public class ServiceBallastSoundTrim
         Tables= tablesBallSoundTrim.Tables;
     }
     public double GetMaxSound(string name)
-        => Tables.FirstOrDefault(x => x.Name == name).Table.Last().Sound;
+        => Tables.FirstOrDefault(x => x.Name == name)!.Table.Last().Sound;
 
     public double GetVolumeWithTrim(string name, double sound, double trim=0.0)
     {

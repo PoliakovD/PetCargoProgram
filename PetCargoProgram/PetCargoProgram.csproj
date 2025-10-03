@@ -10,7 +10,6 @@
 
     <ItemGroup>
       <Folder Include="CargoTables\" />
-      <Folder Include="Components\LoadingCondition\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,5 +28,11 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\9.0.7\PresentationCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

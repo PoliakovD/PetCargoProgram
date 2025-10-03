@@ -31,7 +31,7 @@ public static class ReaderBallSoundTrim
                      br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble()));
              }
              // Добавляем таблицу в список таблиц
-             allCargoTables.TablesBallSoundTrim.Tables.Add(new Table_BallSoundTrim(Temp_Name, Temp_Table));
+             allCargoTables.TablesBallSoundTrim.Tables?.Add(new Table_BallSoundTrim(Temp_Name, Temp_Table));
          }
          return fs;
     }

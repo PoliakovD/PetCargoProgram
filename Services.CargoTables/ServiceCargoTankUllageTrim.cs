@@ -18,7 +18,7 @@ public class ServiceCargoTankUllageTrim
         Tables= cargoTankUllageTrim.Tables;
     }
     public double GetMaxUllage(string name)
-        => Tables.FirstOrDefault(x => x.Name == name).Table.Last().Ullage;
+        => Tables.FirstOrDefault(x => x.Name == name)!.Table.Last().Ullage;
     public double GetVolumeWithTrim(string name, double ullage, double trim=0.0)
     {
         // Выбираем таблицу для нужного танка

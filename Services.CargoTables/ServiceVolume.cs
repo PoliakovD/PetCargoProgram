@@ -16,7 +16,7 @@ public class ServiceVolume
         Tables= volume.Tables;
     }
     public double GetMaxVolume(string name)
-        =>Tables.FirstOrDefault(x=>x.Name==name).Table.Last().Volume;
+        =>Tables.FirstOrDefault(x=>x.Name==name)!.Table.Last().Volume;
 
     public double GetPercentsVolume(string name, double volume) => volume / GetMaxVolume(name);
     public Value_Table_Volume GetValue(string name, double volume)
@@ -78,7 +78,7 @@ public class ServiceVolume
 
         //Проверка входных значений
         if (volume < 0 ) throw new Exception("Объем не может быть отрицательным");
-        var maxVolume = table.Table.MaxBy(x => x.Volume).Volume + double.Epsilon;
+        var maxVolume = table.Table.MaxBy(x => x.Volume)!.Volume + double.Epsilon;
         if (volume > maxVolume)
             throw new Exception($"Объем {volume} больше, чем наибольший объем {maxVolume} для танка {name}");
         // TODO - Проверка на выход за границы и обработка

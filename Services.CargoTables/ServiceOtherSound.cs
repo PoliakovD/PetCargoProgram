@@ -16,9 +16,9 @@ public class ServiceOtherSound
         Tables = tables.Tables;
     }
     public double GetMaxSound(string name)
-        => Tables.FirstOrDefault(x => x.Name == name).Table.Last().Sound;
+        => Tables.FirstOrDefault(x => x.Name == name)!.Table.Last().Sound;
     public double GetMaxVolume(string name)
-        => Tables.FirstOrDefault(x => x.Name == name).Table.Last().Volume;
+        => Tables.FirstOrDefault(x => x.Name == name)!.Table.Last().Volume;
 
     public double GetVolumeWithSound(string name, double sound)
     {

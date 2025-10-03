@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
-using PetCargoProgram.DataAccess;
-using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.Models.LoadingCondition;
-using PetCargoProgram.Models.ShipCondition;
 using PetCargoProgram.Models.Tanks;
-using PetCargoProgram.Services.LoadingCondition;
 using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.ViewModels.MainWindow;
