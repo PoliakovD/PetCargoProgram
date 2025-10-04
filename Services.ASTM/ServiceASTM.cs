@@ -17,7 +17,7 @@ public static class ServiceASTM
     public static double GetVCFbyDensity15(double currentTemperature, double density15, Table54VCF table54VCF = Table54VCF.CrudeOil54B)
     {
         var temperatureDifference = currentTemperature - 15.0;
-        density15 *= 1000;
+        density15 *= 1000.0;
         switch (table54VCF)
         {
             case Table54VCF.OilProduct54A:
@@ -117,10 +117,6 @@ public static class ServiceASTM
 
     public static double GetRelativeDensity6060byAPI(double api) => 141.5 / (api + 131.5);
 
-    // public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) -
-
-     //public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) * 0.99901647;
-    // public static double GetDensity15byAPI(double api) => (141.5 / (api + 131.5)) * 0.999012 + 0.0001;
     public static double GetDensity15byAPI(double api)
     {
         var density6060 = GetRelativeDensity6060byAPI(api);
@@ -145,7 +141,6 @@ public static class ServiceASTM
         else if (density15 > 0.6255 && density15 <= 0.6593) return 0.99825;
         else if (density15 > 0.6593 && density15 <= 0.6970) return 0.99835;
         else if (density15 > 0.6970 && density15 <= 0.7392) return 0.99845;
-
         else if (density15 > 0.7392 && density15 <= 0.7892) return 0.99855;
         else if (density15 > 0.7892 && density15 <= 0.8411) return 0.99865;
         else if (density15 > 0.8411 && density15 <= 0.9034) return 0.99875;
@@ -165,7 +160,6 @@ public static class ServiceASTM
         else if (density15 > 0.6265 && density15 <= 0.6603) return 1.00175;
         else if (density15 > 0.6603 && density15 <= 0.6980) return 1.00165;
         else if (density15 > 0.6980 && density15 <= 0.7402) return 1.00155;
-
         else if (density15 > 0.7402 && density15 <= 0.7879) return 1.00145;
         else if (density15 > 0.7879 && density15 <= 0.8421) return 1.00135;
         else if (density15 > 0.8421 && density15 <= 0.9044) return 1.00125;

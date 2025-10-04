@@ -24,8 +24,6 @@ public partial class OutputValue : UserControl
     }
 
 
-
-
     public OutputValue()
     {
         InitializeComponent();

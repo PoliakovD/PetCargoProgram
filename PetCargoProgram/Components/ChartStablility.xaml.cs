@@ -11,17 +11,6 @@ namespace PetCargoProgram.Components
 {
     public partial class ChartStablility : UserControl
     {
-        // public static readonly DependencyProperty AngleProperty =
-        //     DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
-        // public double Angle
-        // {
-        //     get => (double)GetValue(AngleProperty);
-        //     set
-        //     {
-        //         SetValue(AngleProperty, value);
-        //     }
-        // }
-
         public static readonly DependencyProperty DraftProperty =
             DependencyProperty.Register(nameof(Draft), typeof(double), typeof(ChartStablility));
         public double Draft
@@ -40,6 +29,8 @@ namespace PetCargoProgram.Components
             get => (double)GetValue(LCFProperty);
             set
             {
+                // так как LCF приходит со значением от миделя мы смещаем его на величину
+                // LBP/2 для данного судна LBP/2 = 119.5
                 SetValue(LCFProperty, value+119.5);
             }
         }
@@ -53,11 +44,6 @@ namespace PetCargoProgram.Components
                 SetValue(AngleProperty, value);
             }
         }
-
-
-         public Binding RotationBinding = new Binding("Angle");
-         public Binding DraftBinding = new Binding("Draft");
-
         //
         // Поля
         //
@@ -193,19 +179,11 @@ namespace PetCargoProgram.Components
 
             BindingOperations.SetBinding(Down, TranslateTransform.YProperty, DownBinding);
 
-            // Rotate.SetCurrentValue(RotateTransform.AngleProperty, Angle);
-            // Rotate.SetCurrentValue(RotateTransform.CenterYProperty, Draft); // установка привязки для элемента-приемника
-            // Rotate.SetCurrentValue(RotateTransform.CenterXProperty, LCF);
-            //
-            // Down.SetCurrentValue(TranslateTransform.YProperty, Draft);
-
 
             RotateAndDown.Children.Add(Rotate);
             RotateAndDown.Children.Add(Down);
 
             Ship.Geometry.Transform = RotateAndDown;
-            //
-            // geometryDrawing.Geometry.Transform = RotateAndDown;
 
             // Добавляем готовый слой в контейнер отображения
             drawingGroup.Children.Add(Ship);
