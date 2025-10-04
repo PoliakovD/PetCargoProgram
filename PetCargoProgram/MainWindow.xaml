@@ -39,7 +39,6 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-
                     </Grid.ColumnDefinitions>
 
                     <c:ViewBallastTank BallastTankName ="APT"
