@@ -21,17 +21,26 @@ public class ServiceHydrostatic
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         var interKoef = (displacement - closest.First().Displacement)
                              / (closest.Last().Displacement - closest.First().Displacement);
         return GetInterpolatedFullValue(closest[0],closest[1],interKoef,displacement);
 
     }
+
+    public double GetDisplacement(double draft)
+    {
+        // Получаем ближайшие значения
+        var closest = GetClosestTableValuesByDraft(draft);
+        // Возвращаем интерполированное значение
+        return GetInterpolatedValue(closest[0].Draft,closest[1].Draft,draft,
+            closest[0].Displacement,closest[1].Displacement);
+    }
     public double GetDraft(double displacement)
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         // Возвращаем интерполированное значение
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].Draft,closest[1].Draft);
@@ -40,7 +49,7 @@ public class ServiceHydrostatic
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         // Возвращаем интерполированное значение
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].TPC,closest[1].TPC);
@@ -49,25 +58,24 @@ public class ServiceHydrostatic
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         // Возвращаем интерполированное значение
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].MetacentrKM,closest[1].MetacentrKM);
     }
-    public double GetLCF(double displacement)
+    public double GetLCF(double draft)
     {
-        CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDraft(draft);
         // Возвращаем интерполированное значение
-        return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
+        return GetInterpolatedValue(closest[0].Draft,closest[1].Draft,draft,
             closest[0].FloatationCenterLCF,closest[1].FloatationCenterLCF);
     }
     public double GetMCTC(double displacement)
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         // Возвращаем интерполированное значение
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].MCTC,closest[1].MCTC);
@@ -76,7 +84,7 @@ public class ServiceHydrostatic
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         // Возвращаем интерполированное значение
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].LCB,closest[1].LCB);
@@ -85,15 +93,20 @@ public class ServiceHydrostatic
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
-        var closest = GetClosestTableValues(displacement);
+        var closest = GetClosestTableValuesByDisplacement(displacement);
         // Возвращаем интерполированное значение
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].CM,closest[1].CM);
     }
-    private List<Value_Table_Hydrostatic> GetClosestTableValues(double displacement)
+    private List<Value_Table_Hydrostatic> GetClosestTableValuesByDisplacement(double displacement)
     {
         // Находим два значения в таблице, ближайшие к volume
         return Table.OrderBy(n => Math.Abs(n.Displacement - displacement)).Take(2).ToList();
+    }
+    private List<Value_Table_Hydrostatic> GetClosestTableValuesByDraft(double draft)
+    {
+        // Находим два значения в таблице, ближайшие к volume
+        return Table.OrderBy(n => Math.Abs(n.Draft - draft)).Take(2).ToList();
     }
 
     private void CheckDisplacement(double displacement)
