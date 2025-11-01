@@ -394,7 +394,16 @@
                         Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"/>
+                        Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+
+                        TPC="{Binding TPC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        KM ="{Binding KM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        LCF ="{Binding LCF,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        MCTC ="{Binding MCTC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        LCB ="{Binding LCB,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        CM ="{Binding CM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+
+                        />
 
 
 

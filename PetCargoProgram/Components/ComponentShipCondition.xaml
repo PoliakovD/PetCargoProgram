@@ -107,6 +107,37 @@
                                        ToolTip="+ on STBD  - on PORT"/>
                     </StackPanel>
                 </GroupBox>
+             <GroupBox Header="Ship`s Static Info"
+                      MinWidth="120"
+                      Style="{StaticResource Style_GroupBoxInfo}">
+                    <StackPanel Orientation="Vertical">
+                        <c:OutputValue Title="TPC"
+                                       Value="{Binding Path=TPC,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                        <c:OutputValue Title="KM"
+                                       Value="{Binding Path=KM,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                        <c:OutputValue Title="LCF"
+                                       Value="{Binding Path=LCF,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                        <c:OutputValue Title="MCTC"
+                                       Value="{Binding Path=MCTC,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"/>
+
+                        <c:OutputValue Title="LCB"
+                                       Value="{Binding Path=LCB,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"
+                                       ToolTip="+ on AFT  - on BOW"/>
+
+                        <c:OutputValue Title="CM"
+                                       Value="{Binding Path=CM,
+                                       Mode=OneWay,UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\} m}"
+                                       ToolTip="+ on BOW  - on AFT"/>
+                    </StackPanel>
+                </GroupBox>
 
         </WrapPanel>
     </Grid>
