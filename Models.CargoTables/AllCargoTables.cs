@@ -2,6 +2,9 @@ using PetCargoProgram.Models.CargoTables.Tables;
 
 namespace PetCargoProgram.Models.CargoTables;
 
+/// <summary>
+/// Encapsulate all cargo tables in one class
+/// </summary>
 public class AllCargoTables
 {
     public TablesBallSoundTrim TablesBallSoundTrim { get; set; }
@@ -12,7 +15,6 @@ public class AllCargoTables
 
     public AllCargoTables()
     {
-
         TablesBallSoundTrim = new TablesBallSoundTrim();
         TablesCargoTankUllage = new TablesCargoTankUllageTrim();
         TablesHydrostatic = new TablesHydrostatic();
@@ -20,4 +22,3 @@ public class AllCargoTables
         TablesVolume = new TablesVolume();
     }
 }
-

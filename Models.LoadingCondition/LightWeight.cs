@@ -3,7 +3,7 @@ using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.Models.LoadingCondition;
 
-public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
+public class LightWeight : NotifyPropertyChanged, ILoadingConditionItem
 {
     private string _itemName;
     private double _maxVolume;
@@ -129,6 +129,6 @@ public class LightWeight: NotifyPropertyChanged, ILoadingConditionItem
         Sound = 0;
         Ullage = 0;
         Color = new SolidColorBrush(Colors.LightGray);
-        TypeOfItem=TypeOfLoadingConditionItem.Other;
+        TypeOfItem = TypeOfLoadingConditionItem.Other;
     }
 }

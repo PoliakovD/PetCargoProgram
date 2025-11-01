@@ -2,7 +2,9 @@
 using System.Windows.Media;
 
 namespace PetCargoProgram.Models.LoadingCondition;
-
+/// <summary>
+/// Interface for Loading Condition Calculation
+/// </summary>
 public interface ILoadingConditionItem : INotifyPropertyChanged
 {
     public string ItemName { get; set; }
@@ -18,7 +20,6 @@ public interface ILoadingConditionItem : INotifyPropertyChanged
     public double VCG { get; set; }
     public double TCG { get; set; }
     public double IY { get; set; }
-
     public SolidColorBrush Color { get; set; }
     public TypeOfLoadingConditionItem TypeOfItem { get; set; }
 }
