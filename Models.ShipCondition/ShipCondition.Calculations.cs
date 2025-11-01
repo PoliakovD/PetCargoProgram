@@ -52,17 +52,19 @@ public partial class ShipConditionClass
             ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
         var drafAftBeforeCorected = drafForeBeforeCorected+(Displacement*(LCB-MomentX/Displacement))/(MCTC*100.0);
 
-        double meanedDraft = (drafAftBeforeCorected + _draftActual*6 + drafForeBeforeCorected) / 8.0;
-        double LcfOnDraft = CargoTablesProvider.Hydrostatic.GetLCF(meanedDraft);
-        double trimCorrection = (LcfOnDraft*(drafAftBeforeCorected-drafForeBeforeCorected))/LengthBetweenPerpendiculars;
-        double equivalentdraft = _draftActual + trimCorrection;
-        double equivalentDisplacement = CargoTablesProvider.Hydrostatic.GetDisplacement(equivalentdraft);
-        double displacementForCalculation = equivalentDisplacement * (SeaWaterDensity / 1.025);
-        var valueHydrostaticForCalc = CargoTablesProvider.Hydrostatic.GetValue(displacementForCalculation);
-        double freshWaterAllowance = (displacementForCalculation/(100.0*valueHydrostaticForCalc.TPC)*((1.025-1.0)/1.0))*1000.0;
-        double draftWaterAllowance=displacementForCalculation/(100.0*valueHydrostaticForCalc.TPC)*((1.025-SeaWaterDensity)/SeaWaterDensity);
 
-        double truedraft = equivalentdraft - draftWaterAllowance;
+        //
+        // double meanedDraft = (drafAftBeforeCorected + _draftActual*6 + drafForeBeforeCorected) / 8.0;
+        // double LcfOnDraft = CargoTablesProvider.Hydrostatic.GetLCF(meanedDraft);
+        // double trimCorrection = (LcfOnDraft*(drafAftBeforeCorected-drafForeBeforeCorected))/LengthBetweenPerpendiculars;
+        // double equivalentdraft = _draftActual + trimCorrection;
+        // double equivalentDisplacement = CargoTablesProvider.Hydrostatic.GetDisplacement(equivalentdraft);
+        // double displacementForCalculation = equivalentDisplacement * (SeaWaterDensity / 1.025);
+        // var valueHydrostaticForCalc = CargoTablesProvider.Hydrostatic.GetValue(displacementForCalculation);
+        // double freshWaterAllowance = (displacementForCalculation/(100.0*valueHydrostaticForCalc.TPC)*((1.025-1.0)/1.0))*1000.0;
+        // double draftWaterAllowance=displacementForCalculation/(100.0*valueHydrostaticForCalc.TPC)*((1.025-SeaWaterDensity)/SeaWaterDensity);
+
+        // double truedraft = equivalentdraft - draftWaterAllowance;
 
         double correction = 0.0;
 
@@ -108,7 +110,8 @@ public partial class ShipConditionClass
             if (value < 0.990) value = 0.990;
             if (value > 1.030) value = 1.030;
             SetField(ref _seaWaterDensity, value);
-            CalcDrafts();
+            UpdateFromHydrostaticTable();
+
         }
     }
 
@@ -116,5 +119,20 @@ public partial class ShipConditionClass
     {
         get => _freeSurface;
         set =>SetField(ref _freeSurface, value);
+    }
+    private ServiceHydrostatic _hydrostatic=CargoTablesProvider.Hydrostatic;
+    public void UpdateFromHydrostaticTable()
+    {
+        var value = _hydrostatic.GetValue(Displacement*(1.025/SeaWaterDensity));
+        DraftEquivalent = value.Draft;
+        TPC = value.TPC;
+        KM = value.MetacentrKM;
+        LCF = value.FloatationCenterLCF;
+        LCFForChart = LCF + 119.5; // LBP/2
+        MCTC= value.MCTC;
+        LCB= value.LCB;
+        CM = value.CM;
+        CalcDrafts();
+
     }
 }

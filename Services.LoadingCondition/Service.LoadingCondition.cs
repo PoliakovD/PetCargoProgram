@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -27,8 +28,6 @@ public partial class ServiceLoadingCondition : NotifyPropertyChanged
     {
         Table.CollectionChanged  += ItemsOnListChanged;
         ShipCondition = new ShipConditionClass();
-        //UpdateShipCondition();
-        // WeightOnListChanged();
 
     }
 
@@ -57,6 +56,7 @@ public partial class ServiceLoadingCondition : NotifyPropertyChanged
                 item.PropertyChanged += UpdateShipCondition;
         }
     }
+
 
 
 }

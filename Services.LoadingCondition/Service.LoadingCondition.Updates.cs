@@ -11,7 +11,7 @@ public partial class ServiceLoadingCondition
         if (e.PropertyName == nameof(ILoadingConditionItem.Weight))
         {
             UpdateOnBoard();
-            UpdateFromHydrostaticTable();
+            ShipCondition.UpdateFromHydrostaticTable();
         }
     }
 
@@ -92,7 +92,7 @@ public partial class ServiceLoadingCondition
 
     private void UpdateFromHydrostaticTable()
     {
-        var value = _hydrostatic.GetValue(_shipCondition.Displacement);
+        var value = _hydrostatic.GetValue(_shipCondition.Displacement*(1.025/ShipCondition.SeaWaterDensity));
         ShipCondition.DraftEquivalent = value.Draft;
         ShipCondition.TPC = value.TPC;
         ShipCondition.KM = value.MetacentrKM;
