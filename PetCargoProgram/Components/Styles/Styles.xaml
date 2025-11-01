@@ -69,6 +69,8 @@
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
 
+
+
             <DataTemplate x:Key="Template_ColorCompartment"
                           DataType="{x:Type loadingCondition:ILoadingConditionItem}">
                 <TextBlock Background="{Binding Color}"
@@ -81,6 +83,8 @@
                 </TextBlock>
             </DataTemplate>
         </ResourceDictionary>
+
+
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

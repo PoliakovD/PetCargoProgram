@@ -6,9 +6,19 @@ using PetCargoProgram.Models.CargoTables.Tables;
 using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.DataAccess.CargoTables.TablesReaders;
-
+/// <summary>
+/// This static class for reading Tables_OtherSounding
+/// Contain method  <see cref="Read"/>
+/// </summary>
 public static class ReaderOtherSounding
 {
+    /// <summary>
+    /// Read Tables_OtherSounding in AllCargoTables object
+    /// <param name="fs">Input  <see cref="FileStream"/></param>
+    /// <param name="br">Input  <see cref="BinaryReader"/> for reading all required rows from bin file</param>
+    /// <param name="allCargoTables">reference on <see cref="AllCargoTables"/> to which object to save <see cref="Tables_OtherSounding"/></param>
+    /// <returns><see cref="FileStream"/> to continue read other Tables</returns>
+    /// </summary>
     public static FileStream Read(FileStream fs, BinaryReader br,  ref AllCargoTables allCargoTables)
     {
         allCargoTables.TablesOtherSounding.Tables.Clear(); // Очищаем список
