@@ -2,9 +2,13 @@
 using PetCargoProgram.ViewModels.Base;
 
 namespace PetCargoProgram.Models.LoadingCondition;
-
+/// <summary>
+///  Singleton LightWeight class as a loading condition item
+/// </summary>
 public class LightWeight : NotifyPropertyChanged, ILoadingConditionItem
 {
+    private static LightWeight instance;
+
     private string _itemName;
     private double _maxVolume;
     private double _maxUllage;
@@ -130,5 +134,12 @@ public class LightWeight : NotifyPropertyChanged, ILoadingConditionItem
         Ullage = 0;
         Color = new SolidColorBrush(Colors.LightGray);
         TypeOfItem = TypeOfLoadingConditionItem.Other;
+    }
+
+    public static LightWeight getLightWeight()
+    {
+        if (instance == null)
+            instance = new LightWeight();
+        return instance;
     }
 }
