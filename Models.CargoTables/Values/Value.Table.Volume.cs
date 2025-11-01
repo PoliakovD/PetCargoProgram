@@ -1,6 +1,6 @@
 ﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
-public class Value_Table_Volume
+public class ValueTableVolume
 {
     public double Volume { get; set; }
     public double LCG { get; set; }
@@ -8,7 +8,7 @@ public class Value_Table_Volume
     public double VCG { get; set; }
     public double IY { get; set; }
 
-    public Value_Table_Volume(double vol, double lcg, double tcg, double vcg, double iy)
+    public ValueTableVolume(double vol, double lcg, double tcg, double vcg, double iy)
     {
         Volume = vol;
         LCG = lcg;

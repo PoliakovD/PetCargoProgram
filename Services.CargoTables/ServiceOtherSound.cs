@@ -9,9 +9,9 @@ namespace PetCargoProgram.Services.CargoTables;
 
 public class ServiceOtherSound
 {
-    private List<Table_OtherSounding> Tables { get; set; }
+    private List<TableOtherSounding> Tables { get; set; }
 
-    public ServiceOtherSound(Tables_OtherSounding tables)
+    public ServiceOtherSound(TablesOtherSounding tables)
     {
         Tables = tables.Tables;
     }

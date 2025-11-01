@@ -9,9 +9,9 @@ using PetCargoProgram.Models.CargoTables.Values;
 namespace PetCargoProgram.Services.CargoTables;
 public class ServiceVolume
 {
-    public List<Table_Volume> Tables { get; set; }
+    public List<TableVolume> Tables { get; set; }
 
-    public ServiceVolume(Tables_Volume volume)
+    public ServiceVolume(TablesVolume volume)
     {
         Tables= volume.Tables;
     }
@@ -19,7 +19,7 @@ public class ServiceVolume
         =>Tables.FirstOrDefault(x=>x.Name==name)!.Table.Last().Volume;
 
     public double GetPercentsVolume(string name, double volume) => volume / GetMaxVolume(name);
-    public Value_Table_Volume GetValue(string name, double volume)
+    public ValueTableVolume GetValue(string name, double volume)
     {
         // Получаем ближайшие значения
         var closest = GetClosestTableValues(name,volume);
@@ -69,7 +69,7 @@ public class ServiceVolume
             closest[0].IY,closest[1].IY);
     }
 
-    private List<Value_Table_Volume> GetClosestTableValues(string name, double volume)
+    private List<ValueTableVolume> GetClosestTableValues(string name, double volume)
     {
         // Выбираем таблицу для нужного танка
         var table = Tables.FirstOrDefault(x => x.Name == name);
@@ -87,10 +87,10 @@ public class ServiceVolume
         return table.Table.OrderBy(n => Math.Abs(n.Volume - volume)).Take(2).ToList();
     }
 
-    private Value_Table_Volume GetInterpolatedFullValue(Value_Table_Volume valueFirst, Value_Table_Volume valueSecond,
+    private ValueTableVolume GetInterpolatedFullValue(ValueTableVolume valueFirst, ValueTableVolume valueSecond,
         double interKoef, double volume)
     {
-        return new Value_Table_Volume
+        return new ValueTableVolume
         (volume,
             GetInterpolatedValueByKoef(interKoef, valueFirst.LCG, valueSecond.LCG),
             GetInterpolatedValueByKoef(interKoef, valueFirst.TCG, valueSecond.TCG),

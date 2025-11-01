@@ -3,16 +3,17 @@ using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.Models.CargoTables.Table;
 
-
-
-public class Table_CargoTankUllageTrim
+/// <summary>
+/// BallSoundTrim Table Realised by List of <see cref="ValueTableCargoTankUllageTrim"/>
+/// </summary>
+public class TableCargoTankUllageTrim
 {
-        public string Name { get; set; }
-        public List<Value_Table_CargoTankUllageTrim> Table{ get; set; }
-        public Table_CargoTankUllageTrim(string name, List<Value_Table_CargoTankUllageTrim> table)
-        {
-            Name = name;
-            Table = table;
-        }
+    public string Name { get; set; }
+    public List<ValueTableCargoTankUllageTrim> Table { get; set; }
 
+    public TableCargoTankUllageTrim(string name, List<ValueTableCargoTankUllageTrim> table)
+    {
+        Name = name;
+        Table = table;
+    }
 }

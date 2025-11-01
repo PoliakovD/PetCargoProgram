@@ -3,23 +3,17 @@ using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.Models.CargoTables.Table;
 
-
-
-public class Table_Hydrostatic
+/// <summary>
+/// BallSoundTrim Table Realised by List of <see cref="ValueTableHydrostatic"/>
+/// </summary>
+public class TableHydrostatic
 {
     public string Name { get; set; }
-    public List<Value_Table_Hydrostatic> Table { get; set; }
+    public List<ValueTableHydrostatic> Table { get; set; }
 
-    public Table_Hydrostatic(string name, List<Value_Table_Hydrostatic> table)
+    public TableHydrostatic(string name, List<ValueTableHydrostatic> table)
     {
         Name = name;
         Table = table;
-    }
-
-    public Table_Hydrostatic(Table_Hydrostatic table)
-    {
-        this.Name = table.Name;;
-        this.Table = table.Table;
-
     }
 }

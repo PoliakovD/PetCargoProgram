@@ -10,14 +10,14 @@ namespace PetCargoProgram.Services.CargoTables;
 // гидростатические таблицы при деференте trim
 public partial class ServiceHydrostaticTrim
 {
-    private List<Table_Hydrostatic> Tables { get; set; }
+    private List<TableHydrostatic> Tables { get; set; }
 
-    public ServiceHydrostaticTrim(Tables_Hydrostatic hydrostatic)
+    public ServiceHydrostaticTrim(TablesHydrostatic hydrostatic)
     {
         Tables= hydrostatic.Tables;
     }
 
-    public Value_Table_Hydrostatic GetValue(double displacement, double trim)
+    public ValueTableHydrostatic GetValue(double displacement, double trim)
     {
         // Получаем ближайшие таблицы
         var closest = GetClosestTables(trim);

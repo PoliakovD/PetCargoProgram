@@ -1,22 +1,43 @@
 ﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
-public class Value_Table_Hydrostatic
+/// <summary>
+/// Hydrostatic table value
+/// </summary>
+public class ValueTableHydrostatic
 {
-    //DISPLACEMENT MT in SW
+    /// <summary>
+    /// Displacement in tonnes in Salt Water
+    /// </summary>
     public double Displacement { get; set; }
+    /// <summary>
+    /// Draft in meters
+    /// </summary>
     public double Draft { get; set; }
+    /// <summary>
+    /// Tones per centimeter of draft
+    /// </summary>
     public double TPC { get; set; }
-    //METACENTRE (KM)
+    /// <summary>
+    /// KM - Metacentre in meters
+    /// </summary>
     public double MetacentrKM { get; set; }
-    //CENTRE OF FLOTATION (LCF) Xf from L/2
+    /// <summary>
+    /// LCF Centre of flotation from L/2 in meters
+    /// </summary>
     public double FloatationCenterLCF { get; set; }
-    //MOMENT TO CHANGE TRIM 1 cm (MCTC) midship
+    /// <summary>
+    /// MCTC MOMENT TO CHANGE TRIM 1 cm (MCTC) midship
+    /// </summary>
     public double MCTC { get; set; }
-    // LCB from L/2
+    /// <summary>
+    /// LCB from L/2
+    /// </summary>
     public double LCB { get; set; }
-
+    /// <summary>
+    /// CM
+    /// </summary>
     public double CM { get; set; }
-    public Value_Table_Hydrostatic(double disp, double draft, double tpc, double KM, double LCF, double mctc, double lCB, double cM)
+    public ValueTableHydrostatic(double disp, double draft, double tpc, double KM, double LCF, double mctc, double lCB, double cM)
     {
         Displacement = disp;
         Draft = draft;

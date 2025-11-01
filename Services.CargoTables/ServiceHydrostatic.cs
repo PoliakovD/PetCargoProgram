@@ -10,14 +10,14 @@ namespace PetCargoProgram.Services.CargoTables;
 // гидростатические таблицы при деференте 0
 public class ServiceHydrostatic
 {
-    private List<Value_Table_Hydrostatic> Table { get; set; }
+    private List<ValueTableHydrostatic> Table { get; set; }
 
-    public ServiceHydrostatic(Tables_Hydrostatic hydrostatic)
+    public ServiceHydrostatic(TablesHydrostatic hydrostatic)
     {
         Table= hydrostatic.Tables[1].Table;
     }
 
-    public Value_Table_Hydrostatic GetValue(double displacement)
+    public ValueTableHydrostatic GetValue(double displacement)
     {
         CheckDisplacement(displacement);
         // Получаем ближайшие значения
@@ -98,12 +98,12 @@ public class ServiceHydrostatic
         return GetInterpolatedValue(closest[0].Displacement,closest[1].Displacement,displacement,
             closest[0].CM,closest[1].CM);
     }
-    private List<Value_Table_Hydrostatic> GetClosestTableValuesByDisplacement(double displacement)
+    private List<ValueTableHydrostatic> GetClosestTableValuesByDisplacement(double displacement)
     {
         // Находим два значения в таблице, ближайшие к volume
         return Table.OrderBy(n => Math.Abs(n.Displacement - displacement)).Take(2).ToList();
     }
-    private List<Value_Table_Hydrostatic> GetClosestTableValuesByDraft(double draft)
+    private List<ValueTableHydrostatic> GetClosestTableValuesByDraft(double draft)
     {
         // Находим два значения в таблице, ближайшие к volume
         return Table.OrderBy(n => Math.Abs(n.Draft - draft)).Take(2).ToList();
@@ -118,11 +118,11 @@ public class ServiceHydrostatic
             throw new Exception($"Дисплейсмент {displacement} больше максимального {maxdisplacement}");
     }
 
-    private Value_Table_Hydrostatic GetInterpolatedFullValue(Value_Table_Hydrostatic valueFirst,
-        Value_Table_Hydrostatic valueSecond, double koef, double displacement)
+    private ValueTableHydrostatic GetInterpolatedFullValue(ValueTableHydrostatic valueFirst,
+        ValueTableHydrostatic valueSecond, double koef, double displacement)
     {
 
-        return new Value_Table_Hydrostatic
+        return new ValueTableHydrostatic
         (displacement,
             GetInterpolatedValueByKoef(koef, valueFirst.Draft, valueSecond.Draft),
             GetInterpolatedValueByKoef(koef, valueFirst.TPC, valueSecond.TPC),

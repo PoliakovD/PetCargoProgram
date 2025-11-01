@@ -1,17 +1,48 @@
 ﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
-public class Value_Table_CargoTankUllageTrim
+/// <summary>
+/// Cargo Tank Ullage Trim Value
+/// </summary>
+public class ValueTableCargoTankUllageTrim
 {
+    /// <summary>
+    /// Ullage in meters
+    /// </summary>
     public double Ullage { get; set; }
+
+    /// <summary>
+    /// Cargo Volume Trim in m3 on Trim 4 meters
+    /// </summary>
     public double CargoVolumeTrim4 { get; set; }
+
+    /// <summary>
+    /// Cargo Volume Trim in m3 on Trim 3 meters
+    /// </summary>
     public double CargoVolumeTrim3 { get; set; }
+
+    /// <summary>
+    /// Cargo Volume Trim in m3 on Trim 2 meters
+    /// </summary>
     public double CargoVolumeTrim2 { get; set; }
+
+    /// <summary>
+    /// Cargo Volume Trim in m3 on Trim 1 meters
+    /// </summary>
     public double CargoVolumeTrim1 { get; set; }
+
+    /// <summary>
+    /// Cargo Volume Trim in m3 on Trim 0 meters
+    /// </summary>
     public double CargoVolumeTrim0 { get; set; }
+
+    /// <summary>
+    /// Cargo Volume Trim in m3 on Trim -1 meters
+    /// </summary>
     public double CargoVolumeTrim_1 { get; set; }
 
 
-    public Value_Table_CargoTankUllageTrim(double ull, double Trim4, double Trim3, double Trim2, double Trim1, double Trim0, double Trim_1)
+    public ValueTableCargoTankUllageTrim(double ull, double Trim4, double Trim3, double Trim2, double Trim1,
+        double Trim0, double Trim_1)
     {
         Ullage = ull;
         CargoVolumeTrim4 = Trim4;
@@ -20,13 +51,14 @@ public class Value_Table_CargoTankUllageTrim
         CargoVolumeTrim1 = Trim1;
         CargoVolumeTrim0 = Trim0;
         CargoVolumeTrim_1 = Trim_1;
-
     }
+
     public override string ToString()
     {
         return Ullage + "\t" + CargoVolumeTrim4 + "\t" + CargoVolumeTrim3 + "\t" + CargoVolumeTrim2 + "\t"
                + CargoVolumeTrim1 + "\t" + CargoVolumeTrim0 + "\t" + CargoVolumeTrim_1;
     }
+
     public override int GetHashCode()
     {
         return this.ToString().GetHashCode();

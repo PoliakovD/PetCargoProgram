@@ -3,14 +3,15 @@ using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.Models.CargoTables.Table;
 
-
-
-public class Table_BallSoundTrim
+/// <summary>
+/// BallSoundTrim Table Realised by List of <see cref="ValueTableBallSoundTrim"/>
+/// </summary>
+public class TableBallSoundTrim
 {
     public string Name { get; set; }
-    public List<Value_Table_BallSoundTrim> Table { get; set; }
+    public List<ValueTableBallSoundTrim> Table { get; set; }
 
-    public Table_BallSoundTrim(string name, List<Value_Table_BallSoundTrim> table)
+    public TableBallSoundTrim(string name, List<ValueTableBallSoundTrim> table)
     {
         Name = name;
         Table = table;

@@ -1,16 +1,46 @@
 ﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
-public class Value_Table_BallSoundTrim
+/// <summary>
+/// Ballast Sound Trim Table Value
+/// </summary>
+public class ValueTableBallSoundTrim
 {
-    public double VolumeTrim5 {get; set; }
-    public double VolumeTrim4{get;set;}
-    public double VolumeTrim3{get;set;}
-    public double VolumeTrim2{get;set;}
-    public double VolumeTrim1{get;set;}
-    public double VolumeTrim0{get;set;}
-    public double Sound{get;set;}
+    /// <summary>
+    /// Volume in m3 for Trim 5 meters
+    /// </summary>
+    public double VolumeTrim5 { get; set; }
 
-    public Value_Table_BallSoundTrim(double volumeTrim5, double volumeTrim4, double volumeTrim3, double volumeTrim2,
+    /// <summary>
+    /// Volume in m3 for Trim 4 meters
+    /// </summary>
+    public double VolumeTrim4 { get; set; }
+
+    /// <summary>
+    /// Volume in m3 for Trim 3 meters
+    /// </summary>
+    public double VolumeTrim3 { get; set; }
+
+    /// <summary>
+    /// Volume in m3 for Trim 2 meters
+    /// </summary>
+    public double VolumeTrim2 { get; set; }
+
+    /// <summary>
+    /// Volume in m3 for Trim 1 meters
+    /// </summary>
+    public double VolumeTrim1 { get; set; }
+
+    /// <summary>
+    /// Volume in m3 for Trim 0 meters
+    /// </summary>
+    public double VolumeTrim0 { get; set; }
+
+    /// <summary>
+    /// Sound in meters
+    /// </summary>
+    public double Sound { get; set; }
+
+    public ValueTableBallSoundTrim(double volumeTrim5, double volumeTrim4, double volumeTrim3, double volumeTrim2,
         double volumeTrim1, double volumeTrim0, double sound)
     {
         VolumeTrim5 = volumeTrim5;
@@ -33,4 +63,3 @@ public class Value_Table_BallSoundTrim
         return this.ToString().GetHashCode();
     }
 }
-

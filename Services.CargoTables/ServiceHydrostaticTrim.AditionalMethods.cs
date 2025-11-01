@@ -11,7 +11,7 @@ namespace PetCargoProgram.Services.CargoTables;
 public partial class ServiceHydrostaticTrim
 {
 
-    private List<Value_Table_Hydrostatic> GetClosestTableValues(double displacement, Table_Hydrostatic table)
+    private List<ValueTableHydrostatic> GetClosestTableValues(double displacement, TableHydrostatic table)
     {
         //Проверка входных значений
         if (displacement < 0) throw new Exception($"Дисплейсмент {displacement} меньше нуля");
@@ -23,11 +23,11 @@ public partial class ServiceHydrostaticTrim
         return table.Table.OrderBy(n => Math.Abs(n.Displacement - displacement)).Take(2).ToList();
 
     }
-    private Dictionary<int,Table_Hydrostatic> GetClosestTables(double trim)
+    private Dictionary<int,TableHydrostatic> GetClosestTables(double trim)
     {
         int[] indexedTrims = new int[]{-1,0,1,2,3,4};
         var searchedIndexes = indexedTrims.OrderBy(n => Math.Abs((double)n - trim)).Take(2).ToList();
-        return new Dictionary<int,Table_Hydrostatic>
+        return new Dictionary<int,TableHydrostatic>
         {
             {searchedIndexes[0],Tables[searchedIndexes[0]+1]},
             {searchedIndexes[1],Tables[searchedIndexes[1]+1]}
@@ -51,12 +51,12 @@ public partial class ServiceHydrostaticTrim
         }
     }
 
-    private Value_Table_Hydrostatic GetInterpolatedFullValue(Value_Table_Hydrostatic valueFirst,
-        Value_Table_Hydrostatic valueSecond, double koef, double displacement, bool IsInterpolated=true)
+    private ValueTableHydrostatic GetInterpolatedFullValue(ValueTableHydrostatic valueFirst,
+        ValueTableHydrostatic valueSecond, double koef, double displacement, bool IsInterpolated=true)
     {
         if (IsInterpolated)
         {
-            return new Value_Table_Hydrostatic
+            return new ValueTableHydrostatic
             (displacement,
                 GetInterpolatedValueByKoef(koef, valueFirst.Draft, valueSecond.Draft),
                 GetInterpolatedValueByKoef(koef, valueFirst.TPC, valueSecond.TPC),
@@ -68,7 +68,7 @@ public partial class ServiceHydrostaticTrim
         }
         else
         {
-            return new Value_Table_Hydrostatic
+            return new ValueTableHydrostatic
             (displacement,
                 GetExtrapoladedValueByKoef(koef, valueFirst.Draft, valueSecond.Draft),
                 GetExtrapoladedValueByKoef(koef, valueFirst.TPC, valueSecond.TPC),

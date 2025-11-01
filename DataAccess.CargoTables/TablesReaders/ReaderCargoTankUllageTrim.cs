@@ -6,6 +6,7 @@ using PetCargoProgram.Models.CargoTables.Tables;
 using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.DataAccess.CargoTables.TablesReaders;
+
 /// <summary>
 /// This static class for reading Tables_CargoTankUllage
 /// Contain method  <see cref="Read"/>
@@ -16,10 +17,10 @@ public class ReaderCargoTankUllageTrim
     /// Read Tables_CargoTankUllage in AllCargoTables object
     /// <param name="fs">Input  <see cref="FileStream"/></param>
     /// <param name="br">Input  <see cref="BinaryReader"/> for reading all required rows from bin file</param>
-    /// <param name="allCargoTables">reference on <see cref="AllCargoTables"/> to which object to save <see cref="Tables_CargoTankUllageTrim"/></param>
+    /// <param name="allCargoTables">reference on <see cref="AllCargoTables"/> to which object to save <see cref="TablesCargoTankUllageTrim"/></param>
     /// <returns><see cref="FileStream"/> to continue read other Tables</returns>
     /// </summary>
-    public static FileStream Read(FileStream fs, BinaryReader br,  ref AllCargoTables allCargoTables)
+    public static FileStream Read(FileStream fs, BinaryReader br, ref AllCargoTables allCargoTables)
     {
         allCargoTables.TablesCargoTankUllage.Tables.Clear(); // Очищаем список
 
@@ -29,18 +30,20 @@ public class ReaderCargoTankUllageTrim
         for (int i = 0; i < count_tablesCTU; ++i)
         {
             var Temp_Name = br.ReadString(); // записываем имя таблицы
-            var Temp_Table = new List<Value_Table_CargoTankUllageTrim> { };
+            var Temp_Table = new List<ValueTableCargoTankUllageTrim> { };
 
             // считываем кол-во значений в Table_CargoTankUllageTrim
             int count_TableValues = br.ReadInt32();
             for (int j = 0; j < count_TableValues; ++j)
             {
-                Temp_Table.Add(new Value_Table_CargoTankUllageTrim(br.ReadDouble(), br.ReadDouble(),
+                Temp_Table.Add(new ValueTableCargoTankUllageTrim(br.ReadDouble(), br.ReadDouble(),
                     br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble()));
             }
+
             // Добавляем таблицу в список таблиц
-            allCargoTables.TablesCargoTankUllage.Tables.Add(new Table_CargoTankUllageTrim(Temp_Name, Temp_Table));
+            allCargoTables.TablesCargoTankUllage.Tables.Add(new TableCargoTankUllageTrim(Temp_Name, Temp_Table));
         }
+
         return fs;
     }
 }

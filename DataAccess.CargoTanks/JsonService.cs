@@ -9,6 +9,7 @@ using PetCargoProgram.Models.Tanks;
 
 namespace PetCargoProgram.DataAccess;
 // TODO Проверка загруженных значений грузового танка
+//TODO Добавить Json Сериализацию и Десериализацию
 public static class JsonService
 {
     public static void Save(IEnumerable<CargoTank> cargoTanks, string path = "CargoTanks.json")

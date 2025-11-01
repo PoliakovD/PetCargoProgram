@@ -1,10 +1,10 @@
 ﻿namespace PetCargoProgram.Models.CargoTables.Values;
 
-public class Value_Table_OtherSounding
+public class ValueTableOtherSounding
 {
     public double Volume { get; set; }
     public double Sound { get; set; }
-    public Value_Table_OtherSounding(double volume, double sound)
+    public ValueTableOtherSounding(double volume, double sound)
     {
         this.Volume = volume;
         this.Sound = sound;

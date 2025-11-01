@@ -6,6 +6,7 @@ using PetCargoProgram.Models.CargoTables.Tables;
 using PetCargoProgram.Models.CargoTables.Values;
 
 namespace PetCargoProgram.DataAccess.CargoTables.TablesReaders;
+
 /// <summary>
 /// This static class for reading Tables_Hydrostatic
 /// Contain method  <see cref="Read"/>
@@ -16,10 +17,10 @@ public static class ReaderHydrostatic
     /// Read Tables_Hydrostatic in AllCargoTables object
     /// <param name="fs">Input  <see cref="FileStream"/></param>
     /// <param name="br">Input  <see cref="BinaryReader"/> for reading all required rows from bin file</param>
-    /// <param name="allCargoTables">reference on <see cref="AllCargoTables"/> to which object to save <see cref="Tables_Hydrostatic"/></param>
+    /// <param name="allCargoTables">reference on <see cref="AllCargoTables"/> to which object to save <see cref="TablesHydrostatic"/></param>
     /// <returns><see cref="FileStream"/> to continue read other Tables</returns>
     /// </summary>
-    public static FileStream Read(FileStream fs, BinaryReader br,  ref AllCargoTables allCargoTables)
+    public static FileStream Read(FileStream fs, BinaryReader br, ref AllCargoTables allCargoTables)
     {
         allCargoTables.TablesHydrostatic.Tables.Clear(); // Очищаем список
 
@@ -29,18 +30,20 @@ public static class ReaderHydrostatic
         for (int i = 0; i < count_tablesHydro; ++i)
         {
             var Temp_Name = br.ReadString(); // записываем имя таблицы
-            var Temp_Table = new List<Value_Table_Hydrostatic> { };
+            var Temp_Table = new List<ValueTableHydrostatic> { };
 
             // считываем кол-во значений в Table_Hydrostatic
             int count_TableValues = br.ReadInt32();
             for (int j = 0; j < count_TableValues; ++j)
             {
-                Temp_Table.Add(new Value_Table_Hydrostatic(br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble()));
+                Temp_Table.Add(new ValueTableHydrostatic(br.ReadDouble(), br.ReadDouble(), br.ReadDouble(),
+                    br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble(), br.ReadDouble()));
             }
+
             // Добавляем таблицу в список таблиц
-            allCargoTables.TablesHydrostatic.Tables.Add(new Table_Hydrostatic(Temp_Name, Temp_Table));
+            allCargoTables.TablesHydrostatic.Tables.Add(new TableHydrostatic(Temp_Name, Temp_Table));
         }
+
         return fs;
     }
-
 }

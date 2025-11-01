@@ -11,9 +11,9 @@ namespace PetCargoProgram.Services.CargoTables;
 
 public class ServiceCargoTankUllageTrim
 {
-    private List<Table_CargoTankUllageTrim> Tables { get; set; }
+    private List<TableCargoTankUllageTrim> Tables { get; set; }
 
-    public ServiceCargoTankUllageTrim(Tables_CargoTankUllageTrim cargoTankUllageTrim)
+    public ServiceCargoTankUllageTrim(TablesCargoTankUllageTrim cargoTankUllageTrim)
     {
         Tables= cargoTankUllageTrim.Tables;
     }

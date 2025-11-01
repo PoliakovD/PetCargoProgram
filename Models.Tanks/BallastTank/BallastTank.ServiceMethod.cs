@@ -4,7 +4,7 @@ namespace PetCargoProgram.Models.Tanks;
 
 public partial class BallastTank
 {
-    private void DistributeVolumeTableValue(Value_Table_Volume tableValue)
+    private void DistributeVolumeTableValue(ValueTableVolume tableValue)
     {
         _lcg= tableValue.LCG;
         _tcg= tableValue.TCG;

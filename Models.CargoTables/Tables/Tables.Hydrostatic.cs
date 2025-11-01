@@ -4,10 +4,12 @@ using PetCargoProgram.Models.CargoTables.Table;
 
 namespace PetCargoProgram.Models.CargoTables.Tables;
 
-public class Tables_Hydrostatic
+/// <summary>
+/// Incapsulates all <see cref="TableHydrostatic"/>
+/// </summary>
+public class TablesHydrostatic
 {
-    public  List<Table_Hydrostatic> Tables { get; set; } = [];
+    public List<TableHydrostatic> Tables { get; set; } = [];
 
-    public void Add(Table_Hydrostatic table) => Tables.Add(table);
-
+    public void Add(TableHydrostatic table) => Tables.Add(table);
 }

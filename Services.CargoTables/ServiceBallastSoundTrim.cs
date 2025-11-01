@@ -10,9 +10,9 @@ namespace PetCargoProgram.Services.CargoTables;
 
 public class ServiceBallastSoundTrim
 {
-    private List<Table_BallSoundTrim> Tables { get; set; }
+    private List<TableBallSoundTrim> Tables { get; set; }
 
-    public ServiceBallastSoundTrim(Tables_BallSoundTrim tablesBallSoundTrim)
+    public ServiceBallastSoundTrim(TablesBallSoundTrim tablesBallSoundTrim)
     {
         Tables= tablesBallSoundTrim.Tables;
     }
