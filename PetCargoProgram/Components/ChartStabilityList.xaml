@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="PetCargoProgram.Components.ChartStabilityList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Component">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="Styles/Styles.xaml" />
+    </UserControl.Resources>
+
+    <Grid Margin="5"
+          DataContext="{Binding ElementName=Component}"
+          x:Name="GridMain">
+
+        <Image Name="DrawingImage" HorizontalAlignment="Stretch"
+               VerticalAlignment="Bottom" />
+    </Grid>
+</UserControl>

@@ -9,10 +9,13 @@ using System.Linq;
 
 namespace PetCargoProgram.Components
 {
-    public partial class ChartStablility : UserControl
+    public partial class ChartStablilityTrim : UserControl
     {
+        private const double shiftingForDrawing = 25.0;
+        private const double widthForDrawing = 300.0;
+        private const double heightForDrawing = 50.0;
         public static readonly DependencyProperty DraftProperty =
-            DependencyProperty.Register(nameof(Draft), typeof(double), typeof(ChartStablility));
+            DependencyProperty.Register(nameof(Draft), typeof(double), typeof(ChartStablilityTrim));
         public double Draft
         {
             get => (double)GetValue(DraftProperty);
@@ -23,7 +26,7 @@ namespace PetCargoProgram.Components
         }
 
         public static readonly DependencyProperty LCFProperty =
-            DependencyProperty.Register(nameof(LCF), typeof(double), typeof(ChartStablility));
+            DependencyProperty.Register(nameof(LCF), typeof(double), typeof(ChartStablilityTrim));
         public double LCF
         {
             get => (double)GetValue(LCFProperty);
@@ -31,11 +34,11 @@ namespace PetCargoProgram.Components
             {
                 // так как LCF приходит со значением от миделя мы смещаем его на величину
                 // LBP/2 для данного судна LBP/2 = 119.5
-                SetValue(LCFProperty, value+119.5);
+                SetValue(LCFProperty, value+119.5+shiftingForDrawing);
             }
         }
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablility));
+            DependencyProperty.Register(nameof(Angle), typeof(double), typeof(ChartStablilityTrim));
         public double Angle
         {
             get => (double)GetValue(AngleProperty);
@@ -61,7 +64,7 @@ namespace PetCargoProgram.Components
         //
 
 
-        public ChartStablility()
+        public ChartStablilityTrim()
         {
             InitializeComponent();
             Execute(); // Заполнение слоев
@@ -84,11 +87,11 @@ namespace PetCargoProgram.Components
 
             // Описываем и сохраняем геометрию квадрата
             RectangleGeometry rectGeometry = new RectangleGeometry();
-            rectGeometry.Rect = new Rect(0, 0, 300, 50);
+            rectGeometry.Rect = new Rect(0, 0, widthForDrawing, heightForDrawing);
             geometryDrawing.Geometry = rectGeometry;
 
             // Настраиваем перо и кисть
-            geometryDrawing.Pen = new Pen(Brushes.Red, 0.015);// Перо рамки
+            geometryDrawing.Pen = new Pen(Brushes.Black, 0.015);// Перо рамки
 
             // Настраиваем кисть
             var fillBrush = new LinearGradientBrush();
@@ -109,7 +112,7 @@ namespace PetCargoProgram.Components
         }
 
 
-        private double[] GetShipPoints(string path = "ship.txt")
+        private double[] GetShipPoints(string path = "shipTrim.txt")
         {
             var stringPoints = File.ReadAllText(path);
             var points = stringPoints.Replace('\t', ' ').Replace("\r\n", " ").Split(' ');
@@ -135,8 +138,8 @@ namespace PetCargoProgram.Components
             for (int i = 0; i < ship.Length - 3; i+=2)
             {
                 line = new LineGeometry(
-                    new Point(ship[i]+25.0, -ship[i+1]),
-                    new Point(ship[i+2]+25.0, -ship[i+3]));
+                    new Point(ship[i]+shiftingForDrawing, -ship[i+1]),
+                    new Point(ship[i+2]+shiftingForDrawing, -ship[i+3]));
                 lineGroup.Children.Add(line);
             }
             // Сохраняем описание геометрии

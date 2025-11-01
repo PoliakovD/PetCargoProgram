@@ -24,15 +24,22 @@
       <None Update="CargoTables.bin">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="ship.txt">
+      <None Update="shipTrim.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="shipList.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="PresentationCore">
-      <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\9.0.7\PresentationCore.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+    <ItemGroup>
+      <Page Update="Components\ChartStabilityList.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+  
 
 </Project>
