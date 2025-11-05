@@ -1,11 +1,12 @@
 ﻿using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Services.LoadingCondition;
 
+
 namespace PetCargoProgram.ViewModels.MainWindow;
 
 public partial class ViewModelMainWindow
 {
-    public ServiceLoadingCondition? LoadingCondition { get; set; }
+    public ServiceLoadingCondition LoadingCondition { get; set; }
 
 
     void InitLoadingCondition()
@@ -16,4 +17,6 @@ public partial class ViewModelMainWindow
         LoadingCondition.AddRange(OtherTanks.Values);
         LoadingCondition.Add( LightWeight.getLightWeight());
     }
+
 }
+

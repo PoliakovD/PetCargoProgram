@@ -1,6 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel.Design;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using PetCargoProgram.Commands;
+using PetCargoProgram.Windows;
 
 
 namespace PetCargoProgram
@@ -13,6 +17,11 @@ namespace PetCargoProgram
         public MainWindow()
         {
             InitializeComponent();
+            _isOpendASTMWindow = false;
+            CommandOpenASTMWindow = new LambdaCommand(
+                execute: _ => OpenASTMWindow(),
+                canExecute: _ => CanOpenASTMWindow());
+
         }
         private void Event_LoseFocusOnEnter(object sender, System.Windows.Input.KeyEventArgs e)
         {
@@ -21,5 +30,6 @@ namespace PetCargoProgram
                 if (sender is TextBox) ((TextBox)sender).MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
         }
+
     }
 }

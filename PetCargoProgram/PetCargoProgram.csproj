@@ -40,6 +40,13 @@
       </Page>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="icons\ASTM_ico.png" />
+      <Resource Include="icons\ASTM_ico.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
   
 
 </Project>

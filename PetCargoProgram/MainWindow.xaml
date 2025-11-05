@@ -23,19 +23,23 @@
                 <MenuItem Header="_Close" />
                 <MenuItem Header="_Save" />
             </MenuItem>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Close" />
+                <MenuItem Header="_Save" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+
+                <MenuItem Header="AST_M" Command="{Binding Path=CommandOpenASTMWindow, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <MenuItem.Icon>
+                        <Image Source="/icons/ASTM_ico.png" />
+                    </MenuItem.Icon>
+
+                </MenuItem>
+            </MenuItem>
         </Menu>
 
         <Grid DockPanel.Dock="Top">
-            <Menu>
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Close" />
-                    <MenuItem Header="_Save" />
-                </MenuItem>
-                <MenuItem Header="_Tools">
-                    <MenuItem Header="AST_M" />
-                </MenuItem>
-            </Menu>
             <TabControl>
                 <TabItem Header="Main Window" Style="{StaticResource StyleBase_TabItem}">
                     <Grid Style="{StaticResource Style_MainWindowGrid}">

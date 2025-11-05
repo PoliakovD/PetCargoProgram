@@ -1,0 +1,142 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- Основные цвета -->
+    <Color x:Key="PrimaryColor">#4A90E2</Color>           <!-- Голубой акцент -->
+    <Color x:Key="PrimaryLight">#D6EDFF</Color>            <!-- Светлый фон -->
+    <Color x:Key="PrimaryDark">#2C5AA0</Color>             <!-- Тёмный акцент -->
+    <Color x:Key="TextColor">#333333</Color>               <!-- Основной текст -->
+    <Color x:Key="TextColorLight">#666666</Color>          <!-- Вторичный текст -->
+    <Color x:Key="BorderColor">#A0D0FF</Color>             <!-- Границы -->
+    <Color x:Key="HoverColor">#BDE4FF</Color>              <!-- Наведение -->
+
+    <!-- Кисти -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}"/>
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
+    <SolidColorBrush x:Key="TextLightBrush" Color="{StaticResource TextColorLight}"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource PrimaryLight}"/>
+    <SolidColorBrush x:Key="HoverColorBrush" Color="{StaticResource HoverColor}"/>
+    <SolidColorBrush x:Key="WhiteBrush" Color="White"/>
+    <SolidColorBrush x:Key="FocusBrush" Color="#7AB8FF" Opacity="0.4"/> <!-- Лёгкая подсветка фокуса -->
+
+    <!-- Шрифты -->
+    <FontFamily x:Key="MainFont">Segoe UI</FontFamily>
+    <system:Double x:Key="FontSizeSmall">12</system:Double>
+    <system:Double x:Key="FontSizeMedium">16</system:Double>  <!-- Увеличено с 14 -->
+    <system:Double x:Key="FontSizeLarge">18</system:Double>
+
+    <!-- Общие стили для окна -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource PrimaryLightBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/>
+        <!-- Запрещаем изменение размеров окна -->
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <!-- Фиксируем размеры — можно будет задать в XAML окна -->
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Height" Value="400"/>
+        <Setter Property="WindowStartupLocation" Value="CenterScreen"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+    </Style>
+
+    <!-- Стиль для StackPanel -->
+    <Style x:Key="MainStackPanelStyle" TargetType="StackPanel">
+        <Setter Property="Margin" Value="30"/>
+
+    </Style>
+
+    <!-- Универсальный стиль для Grid -->
+    <Style TargetType="Grid">
+        <Setter Property="Margin" Value="0,4"/>
+    </Style>
+
+    <!-- Стиль для Label -->
+    <Style x:Key="Style_LabelDownMenu" TargetType="Label">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Padding" Value="0,0,12,0"/>
+        <Setter Property="Margin" Value="0,0,12,0"/>
+        <Setter Property="MinWidth" Value="130"/> <!-- Единая ширина меток -->
+    </Style>
+
+    <!-- Стиль для TextBox -->
+    <Style x:Key="Style_TextBoxValues" TargetType="TextBox">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/> <!-- Увеличен шрифт -->
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0,4"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Right"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextBrush}"/> <!-- Цвет курсора -->
+        <Setter Property="SelectionBrush" Value="{StaticResource PrimaryBrush}"/> <!-- Цвет выделения -->
+        <Setter Property="SelectionOpacity" Value="0.4"/>
+        <!-- Убираем стандартный эффект фокуса -->
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="6"
+                            Padding="{TemplateBinding Padding}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Center"
+                                      Focusable="false"
+                                      TextBlock.FontSize="{TemplateBinding FontSize}"
+                                      TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter TargetName="border" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{StaticResource PrimaryColor}"
+                                                      Opacity="0.25"
+                                                      BlurRadius="8"
+                                                      ShadowDepth="0"
+                                                      Direction="0"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HoverColorBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Стиль для TextBlock (вывод значений) -->
+    <Style x:Key="Style_OutputTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/> <!-- Увеличено -->
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="Margin" Value="0,4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Right"/>
+        <Setter Property="MinWidth" Value="110"/>
+    </Style>
+
+</ResourceDictionary>
