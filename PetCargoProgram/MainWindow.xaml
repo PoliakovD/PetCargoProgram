@@ -6,488 +6,539 @@
         Title="PetCargoProgram" Height="800" Width="1600">
 
     <Window.Resources>
-        <ResourceDictionary Source="Components/Styles/Styles.xaml"/>
+        <ResourceDictionary Source="Components/Styles/Styles.xaml" />
     </Window.Resources>
 
     <Window.Style>
-        <StaticResource ResourceKey="Style_MainWindow"/>
+        <StaticResource ResourceKey="Style_MainWindow" />
     </Window.Style>
 
     <Window.DataContext>
-        <mainWindow:ViewModelMainWindow/>
+        <mainWindow:ViewModelMainWindow />
     </Window.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Close" />
+                <MenuItem Header="_Save" />
+            </MenuItem>
+        </Menu>
 
-    <Grid>
-        <TabControl>
-            <TabItem Header="Main Window" Style="{StaticResource StyleBase_TabItem}">
-                <Grid Style="{StaticResource Style_MainWindowGrid}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height ="4.5*"/>
-                        <RowDefinition Height ="7*"/>
-                        <RowDefinition Height ="7*"/>
-                        <RowDefinition Height ="4.5*"/>
-                        <RowDefinition Height ="4*"/>
-                        <RowDefinition Height ="4*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+        <Grid DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Close" />
+                    <MenuItem Header="_Save" />
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="AST_M" />
+                </MenuItem>
+            </Menu>
+            <TabControl>
+                <TabItem Header="Main Window" Style="{StaticResource StyleBase_TabItem}">
+                    <Grid Style="{StaticResource Style_MainWindowGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.5*" />
+                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="4.5*" />
+                            <RowDefinition Height="4*" />
+                            <RowDefinition Height="4*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
 
-                    <c:ViewBallastTank BallastTankName ="APT"
-                                       Grid.Column="0"
-                                       Grid.RowSpan="2"
-                                       Grid.Row="1"
-                                       DataContext="{Binding Path=BallastTanks[APT],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="APT"
+                                           Grid.Column="0"
+                                           Grid.RowSpan="2"
+                                           Grid.Row="1"
+                                           DataContext="{Binding Path=BallastTanks[APT],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 6P"
-                                       Grid.Column="2"
-                                       Grid.Row="0"
-                                       DataContext="{Binding Path=BallastTanks[BWT 6P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 6P"
+                                           Grid.Column="2"
+                                           Grid.Row="0"
+                                           DataContext="{Binding Path=BallastTanks[BWT 6P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 5P"
-                                       Grid.Column="3"
-                                       Grid.Row="0"
-                                       DataContext="{Binding Path=BallastTanks[BWT 5P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 5P"
+                                           Grid.Column="3"
+                                           Grid.Row="0"
+                                           DataContext="{Binding Path=BallastTanks[BWT 5P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 4P"
-                                       Grid.Column="4"
-                                       Grid.Row="0"
-                                       DataContext="{Binding Path=BallastTanks[BWT 4P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 4P"
+                                           Grid.Column="4"
+                                           Grid.Row="0"
+                                           DataContext="{Binding Path=BallastTanks[BWT 4P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 3P"
-                                       Grid.Column="5"
-                                       Grid.Row="0"
-                                       DataContext="{Binding Path=BallastTanks[BWT 3P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 3P"
+                                           Grid.Column="5"
+                                           Grid.Row="0"
+                                           DataContext="{Binding Path=BallastTanks[BWT 3P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 2P"
-                                       Grid.Column="6"
-                                       Grid.Row="0"
-                                       DataContext="{Binding Path=BallastTanks[BWT 2P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 2P"
+                                           Grid.Column="6"
+                                           Grid.Row="0"
+                                           DataContext="{Binding Path=BallastTanks[BWT 2P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 1P"
-                                       Grid.Column="7"
-                                       Grid.Row="0"
-                                       DataContext="{Binding Path=BallastTanks[BWT 1P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 1P"
+                                           Grid.Column="7"
+                                           Grid.Row="0"
+                                           DataContext="{Binding Path=BallastTanks[BWT 1P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="FPT"
-                                       Grid.Column="8"
-                                       Grid.RowSpan="2"
-                                       Grid.Row="1"
-                                       DataContext="{Binding Path=BallastTanks[FPT],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="FPT"
+                                           Grid.Column="8"
+                                           Grid.RowSpan="2"
+                                           Grid.Row="1"
+                                           DataContext="{Binding Path=BallastTanks[FPT],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 1S"
-                                       Grid.Column="7"
-                                       Grid.Row="3"
-                                       DataContext="{Binding Path=BallastTanks[BWT 1S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 1S"
+                                           Grid.Column="7"
+                                           Grid.Row="3"
+                                           DataContext="{Binding Path=BallastTanks[BWT 1S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 2S"
-                                       Grid.Column="6"
-                                       Grid.Row="3"
-                                       DataContext="{Binding Path=BallastTanks[BWT 2S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 2S"
+                                           Grid.Column="6"
+                                           Grid.Row="3"
+                                           DataContext="{Binding Path=BallastTanks[BWT 2S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 3S"
-                                       Grid.Column="5"
-                                       Grid.Row="3"
-                                       DataContext="{Binding Path=BallastTanks[BWT 3S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 3S"
+                                           Grid.Column="5"
+                                           Grid.Row="3"
+                                           DataContext="{Binding Path=BallastTanks[BWT 3S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 4S"
-                                       Grid.Column="4"
-                                       Grid.Row="3"
-                                       DataContext="{Binding Path=BallastTanks[BWT 4S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 4S"
+                                           Grid.Column="4"
+                                           Grid.Row="3"
+                                           DataContext="{Binding Path=BallastTanks[BWT 4S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 5S"
-                                       Grid.Column="3"
-                                       Grid.Row="3"
-                                       DataContext="{Binding Path=BallastTanks[BWT 5S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewBallastTank BallastTankName="BWT 5S"
+                                           Grid.Column="3"
+                                           Grid.Row="3"
+                                           DataContext="{Binding Path=BallastTanks[BWT 5S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewBallastTank BallastTankName ="BWT 6S"
-                                       Grid.Column="2"
-                                       Grid.Row="3"
-                                       DataContext="{Binding Path=BallastTanks[BWT 6S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-
+                        <c:ViewBallastTank BallastTankName="BWT 6S"
+                                           Grid.Column="2"
+                                           Grid.Row="3"
+                                           DataContext="{Binding Path=BallastTanks[BWT 6S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Sound="{Binding Path=Sound,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                           Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
 
+                        <c:ViewCargoTank CargoTankName="COT 1P"
+                                         Grid.Column="7"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[COT 1P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
+                        <c:ViewCargoTank CargoTankName="COT 2P"
+                                         Grid.Column="6"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[COT 2P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 1P"
-                                     Grid.Column="7"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[COT 1P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 3P"
+                                         Grid.Column="5"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[COT 3P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 2P"
-                                     Grid.Column="6"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[COT 2P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 4P"
+                                         Grid.Column="4"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[COT 4P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 3P"
-                                     Grid.Column="5"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[COT 3P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 5P"
+                                         Grid.Column="3"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[COT 5P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 4P"
-                                     Grid.Column="4"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[COT 4P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 6P"
+                                         Grid.Column="2"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[COT 6P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 5P"
-                                     Grid.Column="3"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[COT 5P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="SLOP P"
+                                         Grid.Column="1"
+                                         Grid.Row="1"
+                                         DataContext="{Binding Path=CargoTanks[SLOP P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 6P"
-                                     Grid.Column="2"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[COT 6P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 1S"
+                                         Grid.Column="7"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[COT 1S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="SLOP P"
-                                     Grid.Column="1"
-                                     Grid.Row="1"
-                                     DataContext="{Binding Path=CargoTanks[SLOP P],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 2S"
+                                         Grid.Column="6"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[COT 2S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 1S"
-                                     Grid.Column="7"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[COT 1S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 3S"
+                                         Grid.Column="5"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[COT 3S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 2S"
-                                     Grid.Column="6"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[COT 2S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 4S"
+                                         Grid.Column="4"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[COT 4S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 3S"
-                                     Grid.Column="5"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[COT 3S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 5S"
+                                         Grid.Column="3"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[COT 5S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 4S"
-                                     Grid.Column="4"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[COT 4S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <c:ViewCargoTank CargoTankName="COT 6S"
+                                         Grid.Column="2"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[COT 6S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <c:ViewCargoTank CargoTankName ="COT 5S"
-                                     Grid.Column="3"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[COT 5S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-                    <c:ViewCargoTank CargoTankName ="COT 6S"
-                                     Grid.Column="2"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[COT 6S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-                    <c:ViewCargoTank CargoTankName ="SLOP S"
-                                     Grid.Column="1"
-                                     Grid.Row="2"
-                                     DataContext="{Binding Path=CargoTanks[SLOP S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Grid
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        Grid.RowSpan="2"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Center">
-                        <c:ChartStabilityList
-                            Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
-                            Angle="{Binding LoadingCondition.ShipCondition.List}"
-                            KG="{Binding LoadingCondition.ShipCondition.KM}"/>
-                    </Grid>
+                        <c:ViewCargoTank CargoTankName="SLOP S"
+                                         Grid.Column="1"
+                                         Grid.Row="2"
+                                         DataContext="{Binding Path=CargoTanks[SLOP S],Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Percents="{Binding Path=VolumePercent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Ullage="{Binding Path=Ullage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TemperatureTank="{Binding Path=CurrentTemperature,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Volume="{Binding Path=Volume,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Weight="{Binding Path=Weight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                         <Grid
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="3"
-                            Grid.RowSpan="3">
-                            <c:ChartStablilityTrim
-                                Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
-                                Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
-                                LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}"/>
+                            Grid.ColumnSpan="4"
+                            Grid.Row="4"
+                            Grid.RowSpan="2">
+                            <c:ChartStablilityTrim x:Name="ChartStablilityTrimFigure"
+                                                   Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
+                                                   Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
+                                                   LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}"
+                                                   ListAngle="{Binding LoadingCondition.ShipCondition.List}"
+                                                   KG="{Binding LoadingCondition.ShipCondition.KM}" />
 
                         </Grid>
-                     <StackPanel Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Orientation="Vertical">
-                        <GroupBox Header="Settings"
-                                  Style="{StaticResource Style_GroupBoxInfo}">
-                            <StackPanel Orientation="Vertical">
-                               <Grid>
-                                   <Grid.ColumnDefinitions>
-                                       <ColumnDefinition Width="*"/>
-                                       <ColumnDefinition Width="*"/>
-                                   </Grid.ColumnDefinitions>
-                                   <Label
-                                       Grid.Column="0"
-                                       Content="Sea Water Density"
-                                       Style="{StaticResource Style_LabelDownMenu}"/>
-                                   <TextBox
-                                       Grid.Column="1"
-                                       Text="{Binding Path=LoadingCondition.ShipCondition.SeaWaterDensity,
+                        <StackPanel Grid.Column="4" Grid.Row="4" Grid.RowSpan="2" Orientation="Vertical">
+                            <GroupBox Header="Settings"
+                                      Style="{StaticResource Style_GroupBoxInfo}">
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Content="Sea Water Density"
+                                            Style="{StaticResource Style_LabelDownMenu}" />
+                                        <TextBox
+                                            Grid.Column="1"
+                                            Text="{Binding Path=LoadingCondition.ShipCondition.SeaWaterDensity,
                                        Mode=TwoWay,
                                        UpdateSourceTrigger=LostFocus,
                                        StringFormat=\{0:f3\} t/m3}"
 
-                                       KeyDown="Event_LoseFocusOnEnter"
-                                       c:SelectTextOnFocus.Active="True"/>
-                               </Grid>
-                            </StackPanel>
-                        </GroupBox>
-                         <c:ViewASTMTAbles/>
+                                            KeyDown="Event_LoseFocusOnEnter"
+                                            c:SelectTextOnFocus.Active="True" />
+                                    </Grid>
+                                </StackPanel>
+                            </GroupBox>
+                            <c:ViewASTMTAbles />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <c:ComponentShipCondition x:Name="ComponentShipCondition"
-                        Grid.Column="3"
-                        Grid.ColumnSpan="4"
-                        Grid.Row="4"
-                        Grid.RowSpan="2"
-                        DataContext="{Binding Path=LoadingCondition.ShipCondition}"
-                        DockPanel.Dock="Right"
-                        TrimAngle="{Binding TrimAngle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftEquiv="{Binding DraftEquivalent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                        DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                        <c:ComponentShipCondition x:Name="ComponentShipConditionMainWindow"
+                                                  Grid.Column="5"
+                                                  Grid.ColumnSpan="4"
+                                                  Grid.Row="4"
+                                                  Grid.RowSpan="2"
+                                                  DataContext="{Binding Path=LoadingCondition.ShipCondition}"
+                                                  DockPanel.Dock="Right"
+                                                  TrimAngle="{Binding TrimAngle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftEquiv="{Binding DraftEquivalent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
 
-                        TPC="{Binding TPC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        KM ="{Binding KM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        LCF ="{Binding LCF,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        MCTC ="{Binding MCTC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        LCB ="{Binding LCB,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        CM ="{Binding CM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-
-                        />
+                                                  TPC="{Binding TPC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  KM="{Binding KM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  LCF="{Binding LCF,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  MCTC="{Binding MCTC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  LCB="{Binding LCB,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  CM="{Binding CM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }" />
 
 
+                    </Grid>
+                </TabItem>
+                <TabItem Header="CargoTanks" Style="{StaticResource StyleBase_TabItem}">
+                    <DockPanel LastChildFill="True">
+                        <c:CargoTanksSpecial DockPanel.Dock="Left"
+                                             CargoTanks="{Binding Path=LoadingCondition.TableCargoTanks}" />
+                        <c:ComponentShipCondition DataContext="{Binding ElementName=ComponentShipConditionMainWindow}"
+                                                  TrimAngle="{Binding TrimAngle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
 
-                </Grid>
-            </TabItem>
-            <TabItem Header="CargoTanks" Style="{StaticResource StyleBase_TabItem}">
-                <DockPanel LastChildFill="True">
-                    <c:CargoTanksSpecial DockPanel.Dock="Left" CargoTanks="{Binding Path=LoadingCondition.TableCargoTanks}"/>
-                    <c:ComponentShipCondition DataContext="{Binding Path=LoadingCondition.ShipCondition}"
-                                              />
-                </DockPanel>
+                                                  DraftEquiv="{Binding DraftEquiv, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
 
-            </TabItem>
-            <TabItem Header="Loading Condition" Style="{StaticResource StyleBase_TabItem}">
-                <DockPanel>
-                    <DataGrid Name="DataGrid_LoadingCondion" DockPanel.Dock="Left"
-                          ItemsSource="{Binding Path=LoadingCondition.Table}"
-                          AutoGenerateColumns="False"
-                          CanUserAddRows="False">
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Compartment"
-                                            IsReadOnly="True"
-                                            CellTemplate="{StaticResource  Template_ColorCompartment}"/>
-                        <DataGridTextColumn Header="Capacity(m3)"
-                                            Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Sound(m)"
-                                            Binding="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
-                        <DataGridTextColumn Header="Ullage(m)"
-                                            Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
-                        <DataGridTextColumn Header="Max Ullage(m)"
-                                            Binding="{Binding Path=MaxUllage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Volume(m3)"
-                                            Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
-                        <DataGridTextColumn Header="Percents(%)"
-                                            Binding="{Binding Path=VolumePercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:p2\}, Converter={StaticResource Converter_PercentsToDouble}}"/>
-                        <DataGridTextColumn Header="Density(t/m3)"
-                                            Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}"/>
-                        <DataGridTextColumn Header="Weight(t)"
-                                            Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"/>
-                        <DataGridTextColumn Header="LCG"
-                                            Binding="{Binding Path=LCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"/>
-                        <DataGridTextColumn Header="TCG"
-                                            Binding="{Binding Path=TCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"/>
-                        <DataGridTextColumn Header="VCG"
-                                            Binding="{Binding Path=VCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
-                                            IsReadOnly="True"/>
-                    </DataGrid.Columns>
-                    </DataGrid>
-                    <c:ComponentShipCondition DataContext="{Binding Path=LoadingCondition.ShipCondition}"
-                        DockPanel.Dock="Right"
-                        LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                        DraftEquiv="{Binding DraftEquivalent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                        Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
-                        Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"/>
-                </DockPanel>
-            </TabItem>
-            <TabItem Header="Ship DRWG" Style="{StaticResource StyleBase_TabItem}">
-                <c:ChartStablilityTrim
-                    Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
-                    Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
-                    LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}">
-                </c:ChartStablilityTrim>
-            </TabItem>
-        </TabControl>
-    </Grid>
+                                                  TPC="{Binding TPC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  KM="{Binding KM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  LCF="{Binding LCF,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  MCTC="{Binding MCTC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  LCB="{Binding LCB,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  CM="{Binding CM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }" />
+                    </DockPanel>
+
+                </TabItem>
+                <TabItem Header="Loading Condition" Style="{StaticResource StyleBase_TabItem}">
+                    <DockPanel>
+                        <DataGrid Name="DataGrid_LoadingCondion" DockPanel.Dock="Left"
+                                  ItemsSource="{Binding Path=LoadingCondition.Table}"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Compartment"
+                                                        IsReadOnly="True"
+                                                        CellTemplate="{StaticResource  Template_ColorCompartment}" />
+                                <DataGridTextColumn Header="Capacity(m3)"
+                                                    Binding="{Binding Path=MaxVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                                    IsReadOnly="True" />
+                                <DataGridTextColumn Header="Sound(m)"
+                                                    Binding="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}" />
+                                <DataGridTextColumn Header="Ullage(m)"
+                                                    Binding="{Binding Path=Ullage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}" />
+                                <DataGridTextColumn Header="Max Ullage(m)"
+                                                    Binding="{Binding Path=MaxUllage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                                    IsReadOnly="True" />
+                                <DataGridTextColumn Header="Volume(m3)"
+                                                    Binding="{Binding Path=Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}" />
+                                <DataGridTextColumn Header="Percents(%)"
+                                                    Binding="{Binding Path=VolumePercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:p2\}, Converter={StaticResource Converter_PercentsToDouble}}" />
+                                <DataGridTextColumn Header="Density(t/m3)"
+                                                    Binding="{Binding Path=Density, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f3\}}" />
+                                <DataGridTextColumn Header="Weight(t)"
+                                                    Binding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}" />
+                                <DataGridTextColumn Header="LCG"
+                                                    Binding="{Binding Path=LCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                                    IsReadOnly="True" />
+                                <DataGridTextColumn Header="TCG"
+                                                    Binding="{Binding Path=TCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                                    IsReadOnly="True" />
+                                <DataGridTextColumn Header="VCG"
+                                                    Binding="{Binding Path=VCG, Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f2\}}"
+                                                    IsReadOnly="True" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <c:ComponentShipCondition DataContext="{Binding ElementName=ComponentShipConditionMainWindow}"
+                                                  TrimAngle="{Binding TrimAngle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LightWeight="{Binding LightWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DeadWeight="{Binding DeadWeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Displacement="{Binding Displacement, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DeadWeightRegistred="{Binding DeadWeightRegistred, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  CargoOnBoard="{Binding CargoOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  BallastOnBoard="{Binding BallastOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  FuelOilOnBoard="{Binding FuelOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DieselOilOnBoard="{Binding DieselOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  FreshWaterOnBoard="{Binding FreshWaterOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  LubeOilOnBoard="{Binding LubeOilOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  OtherStoresOnBoard="{Binding OtherStoresOnBoard, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+
+                                                  DraftEquiv="{Binding DraftEquiv, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftFore="{Binding DraftFore, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftMean="{Binding DraftMean, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftActual="{Binding DraftActual,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  DraftAft="{Binding DraftAft, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Trim="{Binding Trim, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  List="{Binding List, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Gm="{Binding Gm,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  Gom="{Binding Gom,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+
+                                                  TPC="{Binding TPC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  KM="{Binding KM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  LCF="{Binding LCF,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  MCTC="{Binding MCTC,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  LCB="{Binding LCB,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }"
+                                                  CM="{Binding CM,Mode=OneWay, UpdateSourceTrigger=PropertyChanged }" />
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Ship DRWG" Style="{StaticResource StyleBase_TabItem}">
+                    <c:ChartStablilityTrim DataContext="{Binding ElementName=ChartStablilityTrimFigure}"
+                                           Draft="{Binding Draft}"
+                                           Angle="{Binding Angle}"
+                                           LCF="{Binding LCF}"
+                                           KG="{Binding KG}"
+                                           ListAngle="{Binding ListAngle}">
+                    </c:ChartStablilityTrim>
+                </TabItem>
+                <TabItem Header="Stability" Style="{StaticResource StyleBase_TabItem}">
+                    <c:ChartStablilityTrim
+                        Draft="{Binding LoadingCondition.ShipCondition.DraftActual}"
+                        Angle="{Binding LoadingCondition.ShipCondition.TrimAngle}"
+                        LCF="{Binding LoadingCondition.ShipCondition.LCFForChart}">
+                    </c:ChartStablilityTrim>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+    </DockPanel>
+
 
 </Window>

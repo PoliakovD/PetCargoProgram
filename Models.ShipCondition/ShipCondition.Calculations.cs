@@ -53,32 +53,13 @@ public partial class ShipConditionClass
         var drafAftBeforeCorected = drafForeBeforeCorected+(Displacement*(LCB-MomentX/Displacement))/(MCTC*100.0);
 
 
-        //
-        // double meanedDraft = (drafAftBeforeCorected + _draftActual*6 + drafForeBeforeCorected) / 8.0;
-        // double LcfOnDraft = CargoTablesProvider.Hydrostatic.GetLCF(meanedDraft);
-        // double trimCorrection = (LcfOnDraft*(drafAftBeforeCorected-drafForeBeforeCorected))/LengthBetweenPerpendiculars;
-        // double equivalentdraft = _draftActual + trimCorrection;
-        // double equivalentDisplacement = CargoTablesProvider.Hydrostatic.GetDisplacement(equivalentdraft);
-        // double displacementForCalculation = equivalentDisplacement * (SeaWaterDensity / 1.025);
-        // var valueHydrostaticForCalc = CargoTablesProvider.Hydrostatic.GetValue(displacementForCalculation);
-        // double freshWaterAllowance = (displacementForCalculation/(100.0*valueHydrostaticForCalc.TPC)*((1.025-1.0)/1.0))*1000.0;
-        // double draftWaterAllowance=displacementForCalculation/(100.0*valueHydrostaticForCalc.TPC)*((1.025-SeaWaterDensity)/SeaWaterDensity);
 
-        // double truedraft = equivalentdraft - draftWaterAllowance;
 
         double correction = 0.0;
 
-        // _draftFore = (_draftActual - ((LengthBetweenPerpendiculars / 2 - LCF) / LengthBetweenPerpendiculars) *
-        //     ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
-        // OnPropertyChanged(nameof(DraftFore));
 
         _draftFore = drafForeBeforeCorected + correction;
         OnPropertyChanged(nameof(DraftFore));
-
-        // _draftAft = (_draftActual + ((LengthBetweenPerpendiculars / 2 - LCF) / LengthBetweenPerpendiculars) *
-        //     ((Displacement * (LCB - MomentX/Displacement)) / (MCTC * 100.0)));
-        // OnPropertyChanged(nameof(DraftAft));
-        //=(Dfp+((DISPLACEMENT*(Xc-Xg))/(MCTC*100)))*figa
 
         _draftAft = drafAftBeforeCorected + correction;
         OnPropertyChanged(nameof(DraftAft));
