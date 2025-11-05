@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BaseStyles.xaml"/>
+        <ResourceDictionary Source="StylesColors.xaml"/>
+        <ResourceDictionary>
+            <Style x:Key="Style_MainWindow" TargetType="Window">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource ContentAreaColorLight}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="StyleBase_TabItem" TargetType="TabItem">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource TabItemBackground}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Style_MainWindowGrid" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource TabItemBackground}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Style_GroupBoxInfo" TargetType="GroupBox">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource GroupBoxInfoBackGround}"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Style_GroupBoxBallast" TargetType="GroupBox">
+                <Setter Property="MinWidth" Value="100"/>
+                <Setter Property="MinHeight" Value="80"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource ContentAreaBallastTank}" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Style_GroupBoxCargo" TargetType="GroupBox">
+                <Setter Property="MinWidth" Value="100"/>
+                <Setter Property="MinHeight" Value="100"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource ContentAreaCargoTank}" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Style_DataGridColumn" TargetType="DataGridCell">
+                <Setter Property="MinWidth" Value="35"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+
+
+
+        </ResourceDictionary>
+
+
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
