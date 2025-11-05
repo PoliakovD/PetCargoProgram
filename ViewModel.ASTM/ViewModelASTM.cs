@@ -1,4 +1,6 @@
-﻿using PetCargoProgram.ViewModels.Base;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using PetCargoProgram.ViewModels.Base;
 using  PetCargoProgram.Services.ASTM;
 using static PetCargoProgram.Services.ASTM.ServiceASTM;
 
@@ -7,6 +9,14 @@ namespace ViewModel.ASTM;
 
 public class ViewModelASTM : NotifyPropertyChanged
 {
+
+    public ObservableCollection<string> ConvertionTypes
+    {
+        get;
+        init;
+    }
+    = new() { "Crude Oils", "Oil Products", "Lube Oils"};
+
     protected double _density15;
     protected double _density60;
     protected double _api;
@@ -14,7 +24,24 @@ public class ViewModelASTM : NotifyPropertyChanged
     protected double _volumeCorrection;
     protected double _weightVacToAir;
     protected double _weightAirToVac;
+    protected string _currentConvertionType;
 
+    public  Table54VCF CurrentConvertionTable
+    {
+        get;
+        set;
+    }
+
+    public virtual string CurrentConvertionType
+    {
+        get => _currentConvertionType;
+        set
+        {
+            SetField(ref _currentConvertionType, value);
+            CurrentConvertionTable = GetConvertionTable(value);
+            Density15 = Density15;
+        }
+    }
 
     public virtual double Density15
     {
@@ -31,7 +58,7 @@ public class ViewModelASTM : NotifyPropertyChanged
             _density60 = GetRelativeDensity6060byDensity15(_density15);
             OnPropertyChanged(nameof(Density60));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -55,7 +82,7 @@ public class ViewModelASTM : NotifyPropertyChanged
             _api = GetAPIbyDensity15(_density15);
             OnPropertyChanged(nameof(API));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -76,7 +103,7 @@ public class ViewModelASTM : NotifyPropertyChanged
             _density60 = GetRelativeDensity6060byDensity15(_density15);
             OnPropertyChanged(nameof(Density60));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -92,7 +119,7 @@ public class ViewModelASTM : NotifyPropertyChanged
         set
         {
             SetField(ref _currentTemperature, value);
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
         }
     }
     public double VolumeCorrection
@@ -122,5 +149,16 @@ public class ViewModelASTM : NotifyPropertyChanged
         _weightVacToAir= 0.0;
         _weightAirToVac= 0.0;
         Density15 = 0.976;
+        _currentConvertionType = "Crude Oils";
+    }
+
+    private Table54VCF GetConvertionTable(string currentConvertionType)
+    {
+        switch (currentConvertionType)
+        {
+            case "Oil Products": return Table54VCF.OilProduct54A;
+            case    "Lube Oils": return Table54VCF.LubeOil54D;
+            default: return Table54VCF.CrudeOil54B;
+        }
     }
 }

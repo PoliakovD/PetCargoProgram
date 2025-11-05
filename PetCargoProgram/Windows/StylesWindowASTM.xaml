@@ -12,16 +12,16 @@
     <Color x:Key="HoverColor">#BDE4FF</Color>              <!-- Наведение -->
 
     <!-- Кисти -->
-    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
-    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}"/>
-    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
-    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
-    <SolidColorBrush x:Key="TextLightBrush" Color="{StaticResource TextColorLight}"/>
-    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
-    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource PrimaryLight}"/>
-    <SolidColorBrush x:Key="HoverColorBrush" Color="{StaticResource HoverColor}"/>
-    <SolidColorBrush x:Key="WhiteBrush" Color="White"/>
-    <SolidColorBrush x:Key="FocusBrush" Color="#7AB8FF" Opacity="0.4"/> <!-- Лёгкая подсветка фокуса -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}" />
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}" />
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}" />
+    <SolidColorBrush x:Key="TextLightBrush" Color="{StaticResource TextColorLight}" />
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}" />
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource PrimaryLight}" />
+    <SolidColorBrush x:Key="HoverColorBrush" Color="{StaticResource HoverColor}" />
+    <SolidColorBrush x:Key="WhiteBrush" Color="White" />
+    <SolidColorBrush x:Key="FocusBrush" Color="#7AB8FF" Opacity="0.4" /> <!-- Лёгкая подсветка фокуса -->
 
     <!-- Шрифты -->
     <FontFamily x:Key="MainFont">Segoe UI</FontFamily>
@@ -31,62 +31,147 @@
 
     <!-- Общие стили для окна -->
     <Style TargetType="Window">
-        <Setter Property="Background" Value="{StaticResource PrimaryLightBrush}"/>
-        <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
-        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryLightBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
         <!-- Запрещаем изменение размеров окна -->
-        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="ResizeMode" Value="NoResize" />
         <!-- Фиксируем размеры — можно будет задать в XAML окна -->
-        <Setter Property="Width" Value="400"/>
-        <Setter Property="Height" Value="400"/>
-        <Setter Property="WindowStartupLocation" Value="CenterScreen"/>
-        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="Width" Value="400" />
+        <Setter Property="Height" Value="400" />
+        <Setter Property="WindowStartupLocation" Value="CenterScreen" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
     </Style>
 
     <!-- Стиль для StackPanel -->
     <Style x:Key="MainStackPanelStyle" TargetType="StackPanel">
-        <Setter Property="Margin" Value="30"/>
+        <Setter Property="Margin" Value="30" />
 
     </Style>
 
     <!-- Универсальный стиль для Grid -->
     <Style TargetType="Grid">
-        <Setter Property="Margin" Value="0,4"/>
+        <Setter Property="Margin" Value="0,4" />
+    </Style>
+
+
+    <!-- Стиль для ListBox -->
+    <Style x:Key="Style_ListBox" TargetType="ListBox">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6">
+                        <ScrollViewer Margin="1" Focusable="False">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                            <Setter TargetName="border" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{StaticResource PrimaryColor}"
+                                                      Opacity="0.25"
+                                                      BlurRadius="8"
+                                                      ShadowDepth="0"
+                                                      Direction="0" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HoverColorBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Стиль для ListBoxItem -->
+    <Style x:Key="Style_ListBoxItem" TargetType="ListBoxItem">
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="itemBorder"
+                            Background="Transparent"
+                            Padding="10,6"
+                            Margin="2,2"
+                            CornerRadius="4">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Выделенный элемент -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="itemBorder" Property="Background" Value="{StaticResource PrimaryBrush}" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <!-- Наведение -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="itemBorder" Property="Background"
+                                    Value="{StaticResource HoverColorBrush}" />
+                            <Setter TargetName="itemBorder" Property="Opacity" Value="0.8" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Выравнивание текста по левому краю -->
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
     <!-- Стиль для Label -->
     <Style x:Key="Style_LabelDownMenu" TargetType="Label">
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
-        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="Padding" Value="0,0,12,0"/>
-        <Setter Property="Margin" Value="0,0,12,0"/>
-        <Setter Property="MinWidth" Value="130"/> <!-- Единая ширина меток -->
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Padding" Value="0,0,12,0" />
+        <Setter Property="Margin" Value="0,0,12,0" />
+        <Setter Property="MinWidth" Value="130" /> <!-- Единая ширина меток -->
     </Style>
 
     <!-- Стиль для TextBox -->
     <Style x:Key="Style_TextBoxValues" TargetType="TextBox">
-        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/> <!-- Увеличен шрифт -->
-        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
-        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1.5"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="Margin" Value="0,4"/>
-        <Setter Property="Width" Value="110"/>
-        <Setter Property="Height" Value="36"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="TextAlignment" Value="Right"/>
-        <Setter Property="CaretBrush" Value="{StaticResource TextBrush}"/> <!-- Цвет курсора -->
-        <Setter Property="SelectionBrush" Value="{StaticResource PrimaryBrush}"/> <!-- Цвет выделения -->
-        <Setter Property="SelectionOpacity" Value="0.4"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" /> <!-- Увеличен шрифт -->
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0,4" />
+        <Setter Property="Width" Value="110" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="CaretBrush" Value="{StaticResource TextBrush}" /> <!-- Цвет курсора -->
+        <Setter Property="SelectionBrush" Value="{StaticResource PrimaryBrush}" /> <!-- Цвет выделения -->
+        <Setter Property="SelectionOpacity" Value="0.4" />
         <!-- Убираем стандартный эффект фокуса -->
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -102,23 +187,23 @@
                                       VerticalAlignment="Center"
                                       Focusable="false"
                                       TextBlock.FontSize="{TemplateBinding FontSize}"
-                                      TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                                      TextBlock.Foreground="{TemplateBinding Foreground}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
                             <Setter TargetName="border" Property="Effect">
                                 <Setter.Value>
                                     <DropShadowEffect Color="{StaticResource PrimaryColor}"
                                                       Opacity="0.25"
                                                       BlurRadius="8"
                                                       ShadowDepth="0"
-                                                      Direction="0"/>
+                                                      Direction="0" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HoverColorBrush}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HoverColorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -128,15 +213,15 @@
 
     <!-- Стиль для TextBlock (вывод значений) -->
     <Style x:Key="Style_OutputTextBlock" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}"/> <!-- Увеличено -->
-        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
-        <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="10,8"/>
-        <Setter Property="Margin" Value="0,4"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="TextAlignment" Value="Right"/>
-        <Setter Property="MinWidth" Value="110"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeMedium}" /> <!-- Увеличено -->
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="10,8" />
+        <Setter Property="Margin" Value="0,4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="MinWidth" Value="110" />
     </Style>
 
 </ResourceDictionary>

@@ -27,7 +27,11 @@
     <!-- Основной контент с отступами -->
     <Grid Margin="0">
         <StackPanel Orientation="Vertical" Style="{StaticResource MainStackPanelStyle}">
-
+            <ListBox ItemsSource="{Binding ConvertionTypes}"
+                     SelectedItem="{Binding CurrentConvertionType}"
+                     Style="{StaticResource Style_ListBox}"
+                     ItemContainerStyle="{StaticResource Style_ListBoxItem}"
+                     Margin="0,4"/>
             <!-- API 60 F -->
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -103,7 +107,6 @@
                        Content="Volume Correction"
                        Style="{StaticResource Style_LabelDownMenu}" />
                 <TextBlock Grid.Column="1"
-                           Name="Output_VolumeCorrection"
                            Style="{StaticResource Style_OutputTextBlock}"
                            Text="{Binding VolumeCorrection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:f4}}" />
             </Grid>
@@ -115,10 +118,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0"
-                       Content="WeightAirToVac"
+                       Content="From Air to Vac"
                        Style="{StaticResource Style_LabelDownMenu}" />
                 <TextBlock Grid.Column="1"
-                           Name="Output_WeightAirToVac"
                            Style="{StaticResource Style_OutputTextBlock}"
                            Text="{Binding WeightAirToVac, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:f4}}" />
             </Grid>
@@ -130,10 +132,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0"
-                       Content="WeightVacToAir"
+                       Content="From Vac to Air"
                        Style="{StaticResource Style_LabelDownMenu}" />
                 <TextBlock Grid.Column="1"
-                           Name="Output_WeightVacToAir"
                            Style="{StaticResource Style_OutputTextBlock}"
                            Text="{Binding WeightVacToAir, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:f4}}" />
             </Grid>
