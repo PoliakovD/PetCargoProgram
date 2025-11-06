@@ -37,7 +37,7 @@
                                             Converter={StaticResource Converter_PercentsToDouble}}"/>
 
                         <DataGridTextColumn Header="T °C"
-                                            Binding="{Binding Path=CurrentTemperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
+                                            Binding="{Binding Path=CurrentTemperatureCelsius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f1\}}"/>
 
                         <DataGridTextColumn Header="D 15°C(t/m3)"
                                             Binding="{Binding Path=Density15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:f4\}}"/>

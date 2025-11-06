@@ -240,7 +240,7 @@ public partial class ShipConditionClass : NotifyPropertyChanged
         CM = value.CM;
 
         DraftEquivalent = DraftMean;
-        CalcDrafts();
+        CalcDraftsAndStability();
         MomentX = -188442.63;
         MomentY = 0.0;
         MomentZ = 203646.66;

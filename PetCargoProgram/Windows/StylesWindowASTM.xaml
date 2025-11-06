@@ -149,7 +149,7 @@
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Padding" Value="0,0,12,0" />
         <Setter Property="Margin" Value="0,0,12,0" />
-        <Setter Property="MinWidth" Value="130" /> <!-- Единая ширина меток -->
+        <Setter Property="MinWidth" Value="145" /> <!-- Единая ширина меток -->
     </Style>
 
     <!-- Стиль для TextBox -->

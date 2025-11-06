@@ -40,6 +40,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
     <!--Шаблон для полей ввода/вывода-->
     <ControlTemplate x:Key="Template_IOTextBoxValues" TargetType="{x:Type TextBoxBase}">
 
@@ -149,7 +150,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Right"/>
     </Style>
 
-    <!--Стиль для лейблов статистикиглавной странице-->
+    <!--Стиль для лейблов статистики главной странице-->
     <Style x:Key="Style_LabelStatistic" TargetType="Label">
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>

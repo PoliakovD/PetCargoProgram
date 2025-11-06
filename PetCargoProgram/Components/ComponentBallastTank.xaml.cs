@@ -83,17 +83,13 @@ namespace PetCargoProgram.Components
         public ViewBallastTank()
         {
             InitializeComponent();
-            Loaded += (_, _) =>
-            {
-                StatusValve = true;
-            };
-
+            StatusValve = true;
         }
 
 
         private void Event_ButtonValveClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            StatusValve = !StatusValve;
+           StatusValve = !StatusValve;
         }
 
         private void Event_LoseFocusOnEnter(object sender, System.Windows.Input.KeyEventArgs e)

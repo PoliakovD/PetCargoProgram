@@ -20,7 +20,7 @@ public partial class MainWindow
         }
 
         var astmWindow = new ASTMWindow();
-        MessageBox.Show("Открываю ASTM!");
+        // MessageBox.Show("Открываю ASTM!");
         astmWindow.Closed += (s, args) => _isOpendASTMWindow = false;
         astmWindow.Show();
         _isOpendASTMWindow = true;

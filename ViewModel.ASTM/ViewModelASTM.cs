@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using PetCargoProgram.ViewModels.Base;
-using  PetCargoProgram.Services.ASTM;
 using static PetCargoProgram.Services.ASTM.ServiceASTM;
 
 
@@ -20,7 +18,8 @@ public class ViewModelASTM : NotifyPropertyChanged
     protected double _density15;
     protected double _density60;
     protected double _api;
-    protected double _currentTemperature;
+    protected double _currentTemperatureCelsius;
+    protected double _currentTemperatureFaringheits;
     protected double _volumeCorrection;
     protected double _weightVacToAir;
     protected double _weightAirToVac;
@@ -58,7 +57,7 @@ public class ViewModelASTM : NotifyPropertyChanged
             _density60 = GetRelativeDensity6060byDensity15(_density15);
             OnPropertyChanged(nameof(Density60));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15,CurrentConvertionTable);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -82,7 +81,7 @@ public class ViewModelASTM : NotifyPropertyChanged
             _api = GetAPIbyDensity15(_density15);
             OnPropertyChanged(nameof(API));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15,CurrentConvertionTable);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -103,7 +102,7 @@ public class ViewModelASTM : NotifyPropertyChanged
             _density60 = GetRelativeDensity6060byDensity15(_density15);
             OnPropertyChanged(nameof(Density60));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15,CurrentConvertionTable);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -113,13 +112,26 @@ public class ViewModelASTM : NotifyPropertyChanged
         }
     }
 
-    public virtual double CurrentTemperature
+    public virtual double CurrentTemperatureCelsius
     {
-        get => _currentTemperature;
+        get => _currentTemperatureCelsius;
         set
         {
-            SetField(ref _currentTemperature, value);
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15,CurrentConvertionTable);
+            SetField(ref _currentTemperatureCelsius, value);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15,CurrentConvertionTable);
+            _currentTemperatureFaringheits = value * 1.8 + 32.0;
+            OnPropertyChanged(nameof(CurrentTemperatureFaringheits));
+        }
+    }
+    public virtual double CurrentTemperatureFaringheits
+    {
+        get => _currentTemperatureFaringheits;
+        set
+        {
+            SetField(ref _currentTemperatureFaringheits, value);
+            _currentTemperatureCelsius = (value - 32.0) / 1.8 ;
+            OnPropertyChanged(nameof(CurrentTemperatureCelsius));
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15,CurrentConvertionTable);
         }
     }
     public double VolumeCorrection
@@ -140,8 +152,8 @@ public class ViewModelASTM : NotifyPropertyChanged
 
     public ViewModelASTM()
     {
-        CurrentTemperature = 30.0;
-        OnPropertyChanged(nameof(CurrentTemperature));
+        CurrentTemperatureCelsius = 30.0;
+        OnPropertyChanged(nameof(CurrentTemperatureCelsius));
         _density15 = 0.0;
         _density60= 0.0;
         _api= 0.0;

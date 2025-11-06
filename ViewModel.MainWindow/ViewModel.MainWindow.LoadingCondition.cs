@@ -1,4 +1,5 @@
-﻿using PetCargoProgram.Models.LoadingCondition;
+﻿using PetCargoProgram.Models.CargoTables;
+using PetCargoProgram.Models.LoadingCondition;
 using PetCargoProgram.Services.LoadingCondition;
 
 
@@ -7,7 +8,7 @@ namespace PetCargoProgram.ViewModels.MainWindow;
 public partial class ViewModelMainWindow
 {
     public ServiceLoadingCondition LoadingCondition { get; set; }
-
+    public AllCargoTables  AllCargoTables { get; set; }
 
     void InitLoadingCondition()
     {

@@ -101,7 +101,7 @@ public partial class ServiceLoadingCondition
         ShipCondition.MCTC= value.MCTC;
         ShipCondition.LCB= value.LCB;
         ShipCondition.CM = value.CM;
-        ShipCondition.CalcDrafts();
+        ShipCondition.CalcDraftsAndStability();
 
     }
 }

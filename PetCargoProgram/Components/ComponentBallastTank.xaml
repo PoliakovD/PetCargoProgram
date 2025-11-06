@@ -37,20 +37,22 @@
                     Maximum="1"
                     Value ="{Binding Path=Percents,
                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
                 </Slider>
                 <ProgressBar Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
                              Style="{StaticResource Style_ProgressBarVolume}"
                              Value="{Binding Path=Percents, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Foreground="DarkTurquoise"/>
-                <Button Name ="Input_ValveButtonStatus"
-                        Grid.Column="2" Grid.Row="0"
+                <Button Grid.Column="2" Grid.Row="0"
                         Content=""
                         Style="{StaticResource Style_ButtonValve}"
                         Template="{StaticResource Template_ButtonValve}"
-                        Click="Event_ButtonValveClick"/>
+                        Click="Event_ButtonValveClick"
+                        x:Name="Input_ValveButtonStatus"/>
+
                 <Label  Name ="Output_ValveStatus"
                         Grid.Column="3" Grid.Row="0"
-                        Target="Input_ValveButtonStatus"
+
                         Style="{StaticResource Style_ValueLabel}"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
@@ -69,6 +71,7 @@
                          StringFormat=\{0:f2\} m3}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
+
                 <Label  Grid.Column="2" Grid.Row="2"
                         Target="Input_Output_Weight"
                         Content ="W:"
@@ -76,11 +79,13 @@
                         ToolTip="Weight"/>
                 <TextBox Grid.Column="3" Grid.Row="2"
                          Name ="Input_Output_Weight"
-                         Template="{StaticResource Template_IOTextBoxValues}"
+
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                          StringFormat=\{0:f2\} mt}"
+                         Template="{StaticResource Template_IOTextBoxValues}"
                          KeyDown="Event_LoseFocusOnEnter"/>
+
 
                 <Label  Grid.Column="2" Grid.Row="3"
                         Target="Input_Output_Sound"
@@ -89,10 +94,10 @@
                         ToolTip="Sound"/>
                 <TextBox Grid.Column="3" Grid.Row="3"
                          Name ="Input_Output_Sound"
-                         Template="{StaticResource Template_IOTextBoxValues}"
                          Style="{StaticResource Style_TextBoxValues}"
                          Text="{Binding Path=Sound, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                          StringFormat=\{0:f2\} m}"
+                         Template="{StaticResource Template_IOTextBoxValues}"
                          KeyDown="Event_LoseFocusOnEnter"/>
 
             </Grid>
