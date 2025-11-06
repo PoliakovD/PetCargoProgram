@@ -84,7 +84,7 @@ public partial class CargoTank : ViewModelASTM, ILoadingConditionItem, IEquatabl
         MaxVolume = _sVolume.GetMaxVolume(name);
         MaxUllage = _UllageTrim.GetMaxUllage(name);
         DistributeVolumeTableValue(_sVolume.GetValue(name,0.0));
-        CurrentTemperature = 30.0;
+        CurrentTemperatureCelsius = 30.0;
         _density15 = 0.988;
         base.Density15=_density15;
         Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(137, 129, 225, 13));
@@ -278,7 +278,7 @@ public partial class CargoTank : ViewModelASTM, ILoadingConditionItem, IEquatabl
             _density60 = GetRelativeDensity6060byDensity15(_density15);
             OnPropertyChanged(nameof(Density60));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -311,7 +311,7 @@ public partial class CargoTank : ViewModelASTM, ILoadingConditionItem, IEquatabl
             _api = GetAPIbyDensity15(_density15);
             OnPropertyChanged(nameof(API));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 
@@ -328,14 +328,14 @@ public partial class CargoTank : ViewModelASTM, ILoadingConditionItem, IEquatabl
         }
     }
 
-    public override double CurrentTemperature
+    public override double CurrentTemperatureCelsius
     {
-        get => _currentTemperature;
+        get => _currentTemperatureCelsius;
         set
         {
-            SetField(ref _currentTemperature, value);
+            SetField(ref _currentTemperatureCelsius, value);
 
-            _volumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            _volumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15);
             OnPropertyChanged(nameof(VolumeCorrection));
 
             _grossVolume = _volume*_volumeCorrection;
@@ -362,7 +362,7 @@ public partial class CargoTank : ViewModelASTM, ILoadingConditionItem, IEquatabl
             _density60 = GetRelativeDensity6060byDensity15(_density15);
             OnPropertyChanged(nameof(Density60));
 
-            VolumeCorrection = GetVCFbyDensity15(_currentTemperature, _density15);
+            VolumeCorrection = GetVCFbyDensity15(_currentTemperatureCelsius, _density15);
 
             WeightVacToAir = GetWeightVacToAirByDensity15(_density15);
 

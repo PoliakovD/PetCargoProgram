@@ -3,6 +3,7 @@ using System.Text;
 using PetCargoProgram.Models.CargoTables;
 using PetCargoProgram.DataAccess.CargoTables.TablesWriters;
 using PetCargoProgram.DataAccess.CargoTables.TablesReaders;
+using PetCargoProgram.Models.CargoTables.Tables;
 
 namespace PetCargoProgram.DataAccess;
 
@@ -56,6 +57,7 @@ public static class BinaryCTService
                 }
             }
 
+            resultAllTables.TableKn.Table = TableKN.Read_from_file("KNTable.bin");
             return resultAllTables;
         }
 

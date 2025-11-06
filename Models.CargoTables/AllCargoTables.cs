@@ -12,6 +12,7 @@ public class AllCargoTables
     public TablesHydrostatic TablesHydrostatic { get; set; }
     public TablesOtherSounding TablesOtherSounding { get; set; }
     public TablesVolume TablesVolume { get; set; }
+    public TableKN TableKn{ get; set; }
 
     public AllCargoTables()
     {
@@ -20,5 +21,6 @@ public class AllCargoTables
         TablesHydrostatic = new TablesHydrostatic();
         TablesOtherSounding = new TablesOtherSounding();
         TablesVolume = new TablesVolume();
+        TableKn = new TableKN();
     }
 }
